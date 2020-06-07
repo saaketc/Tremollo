@@ -1,251 +1,213 @@
-import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import HeadsetIcon from '@material-ui/icons/Headset';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import InputBase from "@material-ui/core/InputBase";
+import { fade, makeStyles } from "@material-ui/core/styles";
 
-import colors from '../../config/colors';
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
 
-const useStyles = makeStyles(theme => ({
-    grow: {
-        flexGrow: 1,
-        margin:20
+import colors from "../../config/colors";
+import Search from "../search/search";
+import logo from "../../logo/logo_lite_crop.png";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+    display: "none",
+    [theme.breakpoints.up("xs")]: {
+      display: "block",
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
+    fontWeight: "700",
+    color: colors.primary,
+  },
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    title: {
-        display: 'none',
-        color: colors.white,
-        fontWeight:'700',
-        [theme.breakpoints.up('sm')]: {
-            display: 'block',
-        },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
     },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
+  },
+  searchRes: {
+    color: colors.primary,
+  },
+  searchIcon: {
+    width: theme.spacing(7),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputRoot: {
+    color: "inherit",
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 7),
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: 120,
+      "&:focus": {
+        width: 200,
+      },
     },
-    searchIcon: {
-        width: theme.spacing(7),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+  },
+  btn: {
+    color: colors.primary,
+    border: `1px solid ${colors.primary}`,
+    "&:hover": {
+      backgroundColor: colors.white,
     },
-    inputRoot: {
-        color: 'inherit',
+  },
+  hover: {
+    "&:hover": {
+      backgroundColor: colors.white,
     },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 7),
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: 200,
-        },
-    },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-            
-        },
-        
-    },
-    sectionMobile: {
-        display: 'flex',
-        [theme.breakpoints.up('md')]: {
-            display: 'none',
-        },
-    },
+  },
+  container: {
+    marginRight: "30",
+    padding: "30",
+  },
 }));
 
 function Navbar(props) {
-   
-    const { user } = props;
-    const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [searchKeyword, setSearchKeyword] = React.useState('')
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const classes = useStyles();
+  const { user, history } = props;
 
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
-    const handleProfileMenuOpen = event => {
-        setAnchorEl(event.currentTarget);
-    };
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-    const handleMobileMenuClose = () => {
-        setMobileMoreAnchorEl(null);
-    };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleProfile = () => {
+    return props.history.push("/profile");
+  };
+  const handleLogout = () => {
+    return props.history.push("/logout");
+  };
+  const handleAuthClick = (authType) => {
+    if (authType === "signup") {
+      return history.push("/auth/signup");
+    }
+    if (authType === "login") {
+      return history.push("/auth/login");
+    }
+  };
+ 
+  return (
+    <div className={classes.root}>
+      <Toolbar>
+        <Hidden only={["sm", "xs"]}>
+          <Typography className={classes.title} variant="h5" noWrap>
+            <a
+              href="/"
+              style={{ textDecoration: "none", color: colors.primary }}
+            >
+              <img src={logo} alt='tremollo music' />
+            </a>
+                  </Typography>
+                  
+        </Hidden>
+        <Hidden  only={["lg", "md"]}>
+          <Typography className={classes.title} variant="h8" noWrap>
+            <a
+              href="/"
+              style={{ textDecoration: "none", color: colors.primary }}
+            >
+          <img src={logo} alt='tremollo music' />
 
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-        handleMobileMenuClose();
-    };
+            </a>
+                  </Typography>
+                  
+        </Hidden>
 
-    const handleMobileMenuOpen = event => {
-        setMobileMoreAnchorEl(event.currentTarget);
-    };
-    // handle studio click
-    const handleStudioClick = () => {
-        return props.history.push('/create-new-studio');
-    }
-    // logo click
-    const handleLogoClick = () => {
-        return props.history.push('/');
-    }
-
-    // handle auth button click
-    const handleAuth = (authType) => {
-        if (authType === 'login')
-            return props.history.push('/auth/login');
-        if (authType === 'signup')
-            return props.history.push('/auth/signup');
-    }
-    const handlePlaylistOpen = () => {
-        return props.history.push('/myPlaylist');
-    }
-    const handleLogout = () => {
-        return props.history.push('/auth/logout');
-    }
-    const handleSearchChange = (e) => {
-        const term = e.currentTarget.value;
-        setSearchKeyword(term);
-    }
-    const handleSearchSubmit = (e) => {
-        e.preventDefault();
-        return props.history.push(`/search?q=${searchKeyword}`);
-        // console.log(searchKeyword);
-    }
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-       
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            id={menuId}
-            keepMounted
-            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-            
-        >
-            
-                
-                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                    <MenuItem onClick={handlePlaylistOpen}>My playlist</MenuItem>
-           
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            
-            
-           
-        </Menu>
+        {/* Search component here */}
+        <Search/>
         
-    );
+        {!user && (
+          <>
+            <div>
+              <Button
+                style={{ color: "black" }}
+                onClick={() => handleAuthClick("login")}
+                className={classes.hover}
+              >
+                Login
+              </Button>
+            </div>
+            <Hidden only="xs">
+              <div>
+                <Button
+                  onClick={() => handleAuthClick("signup")}
+                  className={classes.btn}
+                >
+                  Signup
+                </Button>
+              </div>
+            </Hidden>
+          </>
+        )}
+        {user && (
+          <div style={{ margin: "20px" }}>
 
-
-
-    return (
-        <div className={classes.grow}>
-            <AppBar position="static"
-                style={{
-                    backgroundColor: colors.primary }}>
-                <Toolbar>
-                   
-                    
-                        <Button onClick={handleLogoClick}  style={{ color:colors.white }}>Tremollo</Button>
-          
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
-                        </div>
-                            
-                        <form onSubmit={handleSearchSubmit}>
-                        <InputBase
-                            placeholder="Search…"
-                            value={searchKeyword}
-                            onChange={handleSearchChange}
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                            />
-                            </form>
-                    </div>
-                    <div className={classes.grow} />
-                    <div className={classes.sectionDesktop}>
-                       
-                        {!user && 
-                            <>
-                            <Button style={{ fontSize: '20px' }} color="inherit" onClick={() => handleAuth('login')}>
-                                Login
-                        </Button>
-
-                            <Button style={{ fontSize: '20px' }} color="inherit" onClick={() => handleAuth('signup')}>
-                                Signup
-                        </Button>
-                        </>
-                        }
-                        {user &&
-                            <>
-                            <IconButton
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={()=> props.history.push('/myMusic/upload')}
-                                color="inherit"
-                            >
-                                <CloudUploadIcon/>
-                            </IconButton>
-                            <IconButton
-                                edge="end"
-                                aria-label="account of current user"
-                                aria-controls={menuId}
-                                aria-haspopup="true"
-                                onClick={handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
-                            </>
-                        }
-                    </div>
-               
-                </Toolbar>
-            </AppBar>
-            {renderMenu}
-        </div>
-    );
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="primary"
+              style={{ marginLeft: "20px" }}
+            >
+              <AccountCircle />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleProfile}>Profile</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </Menu>
+          </div>
+        )}
+      </Toolbar>
+    </div>
+  );
 }
 export default withRouter(Navbar);

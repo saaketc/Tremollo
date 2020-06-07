@@ -46,7 +46,7 @@ const Feed = (props) => {
       
       catch (e) {
         console.log(e);
-        toast.error('Something went wrong');
+        // toast.error('Something went wrong');
       }
     }
     fetchFeedData();
@@ -69,7 +69,7 @@ const Feed = (props) => {
             currentUserId={user.userId}
             likes={f.likes}
             followers={f.followers}
-            date={f.dateUpload}
+            
             contentId={f.contentId}
             isLikedByUser={f.isLikedByUser}
           />

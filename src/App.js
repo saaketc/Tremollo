@@ -5,16 +5,15 @@ import {Route, Switch} from 'react-router-dom';
 import Feed from './components/feed';
 import Welcome from './components/welcome';
 import Navbar from './components/common/navbar';
-// import { Logo } from './logo/tremollo_logo.svg';
-import CreateStudio from './components/studio/createStudio';
 import Studio from './components/studio/studio';
 import Login from './components/auth/login';
-import Signup from './components/auth/signup';
+import Signup from './components/auth/signup/signup';
 import Logout from './components/auth/logout';
 import UploadMusic from './components/uploadMusic';
 import UserPlaylist from './components/userPlaylist';
 import PlaylistFeed from './components/playlistFeed';
 import SearchResults from './components/searchResults';
+import Footer from "./components/footer";
 
 function App() {
   const [user, setUser] = useState({});
@@ -40,18 +39,19 @@ function App() {
       <Switch>
         <Route path='/search' render={(props) => <SearchResults {...props} user={user} />}/>
         <Route path='/studio/:studioName' render={(props) => <Studio {...props} user={user} />}/>
-        <Route path='/myMusic/upload' render={(props) => <UploadMusic {...props} user={user} />}/>
-        <Route  path='/auth/signup/join' component={Signup}/>
+        <Route path='/myMusic/upload' render={(props) => <UploadMusic {...props} user={user} />} />
+        <Route  path='/auth/logout' component={Logout}/>
         <Route  path='/auth/signup' component={Signup}/>
         <Route  path='/auth/login' component={Login}/>
-        <Route  path='/auth/logout' component={Logout}/>
         <Route path='/myPlaylist/:playlistName' render={(props) => <PlaylistFeed {...props} user={user} />}/>
         <Route path='/myPlaylist' render={(props) => <UserPlaylist {...props} user={user} />}/>
         <Route exact path='/' render={(props) => user ? <Feed {...props} user={user} /> : <Welcome {...props}/>} />
 
         {/* <Route path='/create-new-studio' render={(props) => <CreateStudio {...props} user={user} />}/> */}
         {/* <Route exact path='/' component={Welcome}/> */}
-        </Switch>
+      </Switch>
+  <Footer/>
+      
     </>
   );
 }

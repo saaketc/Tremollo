@@ -8,9 +8,7 @@ import { toast } from 'react-toastify';
 const Signup1 = () => {
     const history = useHistory();
     const fields = [
-        // { name: 'fName', label: 'First Name', type: 'text' },
-        // { name: 'lName', label: 'Last Name', type: 'text' },
-        // { name: 'dob', label: 'Date of Birth', type: 'date' },
+    
         { name: 'username', label: 'Username', type: 'text' },
         { name: 'email', label: 'Email', type: 'email' },
         { name: 'password', label: 'Password', type: 'password' },

@@ -29,7 +29,7 @@ import Playlist from '../playlist';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        maxWidth: 345,
+        maxWidth: 300,
         maxHeight:'100%',
     },
     media: {
