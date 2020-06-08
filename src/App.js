@@ -42,7 +42,7 @@ function App() {
         <Route path='/uploadProfilePic' render={(props) => <ProfilePicUpload {...props} user={user} />}/>
         <Route path='/studio/:studioName' render={(props) => <Studio {...props} user={user} />}/>
         <Route path='/myMusic/upload' render={(props) => <UploadMusic {...props} user={user} />} />
-        <Route  path='/auth/logout' component={Logout}/>
+        <Route  path='/logout' component={Logout}/>
         <Route  path='/auth/signup' component={Signup}/>
         <Route  path='/auth/login' component={Login}/>
         <Route path='/myPlaylist/:playlistName' render={(props) => <PlaylistFeed {...props} user={user} />}/>

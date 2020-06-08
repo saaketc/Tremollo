@@ -2,13 +2,13 @@ import axios from 'axios';
 
 const URL = 'http://api.tremollo.co:8080';
 
-const config = {
-    headers: {
-        'Content-Type': 'application/json'
+// const config = {
+//     headers: {
+//         'Content-Type': 'application/json'
        
-    },
+//     },
 
-}
+// }
 
 
  const getData = (resource, params=null) => {

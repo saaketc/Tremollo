@@ -15,7 +15,7 @@ import Hidden from "@material-ui/core/Hidden";
 
 import colors from "../../config/colors";
 import Search from "../search/search";
-import logo from "../../logo/logo_lite_crop.png";
+import logo from "../../logo/logo.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {

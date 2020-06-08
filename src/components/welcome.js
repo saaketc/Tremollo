@@ -81,7 +81,7 @@ const Welcome = () => {
       <br/>
     
       <Typography className={classes.description} variant='h3'>
-        Why tremollo music?
+        With tremollo you can...
       </Typography>
       <br/>
       <Grid container spacing={6} className={classes.topSpace}>
