@@ -129,21 +129,22 @@ export default function UIcard(props) {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        <img src={avatar} alt="user avatar" width='100%' height='100%'/>
+                        <img src={avatar} alt="user avatar" width='100%' height='100%' />
 
-          </Avatar>
+                    </Avatar>
                 }
               
                
                 action={
-                    <Button className={follow ? classes.btnFan : classes.btn } onClick={handleFollowClick}>
+                    <Button className={follow ? classes.btnFan : classes.btn} onClick={handleFollowClick}>
                         {follow ? `Fan` : 'Become a fan'}</Button>
                    
                    
-                } 
+                }
                 title={username}
-                subheader={followers > 0 ? `${followers} followers </br> ${month(new Date(date).getMonth())} ${new Date(date).getDate()}, ${new Date(date).getFullYear()}`
-                    : `${month(new Date(date).getMonth())} ${new Date(date).getDate()}, ${new Date(date).getFullYear()}`}
+                subheader={followers > 0 ? `${followers} fans 
+                     ${month(new Date(date).getMonth())} ${new Date(date).getDay() + 1} ${new Date(date).getFullYear()}`
+                    : `${month(new Date(date).getMonth())} ${new Date(date).getDay()} ${new Date(date).getFullYear()}`}
             />
             <CardMedia
                 className={classes.media}

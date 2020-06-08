@@ -21,12 +21,22 @@ const config = {
      });
   
  }
-const postData = (resource, data) => {
-    return axios.post(`${URL}/${resource}`, data, config);
+const postData = (resource, data, contentType='application/json') => {
+    return axios.post(`${URL}/${resource}`, data, {
+        headers: {
+            'Content-Type': contentType
+
+        }
+    });
 
 }
-const putData = (resource, data) => {
-    return axios.put(`${URL}/${resource}`, data, config);
+const putData = (resource, data, contentType='application/json') => {
+    return axios.put(`${URL}/${resource}`, data, {
+        headers: {
+            'Content-Type': contentType
+
+        }
+    });
 
 }
 export default {
