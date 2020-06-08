@@ -69,9 +69,10 @@ const Feed = (props) => {
             currentUserId={user.userId}
             likes={f.likes}
             followers={f.followers}
-            
+            addToPlaylist={true}
             contentId={f.contentId}
             isLikedByUser={f.isLikedByUser}
+            isFollowedByUser={f.isFollowedByUser}
           />
           <br />
         

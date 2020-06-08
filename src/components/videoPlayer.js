@@ -24,8 +24,8 @@ const VideoPlayer = ({ url, thumbnailLink }) => {
         playing
         controls
         light={thumbnailLink}
-        width='250px'
-        height='200px'
+        width='300px'
+        height='180px'
       />
     </div>
 

@@ -21,7 +21,7 @@ const styles = makeStyles(theme => ({
 const storageURL = 'https://eddy-bucket-0-1.s3.ap-south-1.amazonaws.com/';
 
 const UserPlaylist = (props) => {
-  const [playlist, setPlaylist] = React.useState();
+  const [playlist, setPlaylist] = React.useState([]);
   const classes = styles();
 
   React.useEffect(() => {
@@ -44,7 +44,10 @@ const UserPlaylist = (props) => {
     <Container>
       <Grid container spacing={4}>
         <Grid item xs={12} md={6} lg={6}>
-          <Typography variant='h3' className={classes.heading}>Enjoy your Playlist {props.user.firstName}!</Typography>
+          <Typography variant='h3' className={classes.heading}>
+            {playlist.length > 0 ? ` Enjoy your Playlist ${props.user.firstName} :)`
+              : `You have no playlists ${props.user.firstName} :(`}
+            </Typography>
       <br/>
           <br />
           <Grid container spacing={2}>

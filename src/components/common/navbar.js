@@ -108,6 +108,9 @@ function Navbar(props) {
   const handleProfile = () => {
     return props.history.push("/profile");
   };
+  const handlePlaylistClick = () => {
+    return props.history.push("/myPlaylist");
+  };
   const handleLogout = () => {
     return props.history.push("/logout");
   };
@@ -202,6 +205,7 @@ function Navbar(props) {
               onClose={handleClose}
             >
               <MenuItem onClick={handleProfile}>Profile</MenuItem>
+              <MenuItem onClick={handlePlaylistClick}>My playlist</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
