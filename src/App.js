@@ -14,6 +14,7 @@ import UserPlaylist from './components/userPlaylist';
 import PlaylistFeed from './components/playlistFeed';
 import SearchResults from './components/searchResults';
 import Footer from "./components/footer";
+import ProfilePicUpload from './components/auth/profilePicUpload';
 
 function App() {
   const [user, setUser] = useState({});
@@ -38,6 +39,7 @@ function App() {
  <ToastContainer/>
       <Switch>
         <Route path='/search' render={(props) => <SearchResults {...props} user={user} />}/>
+        <Route path='/uploadProfilePic' render={(props) => <ProfilePicUpload {...props} user={user} />}/>
         <Route path='/studio/:studioName' render={(props) => <Studio {...props} user={user} />}/>
         <Route path='/myMusic/upload' render={(props) => <UploadMusic {...props} user={user} />} />
         <Route  path='/auth/logout' component={Logout}/>
