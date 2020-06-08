@@ -5,9 +5,11 @@ import dataService from "../../services/dataServices";
 
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { toast } from 'react-toastify';
-
+import { useHistory } from 'react-router-dom'; 
+  
 const ProfilePicUpload = ({user}) => {
-    const [file, setFile] = React.useState(null);
+  const history = useHistory();  
+  const [file, setFile] = React.useState(null);
 
     const handleChange = ({ currentTarget }) => {
         const pic = currentTarget.files[0];
@@ -20,7 +22,8 @@ const ProfilePicUpload = ({user}) => {
         formData.append('file', file);
         formData.append('userId', user.userId)
         const { data } = await dataService.putData('user/avatar', formData, 'multipart/form-data');
-        console.log(data.body);
+        // console.log(data.body);
+          history.push('/');
         }
         catch (e) {
             console.log(e.message);

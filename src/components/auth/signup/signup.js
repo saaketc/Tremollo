@@ -24,7 +24,7 @@ const CreateCampaign = () => {
 
       localStorage.setItem('user', JSON.stringify(data.body));
       
-      window.location = '/';
+      window.location = '/uploadProfilePic';
   }
   catch (e) {
       toast.error('Something went wrong');
