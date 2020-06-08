@@ -49,6 +49,9 @@ const useStyles = makeStyles(theme => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    heading: {
+        fontWeight:'600'
+    }
 }));
 
 export default function Form(props) {
@@ -77,7 +80,7 @@ export default function Form(props) {
                     <IconButton><HeadsetIcon style={{ fontSize: '50px', color: color }} /></IconButton>
                 }
                
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" className={classes.heading}>
                     {heading}
         </Typography>
                 <form className={classes.form} noValidate onSubmit={handleSubmit}>

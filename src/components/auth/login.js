@@ -33,7 +33,7 @@ const Login = () => {
         <>
             <Form
                 postSubmitLogic={postSubmitLogic}
-                heading='Login to enjoy your curated music world!'
+                heading='Welcome back tremolloster! Your amazing music world is waiting for you...'
                 fields={fields}
 
                 button={button} />
