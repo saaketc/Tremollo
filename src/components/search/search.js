@@ -64,7 +64,7 @@ const Search = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const handleChange = async ({ currentTarget }) => {
     
-    setSearchTerm(currentTarget.value.trim());
+    setSearchTerm(currentTarget.value);
   };
 
   const handleSubmit = (e) => {
