@@ -15,6 +15,8 @@ import PlaylistFeed from './components/playlistFeed';
 import SearchResults from './components/searchResults';
 import Footer from "./components/footer";
 import ProfilePicUpload from './components/auth/profilePicUpload';
+import Profile from './components/profile';
+import EditProfile from './components/editProfile';
 
 function App() {
   const [user, setUser] = useState({});
@@ -40,6 +42,8 @@ function App() {
       <Switch>
         <Route path='/search' render={(props) => <SearchResults {...props} user={user} />}/>
         <Route path='/uploadProfilePic' render={(props) => <ProfilePicUpload {...props} user={user} />}/>
+        <Route path='/profile' render={(props) => <Profile {...props} currentUser={user} />}/>
+        <Route path='/edit' render={(props) => <EditProfile {...props} user={user} />}/>
         <Route path='/studio/:studioName' render={(props) => <Studio {...props} user={user} />}/>
         <Route path='/myMusic/upload' render={(props) => <UploadMusic {...props} user={user} />} />
         <Route  path='/logout' component={Logout}/>
