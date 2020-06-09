@@ -77,7 +77,7 @@ const SearchResults = (props) => {
             {users.map((user) => (
               <Grid item xs={12} lg={6} sm={6} md={6}>
                 <Button onClick={()=>handleUserClick(user)}>
-                  <img className={classes.pic} src={storageURL + user.avatarLink} alt='user' />
+                  <img className={classes.pic} src={storageURL + user.avatarLink} alt={`${user.firstName} ${user.lastName}`} />
                 <Typography variant='h6'>
                 {`  ${user.firstName} ${user.lastName}`} 
                 </Typography>
@@ -88,7 +88,7 @@ const SearchResults = (props) => {
         </>
       ) : (
         <Typography variant="h4" className={classes.heading}>
-          {`Sorry no results found for ${q} `}
+          {`Sorry no results found for ${q} :( `}
           <br />
           <a href="/">Explore Music</a>
         </Typography>
