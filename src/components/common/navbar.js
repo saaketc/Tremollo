@@ -16,6 +16,7 @@ import Hidden from "@material-ui/core/Hidden";
 import colors from "../../config/colors";
 import Search from "../search/search";
 import logo from "../../logo/logo.svg";
+import UploadButton from "../upload/uploadButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -127,7 +128,7 @@ function Navbar(props) {
     <div className={classes.root}>
       <Toolbar>
         <Hidden only={["sm", "xs"]}>
-          <Typography className={classes.title} variant="h5" noWrap>
+          <Typography style={{width: '100%'}} className={classes.title} variant="h5" noWrap>
             <a
               href="/"
               style={{ textDecoration: "none", color: colors.primary }}
@@ -149,9 +150,10 @@ function Navbar(props) {
                   </Typography>
                   
         </Hidden>
-
         {/* Search component here */}
-        <Search/>
+        <div style={{ marginRight:'400px',width:'100%'}}>
+          <Search />
+          </div>
         
         {!user && (
           <>
@@ -187,7 +189,7 @@ function Navbar(props) {
               color="primary"
               style={{ marginLeft: "20px" }}
             >
-              <AccountCircle />
+              <AccountCircle style={{color: colors.primary, fontSize:'40px'}}/>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -206,6 +208,7 @@ function Navbar(props) {
             >
               <MenuItem onClick={handleProfile}>Profile</MenuItem>
               <MenuItem onClick={handlePlaylistClick}>My playlist</MenuItem>
+              <MenuItem onClick={()=> history.push('/myMusic/upload')}>Upload content</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
