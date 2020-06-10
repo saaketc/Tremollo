@@ -9,7 +9,7 @@ import Studio from './components/studio/studio';
 import Login from './components/auth/login';
 import Signup from './components/auth/signup/signup';
 import Logout from './components/auth/logout';
-import UploadMusic from './components/uploadMusic';
+import UploadMusic from './components/upload/uploadMusic';
 import UserPlaylist from './components/userPlaylist';
 import PlaylistFeed from './components/playlistFeed';
 import SearchResults from './components/searchResults';

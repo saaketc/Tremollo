@@ -9,16 +9,10 @@ import { storageURL } from "../config/storage";
 import MediaCard from "./common/mediaCard";
 import { month } from "../utils/utilfunctions";
 import { getUserType } from "../utils/userFunctions";
+import { buttonStyleClose } from "../config/buttonStyle";
 
 const useStyles = makeStyles((theme) => ({
-  btn: {
-    color: colors.white,
-    border: `1px solid ${colors.primary}`,
-    backgroundColor: colors.primary,
-    "&:hover": {
-      backgroundColor: colors.primary,
-    },
-  },
+  btn:buttonStyleClose,
   title: {
     fontWeight: "900",
     color: colors.primary,
@@ -83,9 +77,13 @@ const Profile = (props) => {
   const handleProfilePicClick = () => {
     return history.push('/uploadProfilePic', { from: 'Profile' });
   };
-  const handleEditClick = () => {
-    return history.push('/edit', {followersCount: userStats.followers});
+  // const handleEditClick = () => {
+  //   return history.push('/edit', {followersCount: userStats.followers});
+  // }
+  const handleUploadContent = () => {
+    return history.push('/myMusic/upload');
   }
+
   return (
     <Container>
       <br />
@@ -126,9 +124,10 @@ const Profile = (props) => {
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
           </Typography>
           <br />
-          {/* {currentUser.userId === user.userId && 
-          <Button onClick={handleEditClick} className={classes.btn} >Edit profile</Button>
-          } */}
+          {currentUser.userId === user.userId && 
+            // <Button onClick={handleEditClick} className={classes.btn} >Edit profile</Button>
+            <Button className={classes.btn} onClick={handleUploadContent}>Upload content</Button>       
+          }
         </Grid>
       </Grid>
       <br />

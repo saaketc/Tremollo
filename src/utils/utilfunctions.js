@@ -62,3 +62,4 @@ export const removeSlug = (string) => {
     .replace(/^-+/, "")
     .replace(/-+$/, "");
 };
+

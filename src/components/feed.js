@@ -6,9 +6,7 @@ import Container from '@material-ui/core/Container';
 
 import dataService from '../services/dataServices';
 import { toast } from 'react-toastify';
-
-const storageURL = 'https://eddy-bucket-0-1.s3.ap-south-1.amazonaws.com/';
-
+import { storageURL } from '../config/storage';
 
 const Feed = (props) => {
 
