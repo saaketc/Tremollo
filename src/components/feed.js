@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import dataService from '../services/dataServices';
 import { toast } from 'react-toastify';
 import { storageURL } from '../config/storage';
+import CardComponent from './common/cardComponent';
 
 const Feed = (props) => {
 
@@ -55,22 +56,11 @@ const Feed = (props) => {
     <Grid container spacing={6}>
       {feed.map(f => (
         <Grid item xs={12} lg={4} sm={6}>
-          <UIcard
-            username={f.username}
-            title={f.title}
-            caption={f.caption}
-            avatar={storageURL + f.pageAvatar}
-            date={f.dateUpload}
-            url={storageURL + f.mediaLink}
-            thumbnailLink={storageURL + f.thumbnailLink}
-            userId={f.userId}
-            currentUserId={user.userId}
-            likes={f.likes}
-            followers={f.followers}
-            addToPlaylist={true}
-            contentId={f.contentId}
-            isLikedByUser={f.isLikedByUser}
-            isFollowedByUser={f.isFollowedByUser}
+          <CardComponent
+            data={f}
+            property='title'
+            secondaryData={f.caption}
+            image={storageURL + f.thumbnailLink}
           />
           <br />
         
