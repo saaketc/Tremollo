@@ -40,7 +40,7 @@ const FirstPhase = ({ onSubmit }) => {
 
   return (
     <Container>
-      <img src={logo} alt='tremollo music'/>
+      {/* <img src={logo} alt='tremollo music'/> */}
       <Typography variant="h5" className={classes.title}>
         Join tremollo to explore musical creativity!
       </Typography>
