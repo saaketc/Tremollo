@@ -63,3 +63,6 @@ export const removeSlug = (string) => {
     .replace(/-+$/, "");
 };
 
+export const filter = (array, property, filteringId) => {
+  return array.filter(a => a[property] !== filteringId);
+}

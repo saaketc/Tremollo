@@ -17,6 +17,8 @@ import Footer from "./components/footer";
 import ProfilePicUpload from './components/auth/profilePicUpload';
 import Profile from './components/profile';
 import EditProfile from './components/editProfile';
+import { Container } from '@material-ui/core';
+import ContentPage from './components/contentPage';
 
 function App() {
   const [user, setUser] = useState({});
@@ -32,7 +34,7 @@ function App() {
   }, [])
   
   return (
-  <>
+  <div style={{background: '#121212'}}>
       <Navbar
         user={user}
       />
@@ -43,6 +45,7 @@ function App() {
         <Route path='/search' render={(props) => <SearchResults {...props} user={user} />}/>
         <Route path='/uploadProfilePic' render={(props) => <ProfilePicUpload {...props} user={user} />}/>
         <Route path='/profile' render={(props) => <Profile {...props} currentUser={user} />}/>
+        <Route path='/content/:contentId' render={(props) => <ContentPage {...props} currentUser={user} />}/>
         <Route path='/edit' render={(props) => <EditProfile {...props} user={user} />}/>
         <Route path='/studio/:studioName' render={(props) => <Studio {...props} user={user} />}/>
         <Route path='/myMusic/upload' render={(props) => <UploadMusic {...props} user={user} />} />
@@ -56,9 +59,8 @@ function App() {
         {/* <Route path='/create-new-studio' render={(props) => <CreateStudio {...props} user={user} />}/> */}
         {/* <Route exact path='/' component={Welcome}/> */}
       </Switch>
-  <Footer/>
       
-    </>
+    </div>
   );
 }
 

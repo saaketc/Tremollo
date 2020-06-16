@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Playlist from './playlist';
-import UIcard from './common/feedUICard';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import { useHistory } from 'react-router-dom';
 
 import dataService from '../services/dataServices';
 import { toast } from 'react-toastify';
@@ -10,8 +9,8 @@ import { storageURL } from '../config/storage';
 import CardComponent from './common/cardComponent';
 
 const Feed = (props) => {
-
-  const { user } = props;
+  const history = useHistory();
+  // const { user } = props;
   const [feed, setFeed] = useState([]);
   // const [playlist, setPlaylist] = useState([]);
   // const [playlist, setPlaylist] = useState(play);
@@ -27,16 +26,6 @@ const Feed = (props) => {
           userId: props.user.userId
         }
         const { data } = await dataService.getData('feed', params);
-        // Promise.all([dataService.getData('feed', params), dataService.getData('user/playlist', { userId: 1 })])
-        //   .then(([resFeed, resPlaylist]) => {
-        //     // console.log(data);
-        //     // setFeed(data.body);
-        //     // console.log(resFeed.data);
-        //     console.log(resPlaylist.data.body);
-        //     setFeed(resFeed.data.body);
-        //     setPlaylist(resPlaylist.data.body);
-
-        //   })
         console.log(data.body);
         setFeed(data.body); 
          
@@ -51,15 +40,22 @@ const Feed = (props) => {
     fetchFeedData();
 
   }, [props.user]);
+
+  const handleAlbumClick = async data => {
+    // alert('Clicked');
+    return history.push(`/content/${data.contentId}`);
+  }
+
   return (
-    <Container>
+   
     <Grid container spacing={6}>
       {feed.map(f => (
-        <Grid item xs={12} lg={4} sm={6}>
+        <Grid item xs={12} lg={3} md={3}>
           <CardComponent
             data={f}
-            property='title'
-            secondaryData={f.caption}
+            primaryData={f.title}
+            secondaryData={f.username}
+            onClick={handleAlbumClick}
             image={storageURL + f.thumbnailLink}
           />
           <br />
@@ -68,7 +64,7 @@ const Feed = (props) => {
           </Grid>
       ))}
       </Grid>
-      </Container>
+  
   )
 }
     
