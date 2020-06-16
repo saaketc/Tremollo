@@ -27,8 +27,8 @@ const UploadMusic = ({ user }) => {
           userId: user.userId,
           fileId: fileData.fileId,
         };
-        const { data } = await dataService.putData(
-          "content/upload/file",
+        const { data } = await dataService.postData(
+          "content/upload/data",
           toSend
         );
           console.log(data.body);

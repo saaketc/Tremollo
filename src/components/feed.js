@@ -26,7 +26,7 @@ const Feed = (props) => {
           userId: props.user.userId
         }
         const { data } = await dataService.getData('feed', params);
-        console.log(data.body);
+        console.log('feed', data.body);
         setFeed(data.body); 
          
       
@@ -47,8 +47,8 @@ const Feed = (props) => {
   }
 
   return (
-   
-    <Grid container spacing={6}>
+   <Container maxWidth='100%'>
+    <Grid container spacing={4}>
       {feed.map(f => (
         <Grid item xs={12} lg={3} md={3}>
           <CardComponent
@@ -64,6 +64,7 @@ const Feed = (props) => {
           </Grid>
       ))}
       </Grid>
+      </Container>
   
   )
 }

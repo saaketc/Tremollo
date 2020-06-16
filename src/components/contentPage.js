@@ -1,13 +1,11 @@
 import React from "react";
-import { Container, Grid, Button, Typography, StylesProvider } from "@material-ui/core";
+import { Container, Grid, Button, Typography } from "@material-ui/core";
 
 import VideoPlayer from "./videoPlayer";
 import dataServices from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import BottomNav from './common/bottomNav';
 import styles from '../styles/contentPage';
-import { buttonStyleClose, buttonStyleOpen } from "../config/buttonStyle";
-import Feed from "./feed";
 import QueuePlaylist from "./queuePlaylist";
 
 const ContentPage = (props) => {
@@ -20,11 +18,12 @@ const ContentPage = (props) => {
       const { data } = await dataServices.getData("content/withUser", {
         contentId: contentId,
       });
-      console.log("content data", data.body);
+      // console.log("content data", data.body);
+      console.log('Current user', currentUser);
       setContent(data.body);
     };
     fetchContent();
-  }, [contentId]);
+  }, [currentUser, content.userId, contentId]);
     
   return (
     <Container>
@@ -36,7 +35,19 @@ const ContentPage = (props) => {
             width="800"
             height="500"
                   />
-          <BottomNav/>
+          <BottomNav
+            data={
+              {
+                'followerId': currentUser.userId,
+                'followedId': content.userId,
+                'isFollowedByUser': content.isFollowedByUser,
+                'isLikedByUser': content.isLikedByUser,
+                'contentId': contentId,
+                'likes': content.likes,
+                'followers': content.followers
+            }
+            }
+          />
                   <br />
       <Grid container spacing={6}>
                   
