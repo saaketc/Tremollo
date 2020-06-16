@@ -107,7 +107,7 @@ function Navbar(props) {
     setAnchorEl(null);
   };
   const handleProfile = () => {
-    return props.history.push("/profile", user);
+    return props.history.push(`/profile/${user.userId}`);
   };
   const handlePlaylistClick = () => {
     return props.history.push("/myPlaylist");

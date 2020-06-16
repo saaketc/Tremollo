@@ -46,8 +46,8 @@ const SearchResults = (props) => {
       .catch((error) => console.log(error));
   }, [q]);
 
-  const handleUserClick = data => {
-    return history.push('/profile', data);
+  const handleUserClick = user => {
+    return history.push(`/profile/${user.userId}`);
   }
   return (
     <Container>

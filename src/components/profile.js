@@ -9,23 +9,24 @@ import { storageURL } from "../config/storage";
 import MediaCard from "./common/mediaCard";
 import { month } from "../utils/utilfunctions";
 import { getUserType } from "../utils/userFunctions";
-import { buttonStyleClose } from "../config/buttonStyle";
+import { buttonStyleClose, buttonStyleOpen } from "../config/buttonStyle";
 
 const useStyles = makeStyles((theme) => ({
-  btn:buttonStyleClose,
+  btn: buttonStyleClose,
   title: {
     fontWeight: "900",
     color: colors.primary,
   },
   profilePic: {
     borderRadius: "50%",
-    border: `10px solid ${colors.primary}`,
+    border: `2px solid ${colors.primary}`,
     width: "100%",
     height: "100%",
     verticalAlign: "middle",
     "&:hover": {
       opacity: 0.3,
     },
+    padding: '5px'
   },
   middle: {
     transition: ".5s ease",
@@ -46,43 +47,57 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "16px",
     padding: "16px 32px",
   },
+  space: {
+    marginLeft: '10px'
+  }
 }));
 
 const Profile = (props) => {
   const [userStats, setUserStats] = React.useState({});
+  const [userDetails, setUserDetails] = React.useState({});
   const [content, setContent] = React.useState([]);
   const classes = useStyles();
   const history = useHistory();
-  const user = props.location.state;
+  // const user = props.location.state;
   const { currentUser } = props;
+  const { userId } = props.match.params;
 
   React.useEffect(() => {
+    
+    const userDetailsPromise = dataService.getData("user", {
+      userId: userId,
+    });
+
     const userPromise = dataService.getData("user/stats", {
-      userId: user.userId,
+      userId: userId,
     });
+    
     const contentPromise = dataService.getData("user/content", {
-      userId: user.userId,
+      userId: userId,
     });
-    Promise.all([userPromise, contentPromise])
-      .then(([userRes, contentRes]) => {
+    Promise.all([userDetailsPromise, userPromise, contentPromise])
+      .then(([userDetailsRes, userRes, contentRes]) => {
         console.log("user", userRes.data.body);
         console.log("content", contentRes.data.body);
 
+        setUserDetails(userDetailsRes.data.body);
         setUserStats(userRes.data.body);
         setContent(contentRes.data.body);
       })
       .catch((error) => console.log(error));
-  }, [user]);
+  }, [userId]);
 
   const handleProfilePicClick = () => {
-    return history.push('/uploadProfilePic', { from: 'Profile' });
+    return history.push("/uploadProfilePic", { from: "Profile" });
+    // alert(`userId is ${userId} & current: ${currentUser.userId}`);
   };
-  // const handleEditClick = () => {
-  //   return history.push('/edit', {followersCount: userStats.followers});
-  // }
-  const handleUploadContent = () => {
-    return history.push('/myMusic/upload');
+
+  const handleEditClick = () => {
+    return history.push('/edit', {followersCount: userStats.followers});
   }
+  const handleUploadContent = () => {
+    return history.push("/myMusic/upload");
+  };
 
   return (
     <Container>
@@ -91,14 +106,10 @@ const Profile = (props) => {
       <Grid container spacing={6}>
         <Grid item xs={12} md={3} lg={3}>
           <Button
-            onClick={() =>
-              currentUser.userId === user.userId
-                ? handleProfilePicClick()
-                : null
-            }
+            onClick={() => (Number(currentUser.userId) === Number(userId)) ? handleProfilePicClick() : null}
           >
             <img
-              src={storageURL + user.avatarLink}
+              src={storageURL + userDetails.avatarLink}
               alt="profile"
               className={classes.profilePic}
             />
@@ -106,28 +117,35 @@ const Profile = (props) => {
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
           <Typography variant="h2" style={{ fontWeight: "500" }}>
-            {` ${user.firstName} ${user.lastName} `}
+            {` ${userDetails.firstName} ${userDetails.lastName} `}
           </Typography>
           <Typography
             className={classes.title}
             variant="h6"
             style={{ fontWeight: "500" }}
           >
-            {getUserType(user.type)}
+            {getUserType(userDetails.type)}
           </Typography>
           <br />
           <Typography variant="h5" style={{ fontWeight: "400" }}>
-            {user.about}
+            {userDetails.about}
           </Typography>
           <br />
           <Typography variant="h5" style={{ fontWeight: "400" }}>
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
           </Typography>
           <br />
-          {currentUser.userId === user.userId && 
-            // <Button onClick={handleEditClick} className={classes.btn} >Edit profile</Button>
-            <Button className={classes.btn} onClick={handleUploadContent}>Upload content</Button>       
-          }
+          {
+            Number(currentUser.userId) === Number(userId) &&
+            <div style={{display: 'block'}}>
+            <Button onClick={handleEditClick} style={buttonStyleOpen} >Edit profile</Button>
+            <Button style={buttonStyleClose} className={classes.space} onClick={handleUploadContent}>
+                Upload content
+            </Button>
+          </div>
+      }
+           
+           
         </Grid>
       </Grid>
       <br />

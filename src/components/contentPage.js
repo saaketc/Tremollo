@@ -52,10 +52,12 @@ const ContentPage = (props) => {
       <Grid container spacing={6}>
                   
                       <Grid item xs={12} md={3} lg={3}>
-                          <img style={styles.profilePic} src={storageURL + content.pageAvatar} alt='profile'/>
+              <div style={{ display: 'block' }}>
+              <img style={styles.profilePic} src={storageURL + content.pageAvatar} alt='profile'/>
                           <Typography variant='h6' style={styles.title}>
                              {content.username}
-                          </Typography>   
+                          </Typography>  
+                </div>
                           {/* <Button style={buttonStyleOpen}>Be a fan</Button> */}
                       </Grid>
                   <Grid item xs={12} md={6} lg={6}>

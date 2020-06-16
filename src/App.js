@@ -34,7 +34,7 @@ function App() {
   }, [])
   
   return (
-  <div style={{background: '#121212'}}>
+  <div>
       <Navbar
         user={user}
       />
@@ -44,7 +44,8 @@ function App() {
       <Switch>
         <Route path='/search' render={(props) => <SearchResults {...props} user={user} />}/>
         <Route path='/uploadProfilePic' render={(props) => <ProfilePicUpload {...props} user={user} />}/>
-        <Route path='/profile' render={(props) => <Profile {...props} currentUser={user} />}/>
+        <Route path='/profile/:userId' render={(props) => <Profile {...props} currentUser={user} />}/>
+        {/* <Route path='/profile' render={(props) => <Profile {...props} currentUser={user} />}/> */}
         <Route path='/content/:contentId' render={(props) => <ContentPage {...props} currentUser={user} />}/>
         <Route path='/edit' render={(props) => <EditProfile {...props} user={user} />}/>
         <Route path='/studio/:studioName' render={(props) => <Studio {...props} user={user} />}/>
