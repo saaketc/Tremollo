@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "900",
     color: colors.primary,
   },
+  heading: {
+    color: colors.white
+  },
   profilePic: {
     borderRadius: "50%",
     border: `2px solid ${colors.primary}`,
@@ -134,7 +137,7 @@ const Profile = (props) => {
           </Button>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
-          <Typography variant="h2" style={{ fontWeight: "500" }}>
+          <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
             {` ${userDetails.firstName} ${userDetails.lastName} `}
           </Typography>
           <Typography
@@ -145,11 +148,11 @@ const Profile = (props) => {
             {getUserType(userDetails.type)}
           </Typography>
           <br />
-          <Typography variant="h5" style={{ fontWeight: "400" }}>
+          <Typography variant="h5" className={classes.heading} style={{ fontWeight: "400" }}>
             {userDetails.about}
           </Typography>
           <br />
-          <Typography variant="h5" style={{ fontWeight: "400" }}>
+          <Typography variant="h5" className={classes.title} style={{ fontWeight: "400" }}>
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
           </Typography>
           <br />

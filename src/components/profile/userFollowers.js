@@ -12,6 +12,10 @@ const styles = makeStyles((theme) => ({
   heading: {
     fontWeight: "500",
   },
+  title: {
+    color: colors.white
+  },
+
   pic: {
     width: "15%",
     height: "15%",
@@ -20,6 +24,10 @@ const styles = makeStyles((theme) => ({
     borderRadius: "50%",
     margin: 20,
   },
+  btn: {
+    backgroundColor: colors.darkCard
+  }
+  
 }));
 const UserFollowers = ({ userId }) => {
   const [followers, setFollowers] = React.useState([]);
@@ -56,13 +64,13 @@ const UserFollowers = ({ userId }) => {
       <Grid container spacing={4}>
         {followers.map((user) => (
           <Grid item xs={12} lg={3}  md={3}>
-            <Button onClick={() => handleClick(user)}>
+            <Button className={classes.btn} onClick={() => handleClick(user)}>
               <img
                 className={classes.pic}
                 src={storageURL + user.avatarLink}
                 alt={`${user.firstName} ${user.lastName}`}
               />
-              <Typography variant="h6">
+              <Typography variant="h6" className={classes.title}>
                 {`  ${user.firstName} ${user.lastName}`}
               </Typography>
             </Button>

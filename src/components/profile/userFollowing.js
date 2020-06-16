@@ -9,9 +9,13 @@ import { useHistory } from "react-router-dom";
 import { storageURL } from "../../config/storage";
 
 const styles = makeStyles((theme) => ({
-  heading: {
+
+    heading: {
     fontWeight: "500",
-  },
+    },
+    title: {
+        color: colors.white
+    },
   pic: {
     width: "15%",
     height: "15%",
@@ -19,7 +23,10 @@ const styles = makeStyles((theme) => ({
     padding: '3px',
     borderRadius: "50%",
     margin: 20,
-  },
+    },
+    btn: {
+      backgroundColor: colors.darkCard
+  }
 }));
 const UserFollowing = ({ userId }) => {
   const [following, setFollowing] = React.useState([]);
@@ -56,13 +63,13 @@ const UserFollowing = ({ userId }) => {
       <Grid container spacing={4}>
         {following.map((user) => (
           <Grid item xs={12} lg={3}  md={3}>
-            <Button onClick={() => handleClick(user)}>
+                <Button className={classes.btn} onClick={() => handleClick(user)}>
               <img
                 className={classes.pic}
                 src={storageURL + user.avatarLink}
                 alt={`${user.firstName} ${user.lastName}`}
               />
-              <Typography variant="h6">
+              <Typography variant="h6" className={classes.title}>
                 {`  ${user.firstName} ${user.lastName}`}
               </Typography>
             </Button>

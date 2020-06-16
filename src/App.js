@@ -18,6 +18,7 @@ import ProfilePicUpload from './components/auth/profilePicUpload';
 import Profile from './components/profile/profile';
 import EditProfile from './components/editProfile';
 import { Container } from '@material-ui/core';
+import colors from './config/colors';
 import ContentPage from './components/contentPage';
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
   }, [])
   
   return (
-  <div>
+  <div style={{backgroundColor: colors.darkTheme}}>
       <Navbar
         user={user}
       />
