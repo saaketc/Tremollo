@@ -15,7 +15,7 @@ import PlaylistFeed from './components/playlistFeed';
 import SearchResults from './components/searchResults';
 import Footer from "./components/footer";
 import ProfilePicUpload from './components/auth/profilePicUpload';
-import Profile from './components/profile';
+import Profile from './components/profile/profile';
 import EditProfile from './components/editProfile';
 import { Container } from '@material-ui/core';
 import ContentPage from './components/contentPage';

@@ -15,7 +15,8 @@ import { Button } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
         display: 'flex',
-      backgroundColor: '#1e1e1e'
+    backgroundColor: '#1e1e1e',
+      // maxWidth:300
   },
   details: {
     display: 'flex',

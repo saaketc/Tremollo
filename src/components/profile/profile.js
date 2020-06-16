@@ -1,15 +1,20 @@
 import React from "react";
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import dataService from "../services/dataServices";
+import dataService from "../../services/dataServices";
 import { toast } from "react-toastify";
 import { makeStyles } from "@material-ui/core/styles";
-import colors from "../config/colors";
-import { storageURL } from "../config/storage";
-import MediaCard from "./common/mediaCard";
-import { month } from "../utils/utilfunctions";
-import { getUserType } from "../utils/userFunctions";
-import { buttonStyleClose, buttonStyleOpen } from "../config/buttonStyle";
+import colors from "../../config/colors";
+import { storageURL } from "../../config/storage";
+import MediaCard from "../common/mediaCard";
+import { month } from "../../utils/utilfunctions";
+import { getUserType } from "../../utils/userFunctions";
+import { buttonStyleClose, buttonStyleOpen } from "../../config/buttonStyle";
+import CardComponent from "../common/cardComponent";
+import CenteredTabs from "../common/centredTabs";
+import UserContent from "./userContent";
+import UserFollowers from "./userFollowers";
+import UserFollowing from "./userFollowing";
 
 const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
@@ -26,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       opacity: 0.3,
     },
-    padding: '5px'
+    padding: "5px",
   },
   middle: {
     transition: ".5s ease",
@@ -48,14 +53,16 @@ const useStyles = makeStyles((theme) => ({
     padding: "16px 32px",
   },
   space: {
-    marginLeft: '10px'
-  }
+    marginLeft: "10px",
+  },
 }));
 
 const Profile = (props) => {
   const [userStats, setUserStats] = React.useState({});
   const [userDetails, setUserDetails] = React.useState({});
   const [content, setContent] = React.useState([]);
+  const [tab, setTab] = React.useState(0);
+
   const classes = useStyles();
   const history = useHistory();
   // const user = props.location.state;
@@ -63,7 +70,6 @@ const Profile = (props) => {
   const { userId } = props.match.params;
 
   React.useEffect(() => {
-    
     const userDetailsPromise = dataService.getData("user", {
       userId: userId,
     });
@@ -71,14 +77,14 @@ const Profile = (props) => {
     const userPromise = dataService.getData("user/stats", {
       userId: userId,
     });
-    
+
     const contentPromise = dataService.getData("user/content", {
       userId: userId,
     });
     Promise.all([userDetailsPromise, userPromise, contentPromise])
       .then(([userDetailsRes, userRes, contentRes]) => {
         console.log("user", userRes.data.body);
-        console.log("content", contentRes.data.body);
+        // console.log("content", contentRes.data.body);
 
         setUserDetails(userDetailsRes.data.body);
         setUserStats(userRes.data.body);
@@ -93,10 +99,18 @@ const Profile = (props) => {
   };
 
   const handleEditClick = () => {
-    return history.push('/edit', {followersCount: userStats.followers});
-  }
+    return history.push("/edit", { followersCount: userStats.followers });
+  };
   const handleUploadContent = () => {
     return history.push("/myMusic/upload");
+  };
+
+  const handleAlbumClick = async (data) => {
+    return history.push(`/content/${data.contentId}`);
+  };
+
+  const afterTabSet = (value) => {
+    setTab(value);
   };
 
   return (
@@ -106,7 +120,11 @@ const Profile = (props) => {
       <Grid container spacing={6}>
         <Grid item xs={12} md={3} lg={3}>
           <Button
-            onClick={() => (Number(currentUser.userId) === Number(userId)) ? handleProfilePicClick() : null}
+            onClick={() =>
+              Number(currentUser.userId) === Number(userId)
+                ? handleProfilePicClick()
+                : null
+            }
           >
             <img
               src={storageURL + userDetails.avatarLink}
@@ -135,53 +153,38 @@ const Profile = (props) => {
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
           </Typography>
           <br />
-          {
-            Number(currentUser.userId) === Number(userId) &&
-            <div style={{display: 'block'}}>
-            <Button onClick={handleEditClick} style={buttonStyleOpen} >Edit profile</Button>
-            <Button style={buttonStyleClose} className={classes.space} onClick={handleUploadContent}>
+          {Number(currentUser.userId) === Number(userId) && (
+            <div style={{ display: "block" }}>
+              <Button onClick={handleEditClick} style={buttonStyleOpen}>
+                Edit profile
+              </Button>
+              <Button
+                style={buttonStyleClose}
+                className={classes.space}
+                onClick={handleUploadContent}
+              >
                 Upload content
-            </Button>
-          </div>
-      }
-           
-           
+              </Button>
+            </div>
+          )}
         </Grid>
       </Grid>
       <br />
       <br />
       <hr />
       <br />
-      <br />
-      <Typography
-        variant="h3"
-        style={{ fontWeight: "600", textAlign: "center" }}
-        className={classes.title}
-      >
-        {content.length > 0
-          ? "Music portfolio"
-          : "Haven't uploaded anything yet :( "}
-      </Typography>
+
+      <CenteredTabs
+        labels={["Shots", "Fans", "Fan of"]}
+        afterTabSet={afterTabSet}
+      />
       <br />
       <br />
 
-      <Grid container spacing={6}>
-        {content &&
-          content.map((c) => (
-            <Grid item xs={12} md={4} lg={4}>
-              <MediaCard
-                data={c}
-                primaryProperty="title"
-                secProperty="caption"
-                message1={`${month(new Date(c.dateUpload).getMonth())} ${
-                  new Date(c.dateUpload).getDay() + 1
-                } ${new Date(c.dateUpload).getFullYear()}`}
-                url={storageURL + c.mediaLink}
-                thumbnailLink={storageURL + c.thumbnailLink}
-                message2={`${c.likesCount} likes`}
-              />
-            </Grid>
-          ))}
+      <Grid container spacing={4}>
+        {tab === 0 && <UserContent onClick={handleAlbumClick} content={content} />}
+        {tab === 1 && <UserFollowers userId={userId} />}
+        {tab === 2 && <UserFollowing userId={userId} />}
       </Grid>
     </Container>
   );
