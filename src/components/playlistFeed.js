@@ -2,6 +2,7 @@ import React from 'react'
 import CardComponent from './common/cardComponent';
 import { Typography, Container, Grid } from "@material-ui/core";
 import { fade, makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 
 import playlistIllus2 from "../illustrations/playlistPage2.svg";
 import { removeSlug } from '../utils/utilfunctions';
@@ -17,6 +18,12 @@ const PlaylistFeed = (props) => {
     const { playlistName } = props.match.params;
     const { contents } = props.location.state;
     const classes = styles();
+    const history = useHistory();
+    
+    const handleAlbumClick = (content) => {
+        return history.push(`/content/${window.btoa(content.contentId)}`);
+
+    }
   return (
       <Container>
           <Grid container spacing={4}>
@@ -29,11 +36,10 @@ const PlaylistFeed = (props) => {
                   <Grid item xs={12} lg={6} sm={6} md={6}>
                       <CardComponent
                           data={c}
-                          property="title"
-                          secondaryData={c.caption}
-                          player={true}
-                          url={storageURL + c.mediaLink}
-                          thumbnailLink={storageURL + c.thumbnailLink}
+                          primaryData={c.title}
+                          secondaryData={c.username}
+                          onClick={handleAlbumClick}
+                          image={storageURL + c.thumbnailLink}
                           
                       />
                       <br />

@@ -11,11 +11,13 @@ import t1 from '../illustrations/thumbnail.svg';
 import t2 from '../illustrations/thumbnail_2.svg';
 import t3 from '../illustrations/thumbnail_3.svg';
 import { createSlug } from '../utils/utilfunctions';
+import darkTheme from '../config/themes/dark';
 
 const thumbnail = [t1, t2, t3];
 const styles = makeStyles(theme => ({
   heading: {
-    fontWeight: '500'
+    fontWeight: '500',
+    color: darkTheme.textColor
   }
 }));
 const storageURL = 'https://eddy-bucket-0-1.s3.ap-south-1.amazonaws.com/';
@@ -43,7 +45,7 @@ const UserPlaylist = (props) => {
   return (
     <Container>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={6} lg={6}>
+        <Grid item xs={12} md={8} lg={8}>
           <Typography variant='h3' className={classes.heading}>
             {playlist.length > 0 ? ` Enjoy your Playlist ${props.user.firstName} :)`
               : `You have no playlists ${props.user.firstName} :(`}
@@ -57,12 +59,13 @@ const UserPlaylist = (props) => {
           <Grid item xs={12} lg={4} md={4}>
             <CardComponent
               data={p}
-              property="name"
+              primaryData={p.name}
               secondaryData={`${p.contents.length} songs`}
               image={p.contents.length > 0 ?
                 storageURL + p.contents[randInt(0, p.contents.length - 1)].thumbnailLink
                 : thumbnail[randInt(0,2)]}
-              onClick={handlePlaylistClick}
+            onClick={handlePlaylistClick}
+            width = {100}
             />
           </Grid> 
 
@@ -71,7 +74,7 @@ const UserPlaylist = (props) => {
 
      </Grid>
 
-        <Grid item xs={12} md={6} lg={6}>
+        <Grid item xs={12} md={4} lg={4}>
           <img src={playlistIllus} alt="playlist" />
         </Grid>
         

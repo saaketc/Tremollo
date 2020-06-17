@@ -11,11 +11,12 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import colors from '../../config/colors';
 import { Button } from '@material-ui/core';
+import darkTheme from '../../config/themes/dark';
 
 const useStyles = makeStyles((theme) => ({
   root: {
         display: 'flex',
-    backgroundColor: '#1e1e1e',
+    backgroundColor: darkTheme.backgroundCard,
       // maxWidth:300
   },
   details: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
       flex: '1 0 auto',
-      color: 'white'
+      color: darkTheme.textColor
   },
   cover: {
       width: 200,
@@ -34,17 +35,17 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     paddingLeft: theme.spacing(1),
       paddingBottom: theme.spacing(1),
-    color: 'white'
+    color: darkTheme.textColor
   },
   playIcon: {
     height: 50,
       width: 50,
-    color: colors.primary
+    color: darkTheme.primary
   },
 }));
 
 
-export default function CardComponent({ data, primaryData, secondaryData, image, onClick })
+export default function CardComponent({ data, primaryData, secondaryData, image, onClick, width })
 {
   const classes = useStyles();
   const theme = useTheme();
@@ -74,7 +75,8 @@ export default function CardComponent({ data, primaryData, secondaryData, image,
         </div>
       </div>
       <CardMedia
-        className={classes.cover}
+          className={classes.cover}
+        style={{width: width ? width : 200 }}
         image={image}
         title={primaryData}
       />

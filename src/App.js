@@ -35,7 +35,7 @@ function App() {
   }, [])
   
   return (
-  <div style={{backgroundColor: colors.darkTheme}}>
+  <Container style={{backgroundColor: colors.darkTheme}} maxWidth='100%'>
       <Navbar
         user={user}
       />
@@ -62,7 +62,7 @@ function App() {
         {/* <Route exact path='/' component={Welcome}/> */}
       </Switch>
       
-    </div>
+    </Container>
   );
 }
 
