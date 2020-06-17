@@ -109,7 +109,7 @@ const Profile = (props) => {
   };
 
   const handleAlbumClick = async (data) => {
-    return history.push(`/content/${data.contentId}`);
+    return history.push(`/content/${window.btoa(data.contentId)}`);
   };
 
   const afterTabSet = (value) => {

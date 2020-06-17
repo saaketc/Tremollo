@@ -51,7 +51,7 @@ const UserFollowers = ({ userId }) => {
   }, [userId]);
 
   const handleClick = (user) => {
-    return history.push(`/profile/${user.userId}`);
+    return history.push(`/profile/${window.btoa(user.userId)}`);
   };
   return (
     <div>

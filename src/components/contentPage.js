@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Grid, Button, Typography } from "@material-ui/core";
+import { useHistory } from 'react-router-dom';
 
 import VideoPlayer from "./videoPlayer";
 import dataServices from "../services/dataServices";
@@ -12,6 +13,7 @@ const ContentPage = (props) => {
   const [content, setContent] = React.useState({});
   const  contentId  = window.atob(props.match.params.contentId);
   const { currentUser } = props;
+  const history = useHistory();
 
   React.useEffect(() => {
     const fetchContent = async () => {
@@ -25,6 +27,9 @@ const ContentPage = (props) => {
     fetchContent();
   }, [currentUser, content.userId, contentId]);
     
+  const handleUserClick = () => {
+    return history.push(`/profile/${window.btoa(content.userId)}`);
+  };
   return (
     <Container>
       <Grid container spacing={4}>
@@ -53,10 +58,11 @@ const ContentPage = (props) => {
                   
                       <Grid item xs={12} md={3} lg={3}>
               <div style={{ display: 'block' }}>
-              <img style={styles.profilePic} src={storageURL + content.pageAvatar} alt='profile'/>
+                <Button onClick={handleUserClick}>
+                <img style={styles.profilePic} src={storageURL + content.pageAvatar} alt='profile'/>
                           <Typography variant='h6' style={styles.title}>
                              {content.username}
-                          </Typography>  
+                          </Typography> </Button> 
                 </div>
                           {/* <Button style={buttonStyleOpen}>Be a fan</Button> */}
                       </Grid>
