@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button } from '@material-ui/core';
-import { buttonStyleClose } from '../../config/buttonStyle';
+import { buttonStyleOpen } from '../../config/buttonStyle';
 
-const UploadButton = () => {
+const UploadButton = ({onClick}) => {
     return (
-       <Button style={buttonStyleClose}>Create content</Button>
+        <Button onClick={onClick} style={buttonStyleOpen}>Upload music</Button>
     )
 }
 

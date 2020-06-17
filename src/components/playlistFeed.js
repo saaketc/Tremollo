@@ -6,13 +6,15 @@ import { useHistory } from "react-router-dom";
 
 import playlistIllus2 from "../illustrations/playlistPage2.svg";
 import { removeSlug } from '../utils/utilfunctions';
+import darkTheme from '../config/themes/dark';
 
 const storageURL = 'https://eddy-bucket-0-1.s3.ap-south-1.amazonaws.com/';
 
 const styles = makeStyles(theme => ({
     heading: {
         fontWeight: '500',
-        textAlign: 'center'
+        textAlign: 'center',
+        color: darkTheme.textColor
     }
 }));
 const PlaylistFeed = (props) => {
@@ -28,7 +30,7 @@ const PlaylistFeed = (props) => {
   return (
       <Container maxWidth='100%'>
          
-                  <Typography variant='h3' className={classes.heading}>{`In ${removeSlug(playlistName)}`}</Typography>
+                  <Typography variant='h3' className={classes.heading}>{removeSlug(playlistName)}</Typography>
                   <br/>
                   <br/>
           <Grid container spacing={6}>
@@ -40,6 +42,7 @@ const PlaylistFeed = (props) => {
                           secondaryData={c.username}
                           onClick={handleAlbumClick}
                           image={storageURL + c.thumbnailLink}
+                          width={100}
                       />
                       <br />
                     </Grid>
