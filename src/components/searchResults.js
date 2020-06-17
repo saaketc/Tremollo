@@ -12,6 +12,7 @@ import CardComponent from "./common/cardComponent";
 const styles = makeStyles((theme) => ({
   heading: {
     fontWeight: "500",
+    color: colors.white
   },
   pic: {
     width: "15%",
@@ -88,7 +89,7 @@ const SearchResults = (props) => {
                     src={storageURL + user.avatarLink}
                     alt={`${user.firstName} ${user.lastName}`}
                   />
-                  <Typography variant="h7">
+                  <Typography variant="h7" className={classes.heading}>
                     {`  ${user.firstName} ${user.lastName}`}
                   </Typography>
                 </Button>
