@@ -15,6 +15,7 @@ import CenteredTabs from "../common/centredTabs";
 import UserContent from "./userContent";
 import UserFollowers from "./userFollowers";
 import UserFollowing from "./userFollowing";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
@@ -64,6 +65,7 @@ const Profile = (props) => {
   const [userStats, setUserStats] = React.useState({});
   const [userDetails, setUserDetails] = React.useState({});
   const [content, setContent] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   const [tab, setTab] = React.useState(0);
 
   const classes = useStyles();
@@ -90,6 +92,7 @@ const Profile = (props) => {
         // console.log("content", contentRes.data.body);
 
         setUserDetails(userDetailsRes.data.body);
+        setLoading(false);
         setUserStats(userRes.data.body);
         setContent(contentRes.data.body);
       })
@@ -129,28 +132,52 @@ const Profile = (props) => {
                 : null
             }
           >
-            <img
-              src={storageURL + userDetails.avatarLink}
-              alt="profile"
-              className={classes.profilePic}
-            />
+            {
+              loading ?
+                <Skeleton
+              animation="wave"
+              variant="circle"
+              width={250}
+              height={250}
+              />
+                :
+                <img
+                src={storageURL + userDetails.avatarLink}
+                alt="profile"
+                className={classes.profilePic}
+              />
+          }
+           
           </Button>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
-          <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
+          {loading ?
+            <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
+            :
+            <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
             {` ${userDetails.firstName} ${userDetails.lastName} `}
           </Typography>
-          <Typography
-            className={classes.title}
-            variant="h6"
-            style={{ fontWeight: "500" }}
-          >
-            {getUserType(userDetails.type)}
-          </Typography>
-          <br />
-          <Typography variant="h5" className={classes.heading} style={{ fontWeight: "400" }}>
-            {userDetails.about}
-          </Typography>
+        }
+          {loading ?
+            <Skeleton animation="wave" height={10} width="40%" style={{ marginBottom: 6 }} />
+            : (
+              <>
+              <Typography
+              className={classes.title}
+              variant="h6"
+              style={{ fontWeight: "500" }}
+            >
+              {getUserType(userDetails.type)}
+            </Typography>
+            <br />
+            <Typography variant="h5" className={classes.heading} style={{ fontWeight: "400" }}>
+              {userDetails.about}
+                </Typography>
+                </>
+            )
+          
+}
+         
           <br />
           <Typography variant="h5" className={classes.title} style={{ fontWeight: "400" }}>
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
