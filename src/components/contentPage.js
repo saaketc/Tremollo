@@ -10,7 +10,7 @@ import QueuePlaylist from "./queuePlaylist";
 
 const ContentPage = (props) => {
   const [content, setContent] = React.useState({});
-  const { contentId } = props.match.params;
+  const  contentId  = window.atob(props.match.params.contentId);
   const { currentUser } = props;
 
   React.useEffect(() => {

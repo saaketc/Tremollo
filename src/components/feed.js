@@ -43,7 +43,7 @@ const Feed = (props) => {
 
   const handleAlbumClick = async data => {
     // alert('Clicked');
-    return history.push(`/content/${data.contentId}`);
+    return history.push(`/content/${window.btoa(data.contentId)}`);
   }
 
   return (

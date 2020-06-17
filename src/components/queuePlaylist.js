@@ -32,7 +32,7 @@ const QueuePlaylist = (props) => {
 
   const handleAlbumClick = async (data) => {
     // alert('Clicked');
-    return window.location.href = `/content/${data.contentId}`;
+    return window.location.href = `/content/${window.btoa(data.contentId)}`;
   };
     return (
       <>

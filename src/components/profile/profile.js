@@ -70,7 +70,7 @@ const Profile = (props) => {
   const history = useHistory();
   // const user = props.location.state;
   const { currentUser } = props;
-  const { userId } = props.match.params;
+  const  userId  = window.atob(props.match.params.userId);
 
   React.useEffect(() => {
     const userDetailsPromise = dataService.getData("user", {
