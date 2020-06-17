@@ -41,7 +41,7 @@ const ProfilePicUpload = (props) => {
         const { data } = await dataService.putData('user/avatar', formData, 'multipart/form-data');
         // console.log(data.body);
           if (location.state) {
-            return history.push(`/profile/${user.userId}`);
+            return history.push(`/profile/${window.btoa(user.userId)}`);
           }
           return history.push('/');
         }
