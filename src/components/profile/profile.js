@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
   profilePic: {
     borderRadius: "50%",
     border: `2px solid ${colors.primary}`,
-    width: "100%",
-    height: "100%",
+    width: 250,
+    maxHeight: 250,
     verticalAlign: "middle",
     "&:hover": {
       opacity: 0.3,
@@ -166,7 +166,7 @@ const Profile = (props) => {
                 className={classes.space}
                 onClick={handleUploadContent}
               >
-                Upload content
+                Upload music
               </Button>
             </div>
           )}
