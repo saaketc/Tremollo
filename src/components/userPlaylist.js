@@ -24,22 +24,23 @@ const storageURL = 'https://eddy-bucket-0-1.s3.ap-south-1.amazonaws.com/';
 
 const UserPlaylist = (props) => {
   const [playlist, setPlaylist] = React.useState([]);
+  const  userId  = window.atob(props.match.params.userId);
   const classes = styles();
 
   React.useEffect(() => {
     //making api call to fetch current user playlist
     const fetchPlaylist = async () => {
       const { data } = await dataService.getData("user/playlist", {
-        userId: props.user.userId,
+        userId,
       });
       console.log(data.body);
       setPlaylist(data.body.reverse());
     };
     fetchPlaylist();
-  }, [props.user.userId]);
+  }, [userId]);
 
   const handlePlaylistClick = (data) => {
-    return props.history.push(`/myPlaylist/${createSlug(data.name)}`, data);
+    return props.history.push(`/myPlaylist/${props.match.params.userId}/${createSlug(data.name)}`, data);
   }
 
   return (

@@ -54,8 +54,8 @@ function App() {
         <Route  path='/logout' component={Logout}/>
         <Route  path='/auth/signup' component={Signup}/>
         <Route  path='/auth/login' component={Login}/>
-        <Route path='/myPlaylist/:playlistName' render={(props) => <PlaylistFeed {...props} user={user} />}/>
-        <Route path='/myPlaylist' render={(props) => <UserPlaylist {...props} user={user} />}/>
+        <Route path='/myPlaylist/:userId/:playlistName' render={(props) => <PlaylistFeed {...props} user={user} />}/>
+        <Route path='/myPlaylist/:userId' render={(props) => <UserPlaylist {...props} user={user} />}/>
         <Route exact path='/' render={(props) => user ? <Feed {...props} user={user} /> : <Welcome {...props}/>} />
 
         {/* <Route path='/create-new-studio' render={(props) => <CreateStudio {...props} user={user} />}/> */}

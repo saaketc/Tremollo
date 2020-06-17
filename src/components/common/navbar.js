@@ -110,7 +110,7 @@ function Navbar(props) {
     return props.history.push(`/profile/${window.btoa(user.userId)}`);
   };
   const handlePlaylistClick = () => {
-    return props.history.push("/myPlaylist");
+    return props.history.push(`/myPlaylist/${window.btoa(user.userId)}`);
   };
   const handleLogout = () => {
     return props.history.push("/logout");
