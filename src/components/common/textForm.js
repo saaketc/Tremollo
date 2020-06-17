@@ -2,6 +2,7 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
+import darkTheme from "../../config/themes/dark";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -9,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    color: darkTheme.textColor
   },
   avatar: {
     margin: theme.spacing(1),
@@ -17,9 +19,13 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(6),
+    color: darkTheme.textColor
+
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    color: darkTheme.textColor
+
   },
 }));
 

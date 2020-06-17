@@ -49,7 +49,8 @@ const Feed = (props) => {
   return (
    <Container maxWidth='100%'>
     <Grid container spacing={4}>
-      {feed.map(f => (
+        {feed &&
+          feed.map(f => (
         <Grid item xs={12} lg={3} md={3}>
           <CardComponent
             data={f}

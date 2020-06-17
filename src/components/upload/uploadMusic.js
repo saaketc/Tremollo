@@ -8,6 +8,7 @@ import { storageURL } from "../../config/storage";
 import colors from "../../config/colors";
 import TextForm from "../common/textForm";
 import { buttonStyleClose } from "../../config/buttonStyle";
+import darkTheme from "../../config/themes/dark";
 
 const UploadMusic = ({ user }) => {
   const [fileData, setFileData] = React.useState({});
@@ -62,8 +63,12 @@ const UploadMusic = ({ user }) => {
   };
 
   return (
-    <Container>
-      <form>
+    <Container  style={{
+      color: 'white'
+    }}>
+      <form style={{
+        color: darkTheme.textColor
+      }}>
         <input type="file" name="file" onChange={handleChange} />
       </form>
       {Object.keys(fileData).length > 0 &&

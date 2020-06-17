@@ -21,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
   title: {
     fontWeight: "900",
-    color: colors.primary,
+    // color: colors.primary,
   },
   heading: {
-    color: colors.white
+    // color: colors.white
   },
   profilePic: {
     borderRadius: "50%",
@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    backgroundColor: "#4CAF50",
-    color: "white",
+    // backgroundColor: "#4CAF50",
+    // color: "white",
     fontSize: "16px",
     padding: "16px 32px",
   },
