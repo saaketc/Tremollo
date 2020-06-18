@@ -160,29 +160,32 @@ function Navbar(props) {
           </Typography>
         </Hidden>
         {/* Search component here */}
+        {user && 
         <div style={{ marginRight: "300px", width: '100%' }}>
-          <Search />
-        </div>
+        <Search />
+      </div>
+        }
+        
      
         {!user && (
           <>
-            <div>
+            
               <Button
                 style={buttonStyleOpen}
                 onClick={() => handleAuthClick("login")}
               >
                 Login
               </Button>
-            </div>
             
-              <div>
+            
+              
                 <Button
                   onClick={() => handleAuthClick("signup")}
                   style={buttonStyleClose}
                 >
                   Signup
                 </Button>
-              </div>
+              
            
           </>
         )}
