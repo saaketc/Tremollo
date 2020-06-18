@@ -33,7 +33,7 @@ const Follow = (props) => {
         onClick={handleFollow}
         style={follows ? buttonStyleClose : buttonStyleOpen}
       >
-        {follows ? 'Fan' : 'Be a fan'}
+        {follows ? 'You are a fan' : 'Be a fan'}
       </Button>
   );
 };

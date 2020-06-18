@@ -9,6 +9,10 @@ import { storageURL } from "../config/storage";
 import BottomNav from "./common/bottomNav";
 import styles from "../styles/contentPage";
 import QueuePlaylist from "./queuePlaylist";
+import { buttonStyleOpen } from "../config/buttonStyle";
+import { toast } from "react-toastify";
+import Signup from "./auth/signup/signup";
+import Follow from "./socialInteraction/follow";
 
 const ContentPage = (props) => {
   const [content, setContent] = React.useState({});
@@ -20,13 +24,18 @@ const ContentPage = (props) => {
 
   React.useEffect(() => {
     const fetchContent = async () => {
-      const { data } = await dataServices.getData("content/withUser", {
-        contentId: contentId,
-      });
-      // console.log("content data", data.body);
-      console.log("Current user", currentUser);
-      setContent(data.body);
-      setLoading(false);
+      try {
+        const { data } = await dataServices.getData("content/withUser", {
+          contentId: contentId,
+        });
+        // console.log("content data", data.body);
+        console.log("Current user", currentUser);
+        setContent(data.body);
+        setLoading(false);
+      }
+      catch (e) {
+        toast.error('Something went wrong...');
+      }
     };
     fetchContent();
   }, [currentUser, content.userId, contentId]);
@@ -36,7 +45,9 @@ const ContentPage = (props) => {
   };
   return (
     <Container>
-      <Grid container spacing={4}>
+      {
+        currentUser ?
+        <Grid container spacing={4}>
         <Grid item xs={12} md={9} lg={9}>
           {loading ? (
              <Skeleton animation="wave" variant="rect" height={600} />
@@ -50,7 +61,7 @@ const ContentPage = (props) => {
           )}
           <BottomNav
             data={{
-              followerId: currentUser.userId,
+              followerId: currentUser.userId ,
               followedId: content.userId,
               isFollowedByUser: content.isFollowedByUser,
               isLikedByUser: content.isLikedByUser,
@@ -93,8 +104,15 @@ const ContentPage = (props) => {
                     </Typography>
                   )}
                 </Button>
-              </div>
-              {/* <Button style={buttonStyleOpen}>Be a fan</Button> */}
+                  </div>
+
+                  {/* Follow component */}
+              <Follow
+            followerId={currentUser.userId}
+            followedId={content.userId}
+            isFollowedByUser={content.isFollowedByUser}
+                  />
+                  
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
               <Typography variant="h4" style={styles.title}>
@@ -110,7 +128,10 @@ const ContentPage = (props) => {
         <Grid item xs={12} md={3} lg={3}>
           <QueuePlaylist removeContentId={contentId} user={currentUser} />
         </Grid>
-      </Grid>
+          </Grid>
+          :
+          <Signup/>
+      }
     </Container>
   );
 };

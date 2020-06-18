@@ -8,6 +8,7 @@ import colors from "../../config/colors";
 import Follow from "../socialInteraction/follow";
 import Like from "../socialInteraction/like";
 import Playlist from "../playlist";
+import Share from "../socialInteraction/share";
 
 const useStyles = makeStyles({
   root: {
@@ -21,9 +22,7 @@ export default function BottomNav({ data }) {
   const [value, setValue] = React.useState(0);
   const [added, setAdded] = React.useState(false);
 
-  const handlePlaylistClick = () => {
-    setAdded(!added);
-  };
+ 
 
   return (
     <BottomNavigation
@@ -45,7 +44,7 @@ export default function BottomNav({ data }) {
         }
       />
       <BottomNavigationAction
-        onClick={handlePlaylistClick}
+        
         icon={
           <Playlist
             currentUserId={data.followerId}
@@ -54,13 +53,14 @@ export default function BottomNav({ data }) {
         }
       />
       <BottomNavigationAction
-        label={`${data.followers} fans`}
+        
         icon={
-          <Follow
-            followerId={data.followerId}
-            followedId={data.followedId}
-            isFollowedByUser={data.isFollowedByUser}
-          />
+          // <Follow
+          //   followerId={data.followerId}
+          //   followedId={data.followedId}
+          //   isFollowedByUser={data.isFollowedByUser}
+          // />
+          <Share/>
         }
       />
     </BottomNavigation>
