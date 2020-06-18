@@ -92,10 +92,10 @@ const UploadMusic = ({ user }) => {
           <>
             {Object.keys(fileData).length > 0 &&
          
-              fileData.fileThumbnails.split(",").map((t, index) => (
+              fileData.fileThumbnails.split(",").map((t) => (
                 <Grid item xs={12} md={3} lg={3}>
                   <MediaCard
-                    data={{thumbnail: t, index}}
+                    data={t}
                     image={storageURL + t}
                     onClick={handlePickThumbnail}
                     imageTitle="Thumbnail"

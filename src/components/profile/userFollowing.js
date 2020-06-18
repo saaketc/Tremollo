@@ -70,8 +70,9 @@ const UserFollowing = ({ userId }) => {
                 alt={`${user.firstName} ${user.lastName}`}
               />
               <Typography variant="h6" className={classes.title}>
-                {`  ${user.firstName} ${user.lastName}`}
+                {user.username}
               </Typography>
+              
             </Button>
           </Grid>
         ))}

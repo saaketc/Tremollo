@@ -9,6 +9,7 @@ import musicLoveIllus from "../illustrations/music_love.svg";
 import playlistIllus from "../illustrations/playlist.svg";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Footer from "./footer";
+import { buttonStyleOpen } from "../config/buttonStyle";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -69,7 +70,7 @@ const Welcome = () => {
         share your musical creativity with others, and lots more!
       </Typography>
       <br />
-      <Button className={classes.btn}>
+      <Button style={buttonStyleOpen}>
         Get started
       </Button>
      

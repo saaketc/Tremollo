@@ -68,8 +68,8 @@ const ContentPage = (props) => {
                     <Skeleton
                       animation="wave"
                       variant="circle"
-                      width={40}
-                      height={40}
+                      width={100}
+                      height={100}
                     />
                   ) : (
                     <img
@@ -82,10 +82,10 @@ const ContentPage = (props) => {
                     <>
                       <Skeleton
                         animation="wave"
-                        height={10}
+                        height={50}
                         style={{ marginBottom: 6 }}
                       />
-                      <Skeleton animation="wave" height={10} width="80%" />
+                      <Skeleton animation="wave" height={50} width="80%" />
                     </>
                   ) : (
                     <Typography variant="h6" style={styles.title}>

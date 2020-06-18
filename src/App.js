@@ -58,7 +58,9 @@ function App() {
       <GlobalStyles />
 
       <Navbar user={user} />
-      <FormGroup row>
+      {
+        user && 
+        <FormGroup row>
         <FormControlLabel
           control={
             <Switch
@@ -70,6 +72,7 @@ function App() {
           label="Switch theme"
         />
       </FormGroup>
+     }
 
       <br />
       <br />

@@ -10,6 +10,12 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
+  input: {
+    color: 'white'
+   },
+   label: {
+     color:'white'
+   },
 }));
 
 export default function SelectForm({label, value, name, options, onChange}) {
@@ -19,11 +25,19 @@ export default function SelectForm({label, value, name, options, onChange}) {
     
       <div  className={classes.root}>
         <TextField
-          select
+        select
+        variant="filled"
           label={label}
           value={value}
               onChange={onChange}
-              name={name}
+        name={name}
+        color="secondary"
+        inputProps={{
+          className: classes.input
+        }}
+        InputLabelProps={{
+          className: classes.label
+        }}
         >
           {options.map((option) => (
             <MenuItem key={option.value} value={option.value}>

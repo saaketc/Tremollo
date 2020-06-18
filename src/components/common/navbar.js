@@ -168,23 +168,22 @@ function Navbar(props) {
           <>
             <div>
               <Button
-                style={{ color: "black" }}
+                style={buttonStyleOpen}
                 onClick={() => handleAuthClick("login")}
-                className={classes.hover}
               >
                 Login
               </Button>
             </div>
-            <Hidden only="xs">
+            
               <div>
                 <Button
                   onClick={() => handleAuthClick("signup")}
-                  className={classes.btn}
+                  style={buttonStyleClose}
                 >
                   Signup
                 </Button>
               </div>
-            </Hidden>
+           
           </>
         )}
         {user && (

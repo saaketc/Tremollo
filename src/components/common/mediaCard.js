@@ -6,12 +6,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 200,
+    maxWidth: 100,
     borderRadius: "30",
-    maxHeight: 200,
+    maxHeight: 100,
   },
   media: {
-    height: 200,
+    height: 100,
   },
 });
 
@@ -21,7 +21,7 @@ export default function MediaCard({ imageTitle, image, onClick, data }) {
   return (
     <Card
       className={classes.root}
-      onClick={() => (onClick ? onClick(data.thumbnail, data.index) : null)}
+      onClick={() => (onClick ? onClick(data) : null)}
     >
       <CardActionArea>
         <CardMedia className={classes.media} image={image} title={imageTitle} />

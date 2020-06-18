@@ -154,9 +154,14 @@ const Profile = (props) => {
           {loading ?
             <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
             :
-            <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
+            <>
+              <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
             {` ${userDetails.firstName} ${userDetails.lastName} `}
-          </Typography>
+              </Typography>
+            <Typography variant="h5" className={classes.heading} style={{ fontWeight: "500" }}>
+            {userDetails.username}
+              </Typography>
+              </>
         }
           {loading ?
             <Skeleton animation="wave" height={10} width="40%" style={{ marginBottom: 6 }} />
