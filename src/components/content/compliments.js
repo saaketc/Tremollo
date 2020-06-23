@@ -3,9 +3,8 @@ import dataServices from "../../services/dataServices";
 import ReactLoading from "react-loading";
 import { useHistory } from "react-router-dom";
 
-import { Typography, Button, Grid, Container } from "@material-ui/core";
+import { Typography, Grid, Container } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
-import { extraSmallPicStyle } from "../../config/imageStyles";
 import darkTheme from "../../config/themes/dark";
 import CardTemplate from "../common/cardTemplate";
 import { month } from "../../utils/utilfunctions";

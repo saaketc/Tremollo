@@ -9,7 +9,6 @@ import { storageURL } from "../../config/storage";
 import BottomNav from "../common/bottomNav";
 import styles from "../../styles/contentPage";
 import QueuePlaylist from "../queuePlaylist";
-import { buttonStyleOpen } from "../../config/buttonStyle";
 import { toast } from "react-toastify";
 import Signup from "../auth/signup/signup";
 import Follow from "../socialInteraction/follow";
