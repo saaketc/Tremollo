@@ -2,10 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
 
-import colors from "../../config/colors";
-import Follow from "../socialInteraction/follow";
 import Like from "../socialInteraction/like";
 import Playlist from "../playlist";
 import Share from "../socialInteraction/share";
@@ -19,11 +16,17 @@ const useStyles = makeStyles({
 
 export default function BottomNav({ data }) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const [added, setAdded] = React.useState(false);
+  const [value, setValue] = React.useState(0); 
+  const [likeCount, setLikeCount] = React.useState();
 
- 
+  React.useEffect(() => {
+    setLikeCount(data.likes);
+  }, [data]);
 
+  const handlePostLike = count => {
+    // alert(`likeCount: ${likeCount}, integer: ${integer}`);
+    setLikeCount(count);
+  }
   return (
     <BottomNavigation
       value={value}
@@ -34,12 +37,14 @@ export default function BottomNav({ data }) {
       className={classes.root}
     >
       <BottomNavigationAction
-        label={data.likes}
+        label={likeCount}
         icon={
           <Like
             userId={data.followerId}
             isLikedByUser={data.isLikedByUser}
             contentId={data.contentId}
+            postLike={handlePostLike}
+            likeCount={data.likes}
           />
         }
       />
@@ -55,11 +60,6 @@ export default function BottomNav({ data }) {
       <BottomNavigationAction
         
         icon={
-          // <Follow
-          //   followerId={data.followerId}
-          //   followedId={data.followedId}
-          //   isFollowedByUser={data.isFollowedByUser}
-          // />
           <Share/>
         }
       />

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { Button } from "@material-ui/core";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 
-const AddCompliment = ({ complimentingUserId, contentId, postSubmit  }) => {
+const AddCompliment = ({ complimentingUser, contentId, postSubmit  }) => {
   const [compliment, setCompliment] = React.useState("");
 
   const handleChange = ({ currentTarget }) => {
@@ -17,7 +17,7 @@ const AddCompliment = ({ complimentingUserId, contentId, postSubmit  }) => {
       const toSubmit = {
         contentId,
         text: compliment,
-        userId: complimentingUserId,
+        userId: complimentingUser.userId,
       };
       const { data } = await dataServices.postData(
         "content/comments",
@@ -32,11 +32,11 @@ const AddCompliment = ({ complimentingUserId, contentId, postSubmit  }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextForm
-          label="Add a compliment"
+          label={`Write a compliment as ${complimentingUser.username}`}
           type="text"
           name="compliment"
-          required={true}
           fullWidth
+          placeholder={`Write a compliment as ${complimentingUser.username}`}
           value={compliment}
           onChange={handleChange}
               />

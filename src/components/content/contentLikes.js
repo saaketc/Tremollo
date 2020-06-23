@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import dataServices from "../../services/dataServices";
 import ReactLoading from "react-loading";
 import { useHistory } from "react-router-dom";
-import { Typography, Grid, Container } from "@material-ui/core";
+import { Typography, Grid, Container, Button, Avatar } from "@material-ui/core";
 
 import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
 import CardTemplate from "../common/cardTemplate";
-
 
 const ContentLikes = ({ contentId }) => {
   const [likedUsers, setLikedUsers] = useState([]);
@@ -34,7 +33,7 @@ const ContentLikes = ({ contentId }) => {
   const handleLikedUserClick = ({ userId }) => {
     return history.push(`/profile/${window.btoa(userId)}`);
   };
- 
+
   return (
     <Container>
       {loading ? (
@@ -49,19 +48,21 @@ const ContentLikes = ({ contentId }) => {
           {likedUsers.length === 0 && (
             <Typography variant="h4">No likes yet...</Typography>
           )}
-       
+
           <br />
           <br />
           <Grid container spacing={6}>
             {likedUsers.map((user) => (
               <Grid item xs={12} md={6} lg={6}>
-                <CardTemplate
-                  data={user}
-                  avatar={storageURL + user.avatarLink}
-                  title={user.username}
-                  subheader=''
-                  onClick={handleLikedUserClick}
-                />
+                <Button
+                  onClick={() => handleLikedUserClick(user)}
+                  style={{ color: darkTheme.textColor }}
+                >
+                  <Avatar alt="" src={storageURL + user.avatarLink} />
+                  <Typography style={{ marginLeft: "30px" }} variant="h8">
+                    {user.username}
+                  </Typography>
+                </Button>
               </Grid>
             ))}
           </Grid>

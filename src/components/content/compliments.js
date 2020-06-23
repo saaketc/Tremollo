@@ -3,11 +3,11 @@ import dataServices from "../../services/dataServices";
 import ReactLoading from "react-loading";
 import { useHistory } from "react-router-dom";
 
-import { Typography, Grid, Container } from "@material-ui/core";
+import { Typography, Grid, Container, Avatar, Button } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
 import CardTemplate from "../common/cardTemplate";
-import { month } from "../../utils/utilfunctions";
+import { month, fullDate } from "../../utils/utilfunctions";
 import AddCompliment from "./addCompliment";
 
 const Compliments = ({ contentId, currentUser }) => {
@@ -36,12 +36,12 @@ const Compliments = ({ contentId, currentUser }) => {
     return history.push(`/profile/${window.btoa(userId)}`);
   };
   const handlePostComplimentSubmit = (compliment) => {
-      let addedCompliment = {
-          ...compliment,
-          avatarLink: currentUser.avatarLink,
-          username: currentUser.username
-    }  
-      const newCompliments = [addedCompliment, ...compliments];
+    let addedCompliment = {
+      ...compliment,
+      avatarLink: currentUser.avatarLink,
+      username: currentUser.username,
+    };
+    const newCompliments = [addedCompliment, ...compliments];
     setCompliments(newCompliments);
   };
   return (
@@ -58,31 +58,55 @@ const Compliments = ({ contentId, currentUser }) => {
           {compliments.length === 0 && (
             <Typography variant="h4">No compliments yet...</Typography>
           )}
+          <br />
           <AddCompliment
-            complimentingUserId={currentUser.userId}
+            complimentingUser={currentUser}
             contentId={contentId}
             postSubmit={handlePostComplimentSubmit}
           />
           <br />
           <br />
-          <Grid container spacing={6}>
-            {compliments.map((compliment) => (
-              <Grid item xs={12} md={6} lg={6}>
-                <CardTemplate
-                  data={compliment}
-                  avatar={storageURL + compliment.avatarLink}
-                  title={compliment.username}
-                  subheader={` ${
-                    new Date(compliment.dateCreated).getDate() + 1
-                  }, ${month(
-                    new Date(compliment.dateCreated).getMonth()
-                  )} ${new Date(compliment.dateCreated).getFullYear()}`}
-                  text={compliment.text}
-                  onClick={handleComplimentingUserClick}
-                />
+          {compliments.map((compliment, i) => (
+            <Grid container spacing={6}>
+              <Grid item xs={12} md={6} lg={6} key={i}>
+                <Grid container spacing={6}>
+                  <Grid item md={3} lg={3}>
+                    <Button
+                      onClick={() => handleComplimentingUserClick(compliment)}
+                      style={{ color: darkTheme.textColor }}
+                    >
+                      <Avatar alt="" src={storageURL + compliment.avatarLink} />
+                    </Button>
+                  </Grid>
+                  <Grid item md={9} lg={9}>
+                    <div>
+                      <div>
+                        <Button
+                          onClick={() =>
+                            handleComplimentingUserClick(compliment)
+                          }
+                          style={{ color: darkTheme.textColor }}
+                        >
+                          <Typography variant="h10">
+                            {compliment.username}
+                          </Typography>
+                        </Button>
+                        <small style={{ color: darkTheme.primary }}>
+                          {fullDate(compliment.dateCreated)}
+                        </small>
+                      </div>
+
+                      <br />
+                      <Typography variant="h12">{compliment.text}</Typography>
+                    </div>
+                  </Grid>
+                </Grid>
+                {/* <Typography variant="p">
+                  {fullDate(compliment.dateCreated)}
+                </Typography> */}
               </Grid>
-            ))}
-          </Grid>
+            </Grid>
+          ))}
         </>
       )}
     </Container>
@@ -90,3 +114,4 @@ const Compliments = ({ contentId, currentUser }) => {
 };
 
 export default Compliments;
+

@@ -66,3 +66,9 @@ export const removeSlug = (string) => {
 export const filter = (array, property, filteringId) => {
   return array.filter(a => a[property] !== filteringId);
 }
+
+export const fullDate = (date) => {
+  return ` ${new Date(date).getDate() + 1}, ${month(
+    new Date(date).getMonth()
+  )} ${new Date(date).getFullYear()}`
+}

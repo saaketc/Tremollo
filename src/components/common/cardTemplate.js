@@ -13,9 +13,10 @@ import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 300,
     backgroundColor: darkTheme.backgroundCard,
     color: darkTheme.textColor,
+  
   },
   content: {
     color: darkTheme.textColor,
@@ -40,7 +41,7 @@ export default function CardTemplate({
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <div className={classes.root}>
       <CardHeader
         avatar={
           <Button onClick={() => onClick(data)}>
@@ -60,6 +61,6 @@ export default function CardTemplate({
       )}
 
       <CardActions disableSpacing></CardActions>
-    </Card>
+    </div>
   );
 }
