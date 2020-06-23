@@ -144,7 +144,7 @@ const ContentPage = (props) => {
             <br />
             <br />
             {tab === 0 && <Compliments contentId={contentId} currentUser={currentUser}/>}
-            {tab === 1 && <ContentLikes />}
+            {tab === 1 && <ContentLikes contentId={contentId} />}
 
             {/* <Grid item xs={12} md={6} lg={6}>
           <ContentLikes />
