@@ -16,6 +16,7 @@ import Compliments from "./compliments";
 import ContentLikes from "./contentLikes";
 import { smallPicStyle } from "../../config/imageStyles";
 import CenteredTabs from "../common/centredTabs";
+import colors from "../../config/colors";
 
 const ContentPage = (props) => {
   const [content, setContent] = React.useState({});
@@ -72,7 +73,6 @@ const ContentPage = (props) => {
                 isLikedByUser: content.isLikedByUser,
                 contentId: contentId,
                 likes: content.likes,
-                followers: content.followers,
               }}
             />
             <br />
@@ -129,6 +129,9 @@ const ContentPage = (props) => {
                   followedId={content.userId}
                   isFollowedByUser={content.isFollowedByUser}
                 />
+                <br/>
+                <br/>
+                <small style={{color: colors.primary}}>{`${content.followers} fans`}</small>
                 </Grid>
             </Grid>
             <br />

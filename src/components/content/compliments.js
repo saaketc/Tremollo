@@ -2,19 +2,31 @@ import React, { useState, useEffect } from "react";
 import dataServices from "../../services/dataServices";
 import ReactLoading from "react-loading";
 import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { Typography, Grid, Container, Avatar, Button } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
-import CardTemplate from "../common/cardTemplate";
-import { month, fullDate } from "../../utils/utilfunctions";
+import { fullDate } from "../../utils/utilfunctions";
 import AddCompliment from "./addCompliment";
+import colors from "../../config/colors";
+
+const useStyles = makeStyles({
+  avatar: {
+    width: '48px',
+  height: '48px',
+  objectFit: 'contain',
+    border: `solid 1px ${colors.primary}`,
+  
+  }
+});
 
 const Compliments = ({ contentId, currentUser }) => {
   const [compliments, setCompliments] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const history = useHistory();
+  const classes = useStyles();
 
   useEffect(() => {
     const fetchCompliments = async () => {
@@ -75,7 +87,7 @@ const Compliments = ({ contentId, currentUser }) => {
                       onClick={() => handleComplimentingUserClick(compliment)}
                       style={{ color: darkTheme.textColor }}
                     >
-                      <Avatar alt="" src={storageURL + compliment.avatarLink} />
+                      <Avatar className={classes.avatar} alt="" src={storageURL + compliment.avatarLink} />
                     </Button>
                   </Grid>
                   <Grid item md={10} lg={10}>
@@ -91,7 +103,7 @@ const Compliments = ({ contentId, currentUser }) => {
                             {compliment.username}
                           </Typography>
                         </Button>
-                        <small style={{color: '#FF6090', marginLeft:'10px' }}>
+                        <small style={{color: '#6C757D', marginLeft:'10px' }}>
                           {fullDate(compliment.dateCreated)}
                         </small>
                       </div>
