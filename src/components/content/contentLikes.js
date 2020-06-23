@@ -6,7 +6,6 @@ import { Typography, Grid, Container, Button, Avatar } from "@material-ui/core";
 
 import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
-import CardTemplate from "../common/cardTemplate";
 
 const ContentLikes = ({ contentId }) => {
   const [likedUsers, setLikedUsers] = useState([]);

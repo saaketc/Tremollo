@@ -70,7 +70,7 @@ const Compliments = ({ contentId, currentUser }) => {
             <Grid container spacing={6}>
               <Grid item xs={12} md={6} lg={6} key={i}>
                 <Grid container spacing={6}>
-                  <Grid item md={3} lg={3}>
+                  <Grid item md={2} lg={2}>
                     <Button
                       onClick={() => handleComplimentingUserClick(compliment)}
                       style={{ color: darkTheme.textColor }}
@@ -78,7 +78,7 @@ const Compliments = ({ contentId, currentUser }) => {
                       <Avatar alt="" src={storageURL + compliment.avatarLink} />
                     </Button>
                   </Grid>
-                  <Grid item md={9} lg={9}>
+                  <Grid item md={10} lg={10}>
                     <div>
                       <div>
                         <Button
@@ -87,17 +87,17 @@ const Compliments = ({ contentId, currentUser }) => {
                           }
                           style={{ color: darkTheme.textColor }}
                         >
-                          <Typography variant="h10">
+                          <Typography variant="h8">
                             {compliment.username}
                           </Typography>
                         </Button>
-                        <small style={{ color: darkTheme.primary }}>
+                        <small style={{color: '#FF6090', marginLeft:'10px' }}>
                           {fullDate(compliment.dateCreated)}
                         </small>
                       </div>
 
                       <br />
-                      <Typography variant="h12">{compliment.text}</Typography>
+                      <Typography  variant="h12">{compliment.text}</Typography>
                     </div>
                   </Grid>
                 </Grid>

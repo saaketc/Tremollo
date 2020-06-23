@@ -2,9 +2,10 @@ import React from "react";
 import UImodalDemo from "./common/UImodalDemo";
 import dataService from "../services/dataServices";
 import { toast } from 'react-toastify';
+import colors from "../config/colors";
 
 const fields = [{ name: "name", label: "Playlist name", type: "text" }];
-const button = { type: "submit", label: "Create new", color: "#bf2604" };
+const button = { type: "submit", label: "Create new", color: colors.primary };
 
 const Playlist = (props) => {
   const { currentUserId, contentId } = props;
@@ -48,7 +49,7 @@ const Playlist = (props) => {
         playlistId: playlistItem.playlistId,
         contentId,
       });
-      toast.success(`Added to ${playlistItem.name}`);
+      toast.error(`Added to ${playlistItem.name}`);
 
       console.log(data.body);
     } catch (e) {
