@@ -33,12 +33,7 @@ const UploadMusic = ({ user }) => {
         };
         const { data } = await dataService.postData(
           "content/upload/data",
-<<<<<<< HEAD
-          toSend,
-        
-=======
           toSend
->>>>>>> darkTheme
         );
         console.log(data.body);
         toast.success("Yaayy! Successfully uploaded.");
