@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Typography, Button } from "@material-ui/core";
+import { Grid, Typography, Button, Container } from "@material-ui/core";
 
 import dataServices from "../../services/dataServices";
 import { toast } from "react-toastify";
@@ -54,7 +54,7 @@ const UserFollowers = ({ userId }) => {
     return history.push(`/profile/${window.btoa(user.userId)}`);
   };
   return (
-    <div>
+    <Container maxWidth='100%'>
      
                     {followers.length === 0 &&
               <Typography variant='h5'>
@@ -78,7 +78,7 @@ const UserFollowers = ({ userId }) => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </Container>
   );
 };
 

@@ -16,6 +16,7 @@ import UserContent from "./userContent";
 import UserFollowers from "./userFollowers";
 import UserFollowing from "./userFollowing";
 import Skeleton from "@material-ui/lab/Skeleton";
+import Follow from "../socialInteraction/follow";
 
 const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "50%",
     border: `2px solid ${colors.primary}`,
     width: 250,
-    maxHeight: 250,
+    height: 250,
     verticalAlign: "middle",
     "&:hover": {
       opacity: 0.3,
@@ -155,11 +156,11 @@ const Profile = (props) => {
             <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
             :
             <>
-              <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
-            {` ${userDetails.firstName} ${userDetails.lastName} `}
-              </Typography>
-            <Typography variant="h5" className={classes.heading} style={{ fontWeight: "500" }}>
+            <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
             {userDetails.username}
+              </Typography>
+              <Typography variant="h5" className={classes.heading} style={{ fontWeight: "500" }}>
+            {` ${userDetails.firstName} ${userDetails.lastName} `}
               </Typography>
               </>
         }
@@ -188,7 +189,7 @@ const Profile = (props) => {
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
           </Typography>
           <br />
-          {Number(currentUser.userId) === Number(userId) && (
+          {Number(currentUser.userId) === Number(userId) ? (
             <div style={{ display: "block" }}>
               <Button onClick={handleEditClick} style={buttonStyleOpen}>
                 Edit profile
@@ -201,7 +202,17 @@ const Profile = (props) => {
                 Upload music
               </Button>
             </div>
-          )}
+          )
+            :
+            (
+              <Follow
+            followerId={currentUser.userId}
+            followedId={userId}
+            isFollowedByUser= {false}
+                  />
+            
+            )
+        }
         </Grid>
       </Grid>
       <br />

@@ -3,7 +3,7 @@ export default {
     secondary: "black",
     white: "white",
     darkTheme: "black",
-    darkCard: "#1e1e1e"
+    darkCard: "#343434"
     
 }
 // #bf2604

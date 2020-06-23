@@ -7,10 +7,11 @@ import Tab from '@material-ui/core/Tab';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
+    
   },
 });
 
-export default function CenteredTabs({labels, afterTabSet}) {
+export default function CenteredTabs({labels, afterTabSet, maxWidth}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -19,7 +20,7 @@ export default function CenteredTabs({labels, afterTabSet}) {
     afterTabSet(newValue);
   };
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.root} style={{maxWidth: maxWidth ? maxWidth : ''}}>
       <Tabs
         value={value}
         onChange={handleChange}

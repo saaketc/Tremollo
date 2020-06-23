@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
         display: 'flex',
     backgroundColor: darkTheme.backgroundCard,
-      // maxWidth:300
+      maxWidth:300
   },
   details: {
     display: 'flex',

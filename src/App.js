@@ -19,7 +19,7 @@ import Profile from "./components/profile/profile";
 import EditProfile from "./components/editProfile";
 import { Container, Paper } from "@material-ui/core";
 import colors from "./config/colors";
-import ContentPage from "./components/contentPage";
+import ContentPage from "./components/content/contentPage";
 import Switch from "@material-ui/core/Switch";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -56,9 +56,10 @@ function App() {
   return (
     <ThemeProvider theme={dark ? darkTheme : lightTheme}>
       <GlobalStyles />
+      <Container maxWidth='100%'>
 
       <Navbar user={user} />
-      {
+      {/* {
         user && 
         <FormGroup row>
         <FormControlLabel
@@ -72,7 +73,7 @@ function App() {
           label="Switch theme"
         />
       </FormGroup>
-     }
+     } */}
 
       <br />
       <br />
@@ -126,7 +127,8 @@ function App() {
           }
         />
 
-      </RouterSwitch>
+        </RouterSwitch>
+        </Container>
     </ThemeProvider>
   );
 }

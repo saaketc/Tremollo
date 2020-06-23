@@ -20,7 +20,7 @@ const Follow = (props) => {
       });
           setFollows(data.body.followed);
           console.log(data);
-          toast.success(`Now a fan!`);
+        toast('Fan!');
           
     } catch (e) {
       setFollows(oldFollow);
@@ -31,7 +31,7 @@ const Follow = (props) => {
   return (
       <Button
         onClick={handleFollow}
-        style={follows ? buttonStyleClose : buttonStyleOpen}
+        style={buttonStyleOpen}
       >
         {follows ? 'You are a fan' : 'Be a fan'}
       </Button>
