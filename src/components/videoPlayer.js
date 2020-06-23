@@ -15,7 +15,7 @@ const styles = makeStyles(theme => ({
     left: 0
   }
 }));
-const VideoPlayer = ({ url, thumbnailLink }) => {
+const VideoPlayer = ({ url, thumbnailLink, width, height }) => {
   const classes = styles();
   return (
     <div className={['player - wrapper', classes.playerWrapper]}>
@@ -24,8 +24,8 @@ const VideoPlayer = ({ url, thumbnailLink }) => {
         playing
         controls
         light={thumbnailLink}
-        width='300px'
-        height='180px'
+        width={`${width}px`}
+        height={`${height}px`}
       />
     </div>
 

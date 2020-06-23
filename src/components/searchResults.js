@@ -7,18 +7,20 @@ import MediaCard from "./common/mediaCard";
 import { useHistory } from "react-router-dom";
 import { storageURL } from "../config/storage";
 import colors from "../config/colors";
+import CardComponent from "./common/cardComponent";
 
 const styles = makeStyles((theme) => ({
   heading: {
     fontWeight: "500",
+    color: colors.white
   },
   pic: {
-    width: '15%',
-    height: '15%',
+    width: "15%",
+    height: "15%",
     border: `2 px solid ${colors.primary}`,
-    borderRadius: '50%',
-    margin:20
-  }
+    borderRadius: "50%",
+    margin: 20,
+  },
 }));
 const SearchResults = (props) => {
   const { q } = queryString.parse(props.location.search);
@@ -28,7 +30,7 @@ const SearchResults = (props) => {
   const classes = styles();
 
   React.useEffect(() => {
-   const userPromise = dataService.getData("user/search", {
+    const userPromise = dataService.getData("user/search", {
       keyword: q,
     });
     const contentPromise = dataService.getData("content/search", {
@@ -46,12 +48,17 @@ const SearchResults = (props) => {
       .catch((error) => console.log(error));
   }, [q]);
 
-  const handleUserClick = data => {
-    return history.push('/profile', data);
-  }
+  const handleUserClick = (user) => {
+    return history.push(`/profile/${window.btoa(user.userId)}`);
+  };
+  const handleAlbumClick = async (data) => {
+    // alert('Clicked');
+    return history.push(`/content/${window.btoa(data.contentId)}`);
+  };
+
   return (
-    <Container>
-      {(content.length > 0 || users.length > 0) ? (
+    <Container maxWidth='100%'>
+      {content.length > 0 || users.length > 0 ? (
         <>
           <Typography variant="h4" className={classes.heading}>
             {`Results for ${q}`}
@@ -60,28 +67,32 @@ const SearchResults = (props) => {
           <br />
           <Grid container spacing={6}>
             {content.map((c) => (
-              <Grid item xs={12} lg={6} sm={6} md={6}>
-                <MediaCard
+              <Grid item xs={12} lg={3}  md={3}>
+                <CardComponent
                   data={c}
-                  primaryProperty="title"
-                  secProperty="caption"
-                  url={storageURL + c.mediaLink}
-                  thumbnailLink={storageURL + c.thumbnailLink}
+                  primaryData={c.title}
+                  secondaryData={c.username}
+                  onClick={handleAlbumClick}
+                  image={storageURL + c.thumbnailLink}
                 />
                 <br />
               </Grid>
             ))}
           </Grid>
-          <br/>
+          <br />
           <Grid container spacing={6}>
             {users.map((user) => (
-              <Grid item xs={12} lg={6} sm={6} md={6}>
-                <Button onClick={()=>handleUserClick(user)}>
-                  <img className={classes.pic} src={storageURL + user.avatarLink} alt={`${user.firstName} ${user.lastName}`} />
-                <Typography variant='h6'>
-                {`  ${user.firstName} ${user.lastName}`} 
-                </Typography>
-               </Button>
+              <Grid item xs={12} lg={3} md={3}>
+                <Button onClick={() => handleUserClick(user)}>
+                  <img
+                    className={classes.pic}
+                    src={storageURL + user.avatarLink}
+                    alt={`${user.firstName} ${user.lastName}`}
+                  />
+                  <Typography variant="h7" className={classes.heading}>
+                    {`  ${user.firstName} ${user.lastName}`}
+                  </Typography>
+                </Button>
               </Grid>
             ))}
           </Grid>

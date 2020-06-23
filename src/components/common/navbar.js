@@ -17,6 +17,7 @@ import colors from "../../config/colors";
 import Search from "../search/search";
 import logo from "../../logo/logo.svg";
 import UploadButton from "../upload/uploadButton";
+import { buttonStyleOpen, buttonStyleClose } from "../../config/buttonStyle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,6 +91,9 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "30",
     padding: "30",
   },
+  right: {
+    marginRight: "30px",
+  },
 }));
 
 function Navbar(props) {
@@ -107,10 +111,13 @@ function Navbar(props) {
     setAnchorEl(null);
   };
   const handleProfile = () => {
-    return props.history.push("/profile", user);
+    return props.history.push(`/profile/${window.btoa(user.userId)}`);
   };
   const handlePlaylistClick = () => {
-    return props.history.push("/myPlaylist");
+    return props.history.push(`/myPlaylist/${window.btoa(user.userId)}`);
+  };
+  const handleUploadButton = () => {
+    return props.history.push('/myMusic/upload');
   };
   const handleLogout = () => {
     return props.history.push("/logout");
@@ -123,64 +130,83 @@ function Navbar(props) {
       return history.push("/auth/login");
     }
   };
- 
+
   return (
     <div className={classes.root}>
       <Toolbar>
         <Hidden only={["sm", "xs"]}>
-          <Typography style={{width: '100%'}} className={classes.title} variant="h5" noWrap>
+          <Typography
+            style={{ width: "100%" }}
+            className={classes.title}
+            variant="h5"
+            noWrap
+          >
             <a
               href="/"
               style={{ textDecoration: "none", color: colors.primary }}
             >
-              <img src={logo} alt='tremollo music' />
+              <img src={logo} alt="tremollo music" />
             </a>
-                  </Typography>
-                  
+          </Typography>
         </Hidden>
-        <Hidden  only={["lg", "md"]}>
+        <Hidden only={["lg", "md"]}>
           <Typography className={classes.title} variant="h8" noWrap>
             <a
               href="/"
               style={{ textDecoration: "none", color: colors.primary }}
             >
-          <img src={logo} alt='tremollo music' />
-
+              <img src={logo} alt="tremollo music" />
             </a>
-                  </Typography>
-                  
+          </Typography>
         </Hidden>
         {/* Search component here */}
-        <div style={{ marginRight:'400px',width:'100%'}}>
-          <Search />
-          </div>
+        {user && 
+        <div style={{ marginRight: "300px", width: '100%' }}>
+        <Search />
+      </div>
+        }
         
+     
         {!user && (
           <>
-            <div>
+            
               <Button
-                style={{ color: "black" }}
+                style={buttonStyleOpen}
                 onClick={() => handleAuthClick("login")}
-                className={classes.hover}
               >
                 Login
               </Button>
-            </div>
-            <Hidden only="xs">
-              <div>
+            
+            
+              
                 <Button
                   onClick={() => handleAuthClick("signup")}
-                  className={classes.btn}
+                  style={buttonStyleClose}
                 >
                   Signup
                 </Button>
-              </div>
-            </Hidden>
+              
+           
           </>
         )}
         {user && (
-          <div style={{ margin: "20px" }}>
-
+          <>
+              <IconButton>
+            <UploadButton onClick={handleUploadButton} />
+             </IconButton>
+             <IconButton>
+            
+            <Button
+            onClick={handlePlaylistClick}
+            style={buttonStyleOpen}
+            className={classes.right}
+          >
+                Playlist
+          </Button>
+             </IconButton>
+          <div style={{ margin: "20px",display: 'inline'}}>
+           
+              
             <IconButton
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -189,7 +215,9 @@ function Navbar(props) {
               color="primary"
               style={{ marginLeft: "20px" }}
             >
-              <AccountCircle style={{color: colors.primary, fontSize:'40px'}}/>
+              <AccountCircle
+                style={{ color: colors.primary, fontSize: "40px" }}
+              />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -207,11 +235,10 @@ function Navbar(props) {
               onClose={handleClose}
             >
               <MenuItem onClick={handleProfile}>Profile</MenuItem>
-              <MenuItem onClick={handlePlaylistClick}>My playlist</MenuItem>
-              <MenuItem onClick={()=> history.push('/myMusic/upload')}>Upload content</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
-          </div>
+            </div>
+            </>
         )}
       </Toolbar>
     </div>

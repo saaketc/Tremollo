@@ -15,6 +15,8 @@ import Dialog from "@material-ui/core/Dialog";
 import { blue } from "@material-ui/core/colors";
 import LibraryAddIcon from "@material-ui/icons/LibraryAdd";
 import IconButton from "@material-ui/core/IconButton";
+import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
+
 import { thumbnailCreator } from "../../utils/utilfunctions";
 import Form from "./form";
 
@@ -75,7 +77,7 @@ function UImodal(props) {
               >
                 <ListItemAvatar>
                   <Avatar aria-label="recipe" className={classes.avatar}>
-                    {thumbnailCreator("Tremollo")}
+                    {thumbnailCreator(p.name)}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={p.name} onClick={()=> onPlaylistClick(p)} />
@@ -116,7 +118,7 @@ export default function UImodalDemo({
   return (
     <div>
       <IconButton aria-label="add to playlist" onClick={handleClickOpen}>
-        <LibraryAddIcon />
+        <PlaylistAddIcon />
       </IconButton>
       <UImodal
         selectedValue={selectedValue}

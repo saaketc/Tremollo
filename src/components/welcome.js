@@ -8,6 +8,8 @@ import musicIllus from "../illustrations/compose.svg";
 import musicLoveIllus from "../illustrations/music_love.svg";
 import playlistIllus from "../illustrations/playlist.svg";
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import Footer from "./footer";
+import { buttonStyleOpen } from "../config/buttonStyle";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -20,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontWeight: "900",
-    color: colors.secondary,
+    color: colors.primary,
   },
   description: {
     fontWeight: "700",
-    color: colors.secondary,
+    color: colors.white,
   },
   topSpace: {
     marginTop: '30px'
@@ -62,21 +64,16 @@ const Welcome = () => {
         </Typography>
       </Hidden>
       <br />
-      <Typography variant="h6">
+      <Typography variant="h6" className={classes.description}>
         Explore fresh and experimented music, create playlists,
         <br />
         share your musical creativity with others, and lots more!
       </Typography>
       <br />
-      <Button className={classes.btn}>
+      <Button style={buttonStyleOpen}>
         Get started
       </Button>
-      <br />
-      <br />
-      <br />
-      <Typography className={classes.description} variant='h3'>
-       Featured
-      </Typography>
+     
       <br/>
       <br/>
     
@@ -97,6 +94,8 @@ const Welcome = () => {
           ))
      }
       </Grid>
+  <Footer/>
+
     </Container>
   );
 };

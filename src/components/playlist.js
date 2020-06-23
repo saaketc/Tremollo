@@ -14,13 +14,13 @@ const Playlist = (props) => {
     //making api call to fetch current user playlist
     const fetchPlaylist = async () => {
       const { data } = await dataService.getData("user/playlist", {
-        userId: props.currentUserId,
+        userId: currentUserId,
       });
      
       setPlaylist(data.body.reverse());
     };
     fetchPlaylist();
-  }, [props.currentUserId, playlist]);
+  }, [currentUserId]);
 
   const postSubmitLogic = async (submittedData) => {
     
@@ -57,6 +57,7 @@ const Playlist = (props) => {
     }
   };
   return (
+    
     <UImodalDemo
       currentUserId={currentUserId}
       playlist={playlist}

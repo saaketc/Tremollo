@@ -6,7 +6,7 @@ import SecondPhase from "./secondPhase";
 import dataService from "../../../services/dataServices";
 import { toast } from "materialize-css";
 
-const CreateCampaign = () => {
+const Signup = () => {
   const [formValues, setFormValues] = React.useState({});
   const [nextTab, setNextTab] = React.useState(1);
 
@@ -44,4 +44,4 @@ const CreateCampaign = () => {
   );
 };
 
-export default CreateCampaign;
+export default Signup;

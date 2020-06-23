@@ -12,12 +12,13 @@ const useStyles = makeStyles(theme => ({
         // backgroundColor: theme.palette.background.paper,
         // marginTop: theme.spacing(8),
         padding: theme.spacing(6, 0),
+        color: 'white'
     }
 }));
 
 function Copyright() {
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
+        <Typography variant="body2" style={{color: 'white'}} align="center">
             {'Copyright © '}
             <Link color="inherit" href="/">
              tremollo music
@@ -43,8 +44,8 @@ export default function Footer(props) {
                 </Typography>
                          
                           
-                <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                    Made with <FavoriteIcon style={{color:'red', fontSize:'20px'}}/> & proud in India.
+                <Typography variant="subtitle1" align="center"  component="p">
+                    Made with <FavoriteIcon style={{color:'red', fontSize:'20px'}}/> & pride in India.
                 </Typography>
               
                 <Copyright />

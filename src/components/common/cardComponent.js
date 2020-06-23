@@ -1,58 +1,86 @@
+
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import colors from '../../config/colors';
+import { Button } from '@material-ui/core';
+import darkTheme from '../../config/themes/dark';
 
-import VideoPlayer from '../videoPlayer';
+const useStyles = makeStyles((theme) => ({
+  root: {
+        display: 'flex',
+    backgroundColor: darkTheme.backgroundCard,
+      maxWidth:300
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+      flex: '1 0 auto',
+      color: darkTheme.textColor
+  },
+  cover: {
+      width: 200,
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: theme.spacing(1),
+      paddingBottom: theme.spacing(1),
+    color: darkTheme.textColor
+  },
+  playIcon: {
+    height: 50,
+      width: 50,
+    color: darkTheme.primary
+  },
+}));
 
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 345,
-    },
-    media: {
-        height: 140,
-    },
-});
 
-export default function CardComponent({ data, property, secondaryData, image, url, thumbnailLink, player, onClick}) {
-    const classes = useStyles();
+export default function CardComponent({ data, primaryData, secondaryData, image, onClick, width })
+{
+  const classes = useStyles();
+  const theme = useTheme();
 
-    return (
-        <Card className={classes.root} onClick={onClick ? ()=>onClick(data) : ()=> null}>
-            <CardActionArea>
-                {player ?
-                    
-                    <CardMedia
-                        className={classes.cover}
-                        component={(props) => <VideoPlayer {...props} url={url} thumbnailLink={thumbnailLink} />}
-
-                        title={data[property]}
-                    />
-                    :
-                    <CardMedia
-                        className={classes.media}
-                        image={image}
-                        title={data[property]}
-                        />
-                        
-                }
-               
-                
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {data[property]}
+  return (
+    <Button>
+    <Card className={classes.root} onClick={()=> onClick ? onClick(data) : null}>
+      <div className={classes.details}>
+        <CardContent className={classes.content}>
+          <Typography component="h6" variant="h6">
+                  {primaryData}   
+                  </Typography>
+          <Typography variant="subtitle1">
+           {secondaryData}
           </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {secondaryData}
-          </Typography>
-                </CardContent>
-            </CardActionArea>
-            
-        </Card>
-    );
+        </CardContent>
+        <div className={classes.controls}>
+          {/* <IconButton aria-label="previous" style={{color: colors.primary}}>
+            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+          </IconButton> */}
+          <IconButton aria-label="play/pause" onClick={() => onClick ? onClick(data) : null}>
+            <PlayArrowIcon className={classes.playIcon} />
+          </IconButton>
+          {/* <IconButton aria-label="next"  style={{color: colors.primary}}>
+            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+          </IconButton> */}
+        </div>
+      </div>
+      <CardMedia
+          className={classes.cover}
+        style={{width: width ? width : 200 }}
+        image={image}
+        title={primaryData}
+      />
+      </Card>
+      </Button>
+  );
 }
