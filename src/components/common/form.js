@@ -1,7 +1,7 @@
 import React from "react";
 // import Avatar from '@material-ui/core/Avatar';
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -18,19 +18,6 @@ import HeadsetIcon from "@material-ui/icons/Headset";
 import IconButton from "@material-ui/core/IconButton";
 import colors from "../../config/colors";
 
-// function Copyright() {
-//     return (
-//         <Typography variant="body2" color="textSecondary" align="center">
-//             {'Copyright © '}
-//             <Link color="inherit" href="https://material-ui.com/">
-//                 Your Website
-//       </Link>{' '}
-//             {new Date().getFullYear()}
-//             {'.'}
-//         </Typography>
-//     );
-// }
-const color = "bf2604";
 const useStyles = makeStyles((theme) => ({
   input: {
     color: "white",
@@ -66,7 +53,7 @@ export default function Form(props) {
     fields,
     heading,
     button,
-    signup,
+    login,
     dropDown,
     postSubmitLogic,
     noIcon,
@@ -158,17 +145,18 @@ export default function Form(props) {
           >
             {button.label}
           </Button>
-          {signup && (
+          {login && (
             <>
               <Grid container justify="flex-end">
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    Already have an account? Sign in
+                  <Link href="/auth/signup" variant="body2" color='secondary'>
+                    New to tremollo? Create account
                   </Link>
                 </Grid>
               </Grid>
             </>
           )}
+           
         </form>
       </div>
     </Container>

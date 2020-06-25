@@ -10,7 +10,6 @@ import BottomNav from "../common/bottomNav";
 import styles from "../../styles/contentPage";
 import QueuePlaylist from "../queuePlaylist";
 import { toast } from "react-toastify";
-import Signup from "../auth/signup/signup";
 import Follow from "../socialInteraction/follow";
 import Compliments from "./compliments";
 import ContentLikes from "./contentLikes";
@@ -52,7 +51,7 @@ const ContentPage = (props) => {
 
   return (
     <Container>
-      {currentUser ? (
+   
         <Grid container spacing={4}>
           <Grid item xs={12} md={9} lg={9}>
             {loading ? (
@@ -156,9 +155,7 @@ const ContentPage = (props) => {
             <QueuePlaylist removeContentId={contentId} user={currentUser} />
           </Grid>
         </Grid>
-      ) : (
-        <Signup />
-      )}
+      
     </Container>
   );
 };

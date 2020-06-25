@@ -22,7 +22,8 @@ const AddCompliment = ({ complimentingUser, contentId, postSubmit  }) => {
       const { data } = await dataServices.postData(
         "content/comments",
         toSubmit
-        );
+      );
+      setCompliment("");
         postSubmit(data.body);
     } catch (e) {
       toast.error("Something went wrong!");

@@ -1,10 +1,12 @@
 import React from "react";
-import { Container } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 
 import FirstPhase from "./firstPhase";
 import SecondPhase from "./secondPhase";
 import dataService from "../../../services/dataServices";
 import { toast } from "materialize-css";
+import { Link } from "react-router-dom";
+import colors from "../../../config/colors";
 
 const Signup = () => {
   const [formValues, setFormValues] = React.useState({});
@@ -39,7 +41,17 @@ const Signup = () => {
         <FirstPhase onSubmit={handleFirstPhaseSubmit} />
       ) : (
         <SecondPhase onSubmit={handleSecondPhaseSubmit} />
-      )}
+        )}
+      
+      <br/>
+      <br/>
+        <Grid container justify="flex-end">
+                <Grid item>
+                  <Link to="/auth/login" variant="body2" style={{color: colors.primary}}>
+                    Already on tremollo? Login instead
+                  </Link>
+                </Grid>
+              </Grid>
     </Container>
   );
 };
