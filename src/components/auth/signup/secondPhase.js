@@ -6,6 +6,7 @@ import SelectForm from "../../common/selectForm";
 import TextForm from "../../common/textForm";
 import colors from "../../../config/colors";
 import logo from "../../../logo/logo_lite_crop.png";
+import { buttonStyleOpen } from "../../../config/buttonStyle";
 
 const genderOptions = [
   { value: "F", label: "Female" },
@@ -130,7 +131,7 @@ const FirstPhase = ({ onSubmit }) => {
 
       
 
-                      <Button className={classes.btn} type="submit">Continue</Button>
+                      <Button style={buttonStyleOpen} type="submit">Create account</Button>
       </form>
             
     </Container>

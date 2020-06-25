@@ -1,11 +1,13 @@
 import React from "react";
-import { Container, Typography, Button } from "@material-ui/core";
+import { Container, Typography, Button, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
 import TextForm from "../../common/textForm";
 
 import colors from "../../../config/colors";
 import logo from "../../../logo/logo_lite_crop.png";
+import { buttonStyleOpen } from "../../../config/buttonStyle";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -82,10 +84,20 @@ const FirstPhase = ({ onSubmit }) => {
         />
         <br />
 
-        <Button className={classes.btn} type="submit">
+        <Button style={buttonStyleOpen} type="submit">
           Continue
         </Button>
       </form>
+      <br/>
+      <br />
+      
+      <Grid container justify="flex-end">
+                <Grid item>
+                  <Link to="/auth/login" variant="body2" style={{color: colors.primary}}>
+                    Already on tremollo? Login instead
+                  </Link>
+                </Grid>
+              </Grid>
     </Container>
   );
 };

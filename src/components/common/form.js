@@ -17,6 +17,7 @@ import Container from "@material-ui/core/Container";
 import HeadsetIcon from "@material-ui/icons/Headset";
 import IconButton from "@material-ui/core/IconButton";
 import colors from "../../config/colors";
+import { buttonStyleOpen } from "../../config/buttonStyle";
 
 const useStyles = makeStyles((theme) => ({
   input: {
@@ -136,15 +137,16 @@ export default function Form(props) {
               </Grid>
             )}
           </Grid>
+          <br/>
           <Button
             type={button.type}
             fullWidth
-            variant="contained"
-            style={{ color: "white", backgroundColor: colors.primary }}
-            className={classes.submit}
+            style={buttonStyleOpen}
           >
             {button.label}
           </Button>
+          <br/>
+          <br/>
           {login && (
             <>
               <Grid container justify="flex-end">
