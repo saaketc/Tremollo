@@ -155,7 +155,7 @@ export default function Form(props) {
                   <Link to={{
                     pathname: "/auth/signup",
                     state: redirectUrl
-                  }} variant="body2" color='secondary'>
+                  }} variant="body2" style={{color: colors.primary}}>
                     New to tremollo? Create account
                   </Link>
                 </Grid>
