@@ -68,7 +68,7 @@ export const filter = (array, property, filteringId) => {
 }
 
 export const fullDate = (date) => {
-  return ` ${new Date(date).getDate() + 1}, ${month(
+  return ` ${new Date(date).getDate()}, ${month(
     new Date(date).getMonth()
   )} ${new Date(date).getFullYear()}`
 }
