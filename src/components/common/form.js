@@ -7,7 +7,6 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Checkbox from '@material-ui/core/Checkbox';
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 // import Box from '@material-ui/core/Box';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -16,6 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import HeadsetIcon from "@material-ui/icons/Headset";
 import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
 import colors from "../../config/colors";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 
@@ -57,6 +57,7 @@ export default function Form(props) {
     login,
     dropDown,
     postSubmitLogic,
+    redirectUrl,
     noIcon,
   } = props;
   const [formFields, setFormFields] = React.useState({});
@@ -151,7 +152,10 @@ export default function Form(props) {
             <>
               <Grid container justify="flex-end">
                 <Grid item>
-                  <Link href="/auth/signup" variant="body2" color='secondary'>
+                  <Link to={{
+                    pathname: "/auth/signup",
+                    state: redirectUrl
+                  }} variant="body2" color='secondary'>
                     New to tremollo? Create account
                   </Link>
                 </Grid>

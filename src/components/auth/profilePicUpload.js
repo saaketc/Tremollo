@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 const ProfilePicUpload = (props) => {
   const history = useHistory();
+  const { redirectUrl } = props.location.state;
+
   const [file, setFile] = React.useState(null);
   const [uploading, setUploading] = React.useState("");
   const [pic, setPic] = React.useState("");
@@ -59,10 +61,11 @@ const ProfilePicUpload = (props) => {
         "multipart/form-data"
       );
       // console.log(data.body);
-      if (location.state) {
+      if (location.state.from === 'Profile') {
         return history.push(`/profile/${window.btoa(user.userId)}`);
       }
-      return history.push("/");
+      return window.location = redirectUrl ? redirectUrl : '/';
+
     } catch (e) {
       console.log(e.message);
       toast.error("Something went wrong.");

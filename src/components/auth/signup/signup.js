@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 import FirstPhase from "./firstPhase";
 import SecondPhase from "./secondPhase";
@@ -7,9 +8,12 @@ import dataService from "../../../services/dataServices";
 import { toast } from "materialize-css";
 
 
-const Signup = () => {
+const Signup = (props) => {
   const [formValues, setFormValues] = React.useState({});
   const [nextTab, setNextTab] = React.useState(1);
+  const history = useHistory();
+
+  const { state } = props.location;
 
   const handleFirstPhaseSubmit = (values) => {
     setFormValues(values);
@@ -25,7 +29,7 @@ const Signup = () => {
 
       localStorage.setItem('user', JSON.stringify(data.body));
       
-      window.location = '/uploadProfilePic';
+      history.push('/uploadProfilePic', {redirectUrl: state});
   }
   catch (e) {
       toast.error('Something went wrong');

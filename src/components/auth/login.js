@@ -6,8 +6,10 @@ import Form from '../common/form';
 import { toast } from 'react-toastify';
 import { setUser } from '../../services/userServices';
 
-const Login = () => {
+const Login = (props) => {
     const history = useHistory();
+    const { state } = props.location;
+    
     const fields = [
         { name: 'email', label: 'Email', type: 'email' },
         { name: 'password', label: 'Password', type: 'password' }
@@ -21,7 +23,7 @@ const Login = () => {
             const { data } = await dataService.postData('user/login', submittedFormData);
             // console.log('from backend', data.body);
             setUser(data.body);
-            window.location = '/';
+            window.location = state ? state : '/';
         }
         catch (e) {
             console.log(e.message);
@@ -33,9 +35,10 @@ const Login = () => {
         <>
             <Form
                 postSubmitLogic={postSubmitLogic}
-                heading='Welcome back tremolloster!'
+                heading={state ? 'Please login to access the content and much more!' : 'Welcome back tremolloster!'}
                 fields={fields}
                 login={true}
+                redirectUrl={state}
                 button={button} />
         </>
     )
