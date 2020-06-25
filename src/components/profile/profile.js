@@ -2,15 +2,12 @@ import React from "react";
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import dataService from "../../services/dataServices";
-import { toast } from "react-toastify";
 import { makeStyles } from "@material-ui/core/styles";
 import colors from "../../config/colors";
 import { storageURL } from "../../config/storage";
-import MediaCard from "../common/mediaCard";
-import { month } from "../../utils/utilfunctions";
+
 import { getUserType } from "../../utils/userFunctions";
 import { buttonStyleClose, buttonStyleOpen } from "../../config/buttonStyle";
-import CardComponent from "../common/cardComponent";
 import CenteredTabs from "../common/centredTabs";
 import UserContent from "./userContent";
 import UserFollowers from "./userFollowers";
@@ -72,7 +69,7 @@ const Profile = (props) => {
   const classes = useStyles();
   const history = useHistory();
   // const user = props.location.state;
-  const { currentUser } = props;
+  const { user: currentUser } = props;
   const  userId  = window.atob(props.match.params.userId);
 
   React.useEffect(() => {

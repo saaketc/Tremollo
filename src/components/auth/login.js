@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import dataService from '../../services/dataServices';
 import Form from '../common/form';
 import { toast } from 'react-toastify';
+import { setUser } from '../../services/userServices';
 
 const Login = () => {
     const history = useHistory();
@@ -18,9 +19,8 @@ const Login = () => {
      
         try {
             const { data } = await dataService.postData('user/login', submittedFormData);
-            console.log('from backend', data.body);
-            localStorage.setItem('user', JSON.stringify(data.body));
-
+            // console.log('from backend', data.body);
+            setUser(data.body);
             window.location = '/';
         }
         catch (e) {

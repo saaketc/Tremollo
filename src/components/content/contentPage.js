@@ -24,7 +24,7 @@ const ContentPage = (props) => {
   const [tab, setTab] = React.useState(0);
 
   const contentId = window.atob(props.match.params.contentId);
-  const { currentUser } = props;
+  const { user: currentUser } = props;
   const history = useHistory();
 
   React.useEffect(() => {
