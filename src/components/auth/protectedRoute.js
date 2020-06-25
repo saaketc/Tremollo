@@ -9,7 +9,7 @@ const ProtectedRoute = ({component: Component, ...rest}) => {
                 getUser() ? 
                     <Route {...rest} render={(props) => <Component {...props} user={getUser()} />}/>
                         :
-                         <Redirect to={{pathname:'/auth/signup'}}/>
+                         <Redirect to={{pathname:'/auth/login'}}/>
                         }
             </div>
     )
