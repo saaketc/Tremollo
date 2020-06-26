@@ -4,8 +4,8 @@ import dataService from "../services/dataServices";
 import { toast } from 'react-toastify';
 import colors from "../config/colors";
 
-const fields = [{ name: "name", label: "Playlist name", type: "text" }];
-const button = { type: "submit", label: "Save", color: colors.primary };
+const fields = [{ name: "name", label: "New playlist name", type: "text" }];
+const button = { type: "submit", label: "Add", color: colors.primary };
 
 const Playlist = (props) => {
   const { currentUserId, contentId } = props;
