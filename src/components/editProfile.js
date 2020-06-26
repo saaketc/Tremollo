@@ -9,22 +9,9 @@ import dataService from "../services/dataServices";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import darkTheme from "../config/themes/dark";
+import { setUser } from "../services/userServices";
+import { buttonStyleOpen } from "../config/buttonStyle";
 
-// import { getUserType } from "../utils/userFunctions";
-
-// const genderOptions = [
-//   { value: "F", label: "Female" },
-//   { value: "M", label: "Male" },
-// ];
-// const typeOptions = [
-//   { value: "0", label: "Listener" },
-//   { value: "1", label: "Guitarist" },
-//   { value: "2", label: "Pianist" },
-//   { value: "3", label: "Drummer" },
-//   { value: "4", label: "Singer" },
-//   { value: "5", label: "Disco Jockie" },
-//   { value: "6", label: "Others" },
-// ];
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -51,7 +38,7 @@ const EditProfile = ({ user, location }) => {
   const classes = useStyles();
   const history = useHistory();
   const { followersCount } = location.state;
-  // const [selectType, setSelectType] = React.useState(user.type);
+  
   const [userNew, setUserNew] = React.useState({
     firstName: user.firstName,
     lastName: user.lastName,
@@ -85,7 +72,7 @@ const EditProfile = ({ user, location }) => {
       // console.log(newData);
       const { data } = await dataService.postData("user/create", newData);
       console.log(data.body);
-      localStorage.setItem("user", JSON.stringify(data.body));
+      setUser(data.body);
       toast('Profile updated!', {
         className: classes.success
       });
@@ -173,7 +160,7 @@ const EditProfile = ({ user, location }) => {
         /> */}
         <br />
 
-        <Button className={classes.btn} type="submit">
+        <Button style={buttonStyleOpen} type="submit">
           Update
         </Button>
       </form>
