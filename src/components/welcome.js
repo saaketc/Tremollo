@@ -9,7 +9,9 @@ import musicLoveIllus from "../illustrations/music_love.svg";
 import playlistIllus from "../illustrations/playlist.svg";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Footer from "./footer";
-import { buttonStyleOpen } from "../config/buttonStyle";
+import { buttonStyleOpen, buttonStyleClose } from "../config/buttonStyle";
+import SignupButton from "./auth/signupButton";
+import LoginButton from "./auth/loginButton";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -49,7 +51,7 @@ const Welcome = () => {
   const classes = useStyles();
 
   return (
-    <Container style={{ textAlign: "center" }}>
+    <Container >
       <br />
       <br />
       
@@ -70,10 +72,18 @@ const Welcome = () => {
         share your musical creativity with others, and lots more!
       </Typography>
       <br />
-      <Button style={buttonStyleOpen}>
-        Get started
-      </Button>
-     
+      <Grid style={{textAlign: 'center'}} container spacing={4}>
+        <Grid item>
+        <SignupButton
+        label='Get Started'
+        buttonStyle={buttonStyleOpen}/>
+        </Grid>
+        <Grid item>
+      <LoginButton
+        label='Login'
+            buttonStyle={buttonStyleOpen} />
+          </Grid>
+       </Grid>
       <br/>
       <br/>
     
