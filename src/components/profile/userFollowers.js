@@ -1,12 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Typography, Button, Container } from "@material-ui/core";
+import { Grid, Typography, Button, Container, Avatar } from "@material-ui/core";
 
 import dataServices from "../../services/dataServices";
 import { toast } from "react-toastify";
 import colors from "../../config/colors";
 import { useHistory } from "react-router-dom";
-import { storageURL } from "../../config/storage";
+import UserTemplate from "../common/userTemplate";
+
 
 const styles = makeStyles((theme) => ({
   heading: {
@@ -50,9 +51,7 @@ const UserFollowers = ({ userId }) => {
     getFollowers();
   }, [userId]);
 
-  const handleClick = (user) => {
-    return history.push(`/profile/${window.btoa(user.userId)}`);
-  };
+ 
   return (
     <Container maxWidth='100%'>
      
@@ -64,17 +63,8 @@ const UserFollowers = ({ userId }) => {
       <Grid container spacing={4}>
         {followers.map((user) => (
           <Grid item xs={12} lg={3}  md={3}>
-            <Button className={classes.btn} onClick={() => handleClick(user)}>
-              <img
-                className={classes.pic}
-                src={storageURL + user.avatarLink}
-                alt={`${user.firstName} ${user.lastName}`}
-              />
-              <Typography variant="h6" className={classes.title}>
-                {user.username}
-              </Typography>
-             
-            </Button>
+            <UserTemplate
+              user={user}/>
           </Grid>
         ))}
       </Grid>

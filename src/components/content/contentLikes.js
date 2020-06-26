@@ -6,6 +6,7 @@ import { Typography, Grid, Container, Button, Avatar } from "@material-ui/core";
 
 import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
+import UserTemplate from "../common/userTemplate";
 
 const ContentLikes = ({ contentId }) => {
   const [likedUsers, setLikedUsers] = useState([]);
@@ -53,15 +54,8 @@ const ContentLikes = ({ contentId }) => {
           <Grid container spacing={6}>
             {likedUsers.map((user) => (
               <Grid item xs={12} md={6} lg={6}>
-                <Button
-                  onClick={() => handleLikedUserClick(user)}
-                  style={{ color: darkTheme.textColor }}
-                >
-                  <Avatar alt="" src={storageURL + user.avatarLink} />
-                  <Typography style={{ marginLeft: "30px" }} variant="h8">
-                    {user.username}
-                  </Typography>
-                </Button>
+               <UserTemplate
+              user={user}/>
               </Grid>
             ))}
           </Grid>
