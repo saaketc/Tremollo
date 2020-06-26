@@ -150,7 +150,7 @@ const Profile = (props) => {
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
           {loading ?
-            <Skeleton animation="wave" height={10} width="80%" style={{ marginBottom: 6 }} />
+            <Skeleton animation="wave" height={30} width="80%" style={{ marginBottom: 6 }} />
             :
             <>
             <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
@@ -162,7 +162,7 @@ const Profile = (props) => {
               </>
         }
           {loading ?
-            <Skeleton animation="wave" height={10} width="40%" style={{ marginBottom: 6 }} />
+            <Skeleton animation="wave" height={30} width="40%" style={{ marginBottom: 6 }} />
             : (
               <>
               <Typography
@@ -182,9 +182,13 @@ const Profile = (props) => {
 }
          
           <br />
-          <Typography variant="h5" className={classes.title} style={{ fontWeight: "400" }}>
+          { loading ?
+            <Skeleton animation="wave" height={30} width="40%" style={{ marginBottom: 6 }} /> :
+            <Typography variant="h5" className={classes.title} style={{ fontWeight: "400" }}>
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
           </Typography>
+            }
+         
           <br />
           {Number(currentUser.userId) === Number(userId) ? (
             <div style={{ display: "block" }}>
