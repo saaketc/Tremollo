@@ -6,12 +6,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 100,
+    maxWidth: 300,
     borderRadius: "30",
-    maxHeight: 100,
+    maxHeight: 300,
   },
   media: {
-    height: 100,
+    height: 300,
   },
 });
 

@@ -7,8 +7,8 @@ import dataService from "../../services/dataServices";
 import { storageURL } from "../../config/storage";
 import colors from "../../config/colors";
 import TextForm from "../common/textForm";
-import { buttonStyleClose, buttonStyleOpen } from "../../config/buttonStyle";
-import darkTheme from "../../config/themes/dark";
+import { buttonStyleOpen } from "../../config/buttonStyle";
+// import darkTheme from "../../config/themes/dark";
 import MediaCard from "../common/mediaCard";
 import ReactLoading from "react-loading";
 
@@ -16,6 +16,7 @@ const UploadMusic = ({ user }) => {
   const [fileData, setFileData] = React.useState({});
   const [thumbnail, setThumbnail] = React.useState("");
   const [uploading, setUploading] = React.useState('');
+  const [uploadDisable, setUploadDisable] = React.useState(true);
 
   const formik = useFormik({
     initialValues: {
@@ -59,6 +60,8 @@ const UploadMusic = ({ user }) => {
       console.log(data.body);
       setFileData(data.body);
       setUploading('done');
+      setUploadDisable(false);
+
     } catch (e) {
       toast.error("Something went wrong while uploading...");
       console.log(e.message);
@@ -82,7 +85,14 @@ const UploadMusic = ({ user }) => {
           <Typography variant='h4'>
           Pick a thumbnail for your music video  
           </Typography>
-        }
+      }
+      <br/>
+      <br />
+      
+       {
+        thumbnail && 
+        <img  width='300' height='300' src={storageURL + thumbnail} alt=''/>
+      }
       <Grid container spacing={6}>
        
         <br/>
@@ -106,6 +116,8 @@ const UploadMusic = ({ user }) => {
           )
        }
       </Grid>
+      
+     
       <br />
       <br />
       <form onSubmit={formik.handleSubmit} autoComplete="off">
@@ -143,10 +155,15 @@ const UploadMusic = ({ user }) => {
           onChange={formik.handleChange}
         />
         <br />
+        {
+          !uploadDisable && 
+<Button style={buttonStyleOpen}
+          type="submit">
 
-        <Button style={buttonStyleClose} type="submit">
           Upload
         </Button>
+}
+        
       </form>
     </Container>
   );
