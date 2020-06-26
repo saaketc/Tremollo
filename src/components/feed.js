@@ -22,7 +22,7 @@ const Feed = (props) => {
         
         const params = {
           pageNumber: 1,
-          rowCount: 20,
+          rowCount: 30,
           userId: props.user.userId
         }
         const { data } = await dataService.getData('feed', params);
