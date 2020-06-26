@@ -14,7 +14,7 @@ import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 
 import { thumbnailCreator } from "../../utils/utilfunctions";
 import Form from "./form";
-
+import darkTheme from "../../config/themes/dark";
 
 const useStyles = makeStyles({
   avatar: {
@@ -50,7 +50,7 @@ function UImodal(props) {
       aria-labelledby="simple-dialog-title"
       open={open}
     >
-      <List>
+      <List style={{backgroundColor: darkTheme.backgroundCard}}>
         <Form
           postSubmitLogic={postSubmitLogic}
           heading=""
@@ -71,7 +71,7 @@ function UImodal(props) {
                     {thumbnailCreator(p.name)}
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={p.name} onClick={()=> onPlaylistClick(p)} />
+                <ListItemText style={{color: darkTheme.textColor}} primary={p.name} onClick={()=> onPlaylistClick(p)} />
               </ListItem>
             ))}
           </>

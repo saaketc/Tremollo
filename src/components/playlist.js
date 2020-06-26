@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import colors from "../config/colors";
 
 const fields = [{ name: "name", label: "Playlist name", type: "text" }];
-const button = { type: "submit", label: "Create new", color: colors.primary };
+const button = { type: "submit", label: "Save", color: colors.primary };
 
 const Playlist = (props) => {
   const { currentUserId, contentId } = props;
