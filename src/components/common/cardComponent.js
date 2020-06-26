@@ -6,10 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import colors from '../../config/colors';
+
 import { Button } from '@material-ui/core';
 import darkTheme from '../../config/themes/dark';
 
@@ -48,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
 export default function CardComponent({ data, primaryData, secondaryData, image, onClick, width })
 {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <Button>
@@ -63,15 +60,11 @@ export default function CardComponent({ data, primaryData, secondaryData, image,
           </Typography>
         </CardContent>
         <div className={classes.controls}>
-          {/* <IconButton aria-label="previous" style={{color: colors.primary}}>
-            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-          </IconButton> */}
+         
           <IconButton aria-label="play/pause" onClick={() => onClick ? onClick(data) : null}>
             <PlayArrowIcon className={classes.playIcon} />
           </IconButton>
-          {/* <IconButton aria-label="next"  style={{color: colors.primary}}>
-            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-          </IconButton> */}
+        
         </div>
       </div>
       <CardMedia
