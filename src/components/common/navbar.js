@@ -167,7 +167,7 @@ function Navbar(props) {
         }
         
      
-        {!user && (
+        {/* {!user && (
           <>
             
               <Button
@@ -188,7 +188,7 @@ function Navbar(props) {
               
            
           </>
-        )}
+        )} */}
         {user && (
           <>
               <IconButton>
