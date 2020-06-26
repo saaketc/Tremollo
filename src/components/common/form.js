@@ -60,9 +60,17 @@ export default function Form(props) {
     redirectUrl,
     noIcon,
   } = props;
+
   const [formFields, setFormFields] = React.useState({});
+  const [disableSubmit, setDisableSubmit] = React.useState(true);
+
 
   const handleChange = ({ currentTarget }) => {
+    if (currentTarget.value.trim() === '') {
+      setDisableSubmit(true);
+    }
+    else setDisableSubmit(false);
+
     let form = { ...formFields };
     form[currentTarget.name] = currentTarget.value;
     setFormFields(form);
@@ -143,6 +151,7 @@ export default function Form(props) {
             type={button.type}
             fullWidth
             style={buttonStyleOpen}
+            disabled={disableSubmit}
           >
             {button.label}
           </Button>
