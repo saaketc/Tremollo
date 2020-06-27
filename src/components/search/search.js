@@ -6,7 +6,6 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import { useHistory } from "react-router-dom";
 
-import colors from "../../config/colors";
 import darkTheme from "../../config/themes/dark";
 
 const useStyles = makeStyles((theme) => ({
@@ -51,7 +50,10 @@ export default function SearchBar() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    return history.push(`/search?q=${searchTerm}`);
+    let search = searchTerm.trim();
+    if (search === '')
+      return;
+    return history.push(`/search?q=${search}`);
   };
 
   return (
@@ -68,7 +70,7 @@ export default function SearchBar() {
         className={classes.iconButton}
         aria-label="search"
       >
-        <SearchIcon />
+        <SearchIcon style={{color: darkTheme.textColor}}/>
       </IconButton>
     </Paper>
   );
