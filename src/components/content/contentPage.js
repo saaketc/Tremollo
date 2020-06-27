@@ -31,6 +31,7 @@ const ContentPage = (props) => {
       try {
         const { data } = await dataServices.getData("content/withUser", {
           contentId: contentId,
+          userId: currentUser.userId
         });
         // console.log("content data", data.body);
         setContent(data.body);
@@ -40,7 +41,7 @@ const ContentPage = (props) => {
       }
     };
     fetchContent();
-  }, [contentId]);
+  }, [contentId, currentUser]);
 
   const handleUserClick = () => {
     return history.push(`/profile/${window.btoa(content.userId)}`);
@@ -113,15 +114,7 @@ const ContentPage = (props) => {
                 {/* Follow component */}
               
               </Grid>
-              <Grid item xs={12} md={5} lg={5}>
-                <Typography variant="h4" style={styles.title}>
-                  {content.title}
-                </Typography>
-                
-                <Typography variant="h6" style={styles.title}>
-                  {content.caption}
-                </Typography>
-              </Grid>
+           
               <Grid item xs={12} md={3} lg={3}>
               <Follow
                   followerId={currentUser.userId}
@@ -132,7 +125,14 @@ const ContentPage = (props) => {
                 <br/>
                 <small style={{color: colors.primary}}>{`${content.followers} fans`}</small>
                 </Grid>
-            </Grid>
+          </Grid>
+                <Typography variant="h4" style={styles.title}>
+                  {content.title}
+                </Typography>
+                
+                <Typography variant="h6" style={styles.title}>
+                  {content.caption}
+                </Typography>
             <br />
             <br />
             <br />
