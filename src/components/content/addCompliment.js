@@ -2,7 +2,7 @@ import React from "react";
 import TextForm from "../common/textForm";
 import dataServices from "../../services/dataServices";
 import { toast } from "react-toastify";
-import { Button } from "@material-ui/core";
+import { Button, Container, Grid } from "@material-ui/core";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 
 const AddCompliment = ({ complimentingUser, contentId, postSubmit  }) => {
@@ -14,9 +14,12 @@ const AddCompliment = ({ complimentingUser, contentId, postSubmit  }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      let text = compliment.trim();
+      if (text === '')
+        return;
       const toSubmit = {
         contentId,
-        text: compliment,
+        text,
         userId: complimentingUser.userId,
       };
       const { data } = await dataServices.postData(
@@ -30,9 +33,11 @@ const AddCompliment = ({ complimentingUser, contentId, postSubmit  }) => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <TextForm
+    <Container>
+      <form onSubmit={handleSubmit} >
+       <Grid container spacing={2}>
+          <Grid item xs={12} md={6} lg={6}>
+          <TextForm
           label={`Write a compliment as ${complimentingUser.username}`}
           type="text"
           name="compliment"
@@ -41,10 +46,14 @@ const AddCompliment = ({ complimentingUser, contentId, postSubmit  }) => {
           value={compliment}
           onChange={handleChange}
               />
-              <br/>
-              <Button type='submit' style={buttonStyleOpen}>Add</Button>
+          </Grid>
+          <Grid item xs={12} md={4} lg={4}>
+          
+            <Button type='submit' style={buttonStyleOpen}>Add</Button>
+            </Grid>
+          </Grid>
       </form>
-    </div>
+    </Container>
   );
 };
 
