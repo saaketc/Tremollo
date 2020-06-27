@@ -262,7 +262,7 @@ const Profile = (props) => {
 
       <Grid container spacing={4}>
         {tab === 0 && (
-          <UserContent onClick={handleAlbumClick} content={content} />
+          <UserContent onClick={handleAlbumClick} content={content.reverse()} />
         )}
         {tab === 1 && <UserFollowers userId={userId} />}
         {tab === 2 && <UserFollowing userId={userId} />}
