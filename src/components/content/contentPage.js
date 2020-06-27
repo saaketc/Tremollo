@@ -108,7 +108,9 @@ const ContentPage = (props) => {
                         {content.username}
                       </Typography>
                     )}
-                  </Button>
+                </Button>
+                <p style={{color: colors.secondary, marginLeft:'10px'}}>{`${content.followers} fans`}</p>
+                
                 </div>
 
                 {/* Follow component */}
@@ -123,7 +125,6 @@ const ContentPage = (props) => {
                 />
                 <br/>
                 <br/>
-                <small style={{color: colors.primary}}>{`${content.followers} fans`}</small>
                 </Grid>
           </Grid>
                 <Typography variant="h4" style={styles.title}>
