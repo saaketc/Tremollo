@@ -6,8 +6,12 @@ import { toast } from "react-toastify";
 
 const Follow = (props) => {
   const { followerId, followedId, isFollowedByUser } = props;
-  const [follows, setFollows] = React.useState(isFollowedByUser);
+  const [follows, setFollows] = React.useState();
 
+  React.useEffect(() => {
+    setFollows(isFollowedByUser);
+  }, [isFollowedByUser])
+  
   const handleFollow = async () => {
     const oldFollow = follows;
       try {
@@ -20,7 +24,7 @@ const Follow = (props) => {
       });
           setFollows(data.body.followed);
           console.log(data);
-        toast('Fan!');
+        // toast('Fan!');
           
     } catch (e) {
       setFollows(oldFollow);
@@ -31,7 +35,7 @@ const Follow = (props) => {
   return (
       <Button
         onClick={handleFollow}
-        style={buttonStyleOpen}
+        style={follows ? buttonStyleClose : buttonStyleOpen }
       >
         {follows ? 'You are a fan' : 'Be a fan'}
       </Button>

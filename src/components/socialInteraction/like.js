@@ -7,12 +7,13 @@ import dataServices from '../../services/dataServices';
 import { toast } from 'react-toastify';
 
 const Like = ({userId, isLikedByUser, contentId, postLike, likeCount}) => {
-    const [like, setLike] = React.useState(isLikedByUser);
+    const [like, setLike] = React.useState();
     const [count, setCount] = React.useState();
      
     React.useEffect(() => {
         setCount(likeCount);
-    }, [likeCount]
+        setLike(isLikedByUser);
+    }, [likeCount, isLikedByUser]
     )
         
     const handleLike = async () => {
