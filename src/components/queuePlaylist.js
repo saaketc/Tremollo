@@ -32,27 +32,26 @@ const QueuePlaylist = (props) => {
 
   const handleAlbumClick = async (data) => {
     // alert('Clicked');
-    return window.location.href = `/content/${window.btoa(data.contentId)}`;
+    return (window.location.href = `/content/${window.btoa(data.contentId)}`);
   };
-    return (
-      <>
-            {filter(queue, 'contentId', removeContentId).map((f) => (
-    <Grid container spacing={6}>
-          
-        <Grid item xs={12} lg={3} md={3}>
-          <CardComponent
-            data={f}
-            primaryData={f.title}
-            secondaryData={f.username}
-            onClick={handleAlbumClick}
-            image={storageURL + f.thumbnailLink}
-          />
-          <br />
-                    </Grid>
-            </Grid>
-                    
+  return (
+    <>
+      {filter(queue, "contentId", removeContentId).map((f) => (
+        <Grid container spacing={6}>
+          <Grid item xs={12} lg={3} md={3}>
+            <CardComponent
+              data={f}
+              primaryData={f.title}
+              secondaryData={f.username}
+              onClick={handleAlbumClick}
+              image={storageURL + f.thumbnailLink}
+              width={200}
+            />
+            <br />
+          </Grid>
+        </Grid>
       ))}
-            </>
+    </>
   );
 };
 

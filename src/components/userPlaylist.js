@@ -48,8 +48,8 @@ const UserPlaylist = (props) => {
       <Grid container spacing={4}>
         <Grid item xs={12} md={8} lg={8}>
           <Typography variant='h3' className={classes.heading}>
-            {playlist.length > 0 ? ` Enjoy your Playlist ${props.user.firstName} :)`
-              : `You have no playlists ${props.user.firstName} :(`}
+            {playlist.length > 0 ? ` Enjoy the Playlist :)`
+              : `No playlists created yet :(`}
             </Typography>
       <br/>
           <br />

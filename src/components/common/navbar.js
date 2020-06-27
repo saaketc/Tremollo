@@ -17,7 +17,9 @@ import colors from "../../config/colors";
 import Search from "../search/search";
 import logo from "../../logo/logo.svg";
 import UploadButton from "../upload/uploadButton";
-import { buttonStyleOpen, buttonStyleClose } from "../../config/buttonStyle";
+import { buttonStyleOpen } from "../../config/buttonStyle";
+import { Avatar } from "@material-ui/core";
+import { storageURL } from "../../config/storage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,11 +96,15 @@ const useStyles = makeStyles((theme) => ({
   right: {
     marginRight: "30px",
   },
+  pic: {
+    border: `1px solid ${colors.primary}`,
+    padding: '4px'
+  }
 }));
 
 function Navbar(props) {
   const classes = useStyles();
-  const { user, history } = props;
+  const { user } = props;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -114,7 +120,7 @@ function Navbar(props) {
     return props.history.push(`/profile/${window.btoa(user.userId)}`);
   };
   const handlePlaylistClick = () => {
-    return props.history.push(`/myPlaylist/${window.btoa(user.userId)}`);
+    return props.history.push(`/playlist/${window.btoa(user.userId)}`);
   };
   const handleUploadButton = () => {
     return props.history.push('/myMusic/upload');
@@ -122,14 +128,14 @@ function Navbar(props) {
   const handleLogout = () => {
     return props.history.push("/logout");
   };
-  const handleAuthClick = (authType) => {
-    if (authType === "signup") {
-      return history.push("/auth/signup");
-    }
-    if (authType === "login") {
-      return history.push("/auth/login");
-    }
-  };
+  // const handleAuthClick = (authType) => {
+  //   if (authType === "signup") {
+  //     return history.push("/auth/signup");
+  //   }
+  //   if (authType === "login") {
+  //     return history.push("/auth/login");
+  //   }
+  // };
 
   return (
     <div className={classes.root}>
@@ -215,8 +221,9 @@ function Navbar(props) {
               color="primary"
               style={{ marginLeft: "20px" }}
             >
-              <AccountCircle
-                style={{ color: colors.primary, fontSize: "40px" }}
+                <Avatar
+                  src={storageURL + user.avatarLink}
+                  className={classes.pic}
               />
             </IconButton>
             <Menu

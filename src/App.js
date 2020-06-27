@@ -93,7 +93,7 @@ function App() {
           />
           
         <ProtectedRoute
-          path="/myPlaylist/:userId"
+          path="/playlist/:userId"
          component={UserPlaylist}
           />
           

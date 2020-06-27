@@ -5,7 +5,7 @@ import ShareIcon from '@material-ui/icons/Share';
 
 import { buttonStyleOpen } from '../../config/buttonStyle';
 // import { dark } from '@material-ui/core/styles/createPalette';
-import dark from '../../config/themes/dark';
+import darkTheme from '../../config/themes/dark';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
     width: 400,
-    backgroundColor: dark.backgroundCard,
+    backgroundColor: darkTheme.backgroundCard,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -58,7 +58,8 @@ export default function SimpleModal({label, title, secTitle}) {
   return (
     <div>
       <ShareIcon
-      onClick={handleOpen}/>
+        onClick={handleOpen}
+        style={{color: darkTheme.textColor}}/>
       <Modal
         open={open}
         onClose={handleClose}

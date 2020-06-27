@@ -45,13 +45,13 @@ const Playlist = (props) => {
 
   const handlePlaylistAddClick = async (playlistItem) => {
     try {
-      const { data } = await dataService.postData("playlist/add", {
+     await dataService.postData("playlist/add", {
         playlistId: playlistItem.playlistId,
         contentId,
       });
       toast.error(`Added to ${playlistItem.name}`);
 
-      console.log(data.body);
+      // console.log(data.body);
     } catch (e) {
       toast.error("Ooops something went wrong!");
 

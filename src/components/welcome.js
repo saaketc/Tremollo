@@ -76,7 +76,7 @@ const Welcome = () => {
         <Grid item>
         <SignupButton
         label='Get Started'
-        buttonStyle={buttonStyleOpen}/>
+        buttonStyle={buttonStyleClose}/>
         </Grid>
         <Grid item>
       <LoginButton

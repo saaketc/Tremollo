@@ -1,12 +1,12 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Container } from '@material-ui/core';
 
 import CardComponent from '../common/cardComponent';
 import { storageURL } from '../../config/storage';
 
 const UserContent = ({content, onClick}) => {
    return (
-       <div>
+       <Container maxWidth='100%'>
             
            {content.length === 0 &&
               <Typography variant='h5'>
@@ -26,14 +26,15 @@ const UserContent = ({content, onClick}) => {
                 primaryData={c.title}
                 secondaryData={`${c.likesCount} likes`}
                 onClick={onClick}
-                image={storageURL + c.thumbnailLink}
+                  image={storageURL + c.thumbnailLink}
+                  width={300}
               />
                 </Grid>
     
               ))}
           </Grid>
             
-            </div>
+            </Container>
     )
 }
 

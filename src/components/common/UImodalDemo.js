@@ -109,7 +109,7 @@ export default function UImodalDemo({
   return (
     <div>
       <IconButton aria-label="add to playlist" onClick={handleClickOpen}>
-        <PlaylistAddIcon />
+        <PlaylistAddIcon style={{color: darkTheme.textColor}}/>
       </IconButton>
       <UImodal
         selectedValue={selectedValue}

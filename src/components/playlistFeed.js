@@ -1,14 +1,12 @@
 import React from 'react'
 import CardComponent from './common/cardComponent';
 import { Typography, Container, Grid } from "@material-ui/core";
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 
-import playlistIllus2 from "../illustrations/playlistPage2.svg";
 import { removeSlug } from '../utils/utilfunctions';
 import darkTheme from '../config/themes/dark';
-
-const storageURL = 'https://eddy-bucket-0-1.s3.ap-south-1.amazonaws.com/';
+import { storageURL } from '../config/storage';
 
 const styles = makeStyles(theme => ({
     heading: {

@@ -73,8 +73,8 @@ const ProfilePicUpload = (props) => {
   };
   return (
     <Container>
-      <Typography variant="h4" className={classes.title}>
-        {user.firstName} upload your profile pic
+      <Typography variant="h5" className={classes.title}>
+      {location.state.from === 'Profile' ? `${user.firstName} update your profile pic here!` :  `Congrats ${user.firstName}! you are now a tremoller....`}
       </Typography>
       <br />
       <Grid container spacing={6}>
