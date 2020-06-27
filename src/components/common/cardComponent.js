@@ -49,10 +49,10 @@ export default function CardComponent({ data, primaryData, secondaryData, image,
 
   return (
     <Button>
-    <Card className={classes.root} onClick={()=> onClick ? onClick(data) : null}>
+    <Card   className={classes.root} onClick={()=> onClick ? onClick(data) : null}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component="h6" variant="h6">
+          <Typography component="h8" variant="h8">
                   {primaryData}   
                   </Typography>
           <Typography variant="subtitle1">
