@@ -70,7 +70,7 @@ const Profile = (props) => {
   const history = useHistory();
   // const user = props.location.state;
   const { user: currentUser } = props;
-  const  userId  = window.atob(props.match.params.userId);
+  const userId = window.atob(props.match.params.userId);
 
   React.useEffect(() => {
     const userDetailsPromise = dataService.getData("user", {
@@ -117,6 +117,9 @@ const Profile = (props) => {
     setTab(value);
   };
 
+  const handlePlaylistClick = () => {
+    return props.history.push(`/playlist/${window.btoa(userId)}`);
+  };
   return (
     <Container>
       <br />
@@ -130,68 +133,96 @@ const Profile = (props) => {
                 : null
             }
           >
-            {
-              loading ?
-                <Skeleton
-              animation="wave"
-              variant="circle"
-              width={250}
-              height={250}
+            {loading ? (
+              <Skeleton
+                animation="wave"
+                variant="circle"
+                width={250}
+                height={250}
               />
-                :
-                <img
+            ) : (
+              <img
                 src={storageURL + userDetails.avatarLink}
                 alt="profile"
                 className={classes.profilePic}
               />
-          }
-           
+            )}
           </Button>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
-          {loading ?
-            <Skeleton animation="wave" height={30} width="80%" style={{ marginBottom: 6 }} />
-            :
+          {loading ? (
+            <Skeleton
+              animation="wave"
+              height={30}
+              width="80%"
+              style={{ marginBottom: 6 }}
+            />
+          ) : (
             <>
-            <Typography variant="h4" className={classes.heading} style={{ fontWeight: "400" }}>
-            {`${userDetails.username}`}
-              </Typography>
-              <Typography variant="h6" className={classes.heading} style={{ fontWeight: "300" }}>
-            {` ${userDetails.firstName} ${userDetails.lastName} `}
-              </Typography>
-              </>
-          }
-        
-          {loading ?
-            <Skeleton animation="wave" height={30} width="40%" style={{ marginBottom: 6 }} />
-            : (
-              <>
               <Typography
+                variant="h4"
+                className={classes.heading}
+                style={{ fontWeight: "400" }}
+              >
+                {`${userDetails.username}`}
+              </Typography>
+              <Typography
+                variant="h6"
+                className={classes.heading}
+                style={{ fontWeight: "300" }}
+              >
+                {` ${userDetails.firstName} ${userDetails.lastName} `}
+              </Typography>
+            </>
+          )}
+
+          {loading ? (
+            <Skeleton
+              animation="wave"
+              height={30}
+              width="40%"
+              style={{ marginBottom: 6 }}
+            />
+          ) : (
+            <>
+              <Typography
+                className={classes.title}
+                variant="h8"
+                style={{ fontWeight: "500", color: colors.secondary }}
+              >
+                {getUserType(userDetails.type)}
+              </Typography>
+              <br />
+              <br />
+              <Typography
+                variant="h7"
+                className={classes.heading}
+                style={{ fontWeight: "400", color: colors.secondary }}
+              >
+                {userDetails.about}
+              </Typography>
+            </>
+          )}
+
+          <br />
+          <br />
+          {loading ? (
+            <Skeleton
+              animation="wave"
+              height={30}
+              width="40%"
+              style={{ marginBottom: 6 }}
+            />
+          ) : (
+            <Typography
+              variant="h6"
               className={classes.title}
-              variant="h8"
-              style={{ fontWeight: "500", color: colors.secondary }}
+              style={{ fontWeight: "400" }}
             >
-              {getUserType(userDetails.type)}
+              {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
             </Typography>
-            <br />
-            <br />
-            <Typography variant="h7" className={classes.heading} style={{ fontWeight: "400", color: colors.secondary }}>
-              {userDetails.about}
-                </Typography>
-                </>
-            )
-          
-}
-         
-          <br />
-          <br />
-          { loading ?
-            <Skeleton animation="wave" height={30} width="40%" style={{ marginBottom: 6 }} /> :
-            <Typography variant="h6" className={classes.title} style={{ fontWeight: "400" }}>
-            {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
-          </Typography>
-            }
-         
+          )}
+
           <br />
           {Number(currentUser.userId) === Number(userId) ? (
             <div style={{ display: "block" }}>
@@ -206,17 +237,18 @@ const Profile = (props) => {
                 Upload music
               </Button>
             </div>
-          )
-            :
-            (
+          ) : (
+            <div>
               <Follow
-            followerId={currentUser.userId}
-            followedId={userId}
-            isFollowedByUser= {false}
-                  />
-            
-            )
-        }
+                followerId={currentUser.userId}
+                followedId={userId}
+                isFollowedByUser={false}
+              />
+                <Button onClick={handlePlaylistClick} style={buttonStyleClose} className={classes.space}>
+                {`${userDetails.username}'s playlist`}
+              </Button>
+            </div>
+          )}
         </Grid>
       </Grid>
       <br />
@@ -229,7 +261,9 @@ const Profile = (props) => {
       <br />
 
       <Grid container spacing={4}>
-        {tab === 0 && <UserContent onClick={handleAlbumClick} content={content} />}
+        {tab === 0 && (
+          <UserContent onClick={handleAlbumClick} content={content} />
+        )}
         {tab === 1 && <UserFollowers userId={userId} />}
         {tab === 2 && <UserFollowing userId={userId} />}
       </Grid>
