@@ -7,6 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { useHistory } from "react-router-dom";
 
 import colors from "../../config/colors";
+import darkTheme from "../../config/themes/dark";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     maxWidth: 900,
     border: '1 px solid white',
-    borderRadius: '50px'
+    borderRadius: '50px',
+    background: darkTheme.backgroundCard
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -23,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
       width: 200,
     },
-    
   },
   iconButton: {
     padding: 10,
@@ -32,6 +33,12 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     margin: 4,
   },
+  inputText: {
+    color: darkTheme.textColor,
+    // textAlign: 'center',
+    marginTop: '5px',
+    marginLeft: '20px'
+  }
 }));
 
 export default function SearchBar() {
@@ -52,7 +59,7 @@ export default function SearchBar() {
       <InputBase
         className={classes.input}
         placeholder="Search for content or user..."
-        inputProps={{ "aria-label": "Search for content or user..." }}
+        inputProps={{ "aria-label": "Search for content or user...", className: classes.inputText}}
         value={searchTerm}
         onChange={handleChange}
       />
