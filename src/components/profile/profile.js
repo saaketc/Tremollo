@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
   profilePic: {
     borderRadius: "50%",
     border: `2px solid ${colors.primary}`,
-    width: 250,
-    height: 250,
+    width: 200,
+    height: 200,
     verticalAlign: "middle",
     "&:hover": {
       opacity: 0.3,
@@ -153,27 +153,29 @@ const Profile = (props) => {
             <Skeleton animation="wave" height={30} width="80%" style={{ marginBottom: 6 }} />
             :
             <>
-            <Typography variant="h2" className={classes.heading} style={{ fontWeight: "500" }}>
-            {userDetails.username}
+            <Typography variant="h4" className={classes.heading} style={{ fontWeight: "400" }}>
+            {`${userDetails.username}`}
               </Typography>
-              <Typography variant="h5" className={classes.heading} style={{ fontWeight: "500" }}>
+              <Typography variant="h6" className={classes.heading} style={{ fontWeight: "300" }}>
             {` ${userDetails.firstName} ${userDetails.lastName} `}
               </Typography>
               </>
-        }
+          }
+        
           {loading ?
             <Skeleton animation="wave" height={30} width="40%" style={{ marginBottom: 6 }} />
             : (
               <>
               <Typography
               className={classes.title}
-              variant="h6"
-              style={{ fontWeight: "500" }}
+              variant="h8"
+              style={{ fontWeight: "500", color: colors.secondary }}
             >
               {getUserType(userDetails.type)}
             </Typography>
             <br />
-            <Typography variant="h5" className={classes.heading} style={{ fontWeight: "400" }}>
+            <br />
+            <Typography variant="h7" className={classes.heading} style={{ fontWeight: "400", color: colors.secondary }}>
               {userDetails.about}
                 </Typography>
                 </>
@@ -182,9 +184,10 @@ const Profile = (props) => {
 }
          
           <br />
+          <br />
           { loading ?
             <Skeleton animation="wave" height={30} width="40%" style={{ marginBottom: 6 }} /> :
-            <Typography variant="h5" className={classes.title} style={{ fontWeight: "400" }}>
+            <Typography variant="h6" className={classes.title} style={{ fontWeight: "400" }}>
             {` ${userStats.uploads} Shots  |  ${userStats.followers} Fans  |  Fan of ${userStats.following} `}
           </Typography>
             }
@@ -218,9 +221,6 @@ const Profile = (props) => {
       </Grid>
       <br />
       <br />
-      <hr />
-      <br />
-
       <CenteredTabs
         labels={["Shots", "Fans", "Fan of"]}
         afterTabSet={afterTabSet}
