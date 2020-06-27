@@ -1,16 +1,18 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import darkTheme from "../../config/themes/dark";
-import { FilledInput } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   input: {
-   color: 'white'
+    color: 'white',
+    background: darkTheme.backgroundCard
+    
   },
   label: {
-    color:'white'
+    color: 'white',
+    
   },
 
   paper: {
@@ -18,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    color: darkTheme.textColor,
   },
   avatar: {
     margin: theme.spacing(1),

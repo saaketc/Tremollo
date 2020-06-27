@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import darkTheme from '../../config/themes/dark';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,7 +12,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   input: {
-    color: 'white'
+    color: 'white',
+    background: darkTheme.backgroundCard
+
    },
    label: {
      color:'white'
