@@ -1,13 +1,13 @@
 import React from "react";
 import queryString from "query-string";
 import dataService from "../services/dataServices";
-import { Typography, Container, Grid, Button } from "@material-ui/core";
+import { Typography, Container, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import MediaCard from "./common/mediaCard";
 import { useHistory } from "react-router-dom";
 import { storageURL } from "../config/storage";
 import colors from "../config/colors";
 import CardComponent from "./common/cardComponent";
+import UserTemplate from "./common/userTemplate";
 
 const styles = makeStyles((theme) => ({
   heading: {
@@ -48,9 +48,6 @@ const SearchResults = (props) => {
       .catch((error) => console.log(error));
   }, [q]);
 
-  const handleUserClick = (user) => {
-    return history.push(`/profile/${window.btoa(user.userId)}`);
-  };
   const handleAlbumClick = async (data) => {
     // alert('Clicked');
     return history.push(`/content/${window.btoa(data.contentId)}`);
@@ -80,19 +77,12 @@ const SearchResults = (props) => {
             ))}
           </Grid>
           <br />
+          <br />
           <Grid container spacing={6}>
             {users.map((user) => (
               <Grid item xs={12} lg={3} md={3}>
-                <Button onClick={() => handleUserClick(user)}>
-                  <img
-                    className={classes.pic}
-                    src={storageURL + user.avatarLink}
-                    alt={`${user.firstName} ${user.lastName}`}
-                  />
-                  <Typography variant="h7" className={classes.heading}>
-                    {`  ${user.firstName} ${user.lastName}`}
-                  </Typography>
-                </Button>
+                <UserTemplate
+                  user={user}/>
               </Grid>
             ))}
           </Grid>
