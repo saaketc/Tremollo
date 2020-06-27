@@ -1,5 +1,6 @@
 import React from 'react'
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 
 import colors from '../../config/colors';
 import dataServices from '../../services/dataServices';
@@ -36,7 +37,15 @@ const Like = ({userId, isLikedByUser, contentId, postLike, likeCount}) => {
     }
 
     return (
-        <FavoriteIcon onClick={handleLike} style={{color: like ? colors.primary: ''}}/>
+        <>
+            {
+                like ? 
+                    <FavoriteIcon onClick={handleLike} style={{ color: colors.primary }} />
+                    :
+                    <FavoriteBorderSharpIcon onClick={handleLike}  />
+            }
+          
+            </>
     )
 }
 

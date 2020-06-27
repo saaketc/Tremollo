@@ -6,11 +6,13 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import Like from "../socialInteraction/like";
 import Playlist from "../playlist";
 import Share from "../socialInteraction/share";
+import darkTheme from "../../config/themes/dark";
 
 const useStyles = makeStyles({
   root: {
     width: 800,
     paddingTop: "10px",
+    background: darkTheme.background
   },
 });
 
@@ -38,6 +40,7 @@ export default function BottomNav({ data }) {
     >
       <BottomNavigationAction
         label={likeCount}
+        style={{color: darkTheme.textColor}}
         icon={
           <Like
             userId={data.followerId}
