@@ -18,10 +18,13 @@ import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 import colors from "../../config/colors";
 import { buttonStyleOpen } from "../../config/buttonStyle";
+import darkTheme from "../../config/themes/dark";
 
 const useStyles = makeStyles((theme) => ({
   input: {
     color: "white",
+    background: darkTheme.backgroundCard
+
   },
   label: {
     color: "white",

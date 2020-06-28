@@ -6,7 +6,7 @@ import FirstPhase from "./firstPhase";
 import SecondPhase from "./secondPhase";
 import dataService from "../../../services/dataServices";
 import { toast } from "materialize-css";
-import "../../../styles/signup.css";
+import "../../../styles/auth.css";
 import background from "../../../illustrations/background.svg";
 
 const Signup = (props) => {
