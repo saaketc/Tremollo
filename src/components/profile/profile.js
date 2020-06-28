@@ -65,6 +65,7 @@ const Profile = (props) => {
   const [content, setContent] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [tab, setTab] = React.useState(0);
+  const [isFollowedByUser, setIsFollowedByUser] = React.useState(0);
 
   const classes = useStyles();
   const history = useHistory();
@@ -113,6 +114,9 @@ const Profile = (props) => {
     return history.push(`/content/${window.btoa(data.contentId)}`);
   };
 
+  const handleFollows = follows => {
+    setIsFollowedByUser(follows);
+}
   const afterTabSet = (value) => {
     setTab(value);
   };
@@ -242,7 +246,7 @@ const Profile = (props) => {
               <Follow
                 followerId={currentUser.userId}
                 followedId={userId}
-                isFollowedByUser={false}
+                isFollowedByUser={isFollowedByUser}
               />
                 <Button onClick={handlePlaylistClick} style={buttonStyleClose} className={classes.space}>
                 {`${userDetails.username}'s playlist`}
@@ -254,17 +258,18 @@ const Profile = (props) => {
       <br />
       <br />
       <CenteredTabs
-        labels={["Shots", "Fans", "Fan of"]}
+        labels={["Fans", "Shots", "Fan of"]}
         afterTabSet={afterTabSet}
       />
       <br />
       <br />
 
       <Grid container spacing={4}>
-        {tab === 0 && (
+        {tab === 0 && <UserFollowers userId={userId} currentUserId={currentUser.userId} isFollows={handleFollows}/>}
+       
+        {tab === 1 && (
           <UserContent onClick={handleAlbumClick} content={content.reverse()} />
         )}
-        {tab === 1 && <UserFollowers userId={userId} />}
         {tab === 2 && <UserFollowing userId={userId} />}
       </Grid>
     </Container>
