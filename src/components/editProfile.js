@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextForm from "./common/textForm";
 import colors from "../config/colors";
 import dataService from "../services/dataServices";
-import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import darkTheme from "../config/themes/dark";
 import { setUser } from "../services/userServices";
@@ -36,13 +35,11 @@ const useStyles = makeStyles((theme) => ({
 
 const EditProfile = ({ user, location }) => {
   const classes = useStyles();
-  const history = useHistory();
   const { followersCount } = location.state;
   
   const [userNew, setUserNew] = React.useState({
     firstName: user.firstName,
     lastName: user.lastName,
-    username: user.username,
     email: user.email,
     password: user.password,
     about: user.about,
@@ -62,6 +59,7 @@ const EditProfile = ({ user, location }) => {
        
         gender: user.gender,
         dateOfBirth: user.dateOfBirth,
+        username: user.username,
         type: user.type,
         followersCount,
         userId: user.userId,
@@ -91,16 +89,7 @@ const EditProfile = ({ user, location }) => {
       <br />
 
       <form onSubmit={handleSubmit} autoComplete="off">
-        <TextForm
-          label="Username"
-          fullWidth={true}
-          type="text"
-          name="username"
-          required={true}
-          value={userNew.username}
-          onChange={handleChange}
-        />
-        <br />
+        
         <TextForm
           label="First Name"
           fullWidth={true}
