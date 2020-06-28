@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Grid, Container, Avatar, Button } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
-import { fullDate } from "../../utils/utilfunctions";
+import { fullDate, encode } from "../../utils/utilfunctions";
 import AddCompliment from "./addCompliment";
 import colors from "../../config/colors";
 
@@ -45,7 +45,7 @@ const Compliments = ({ contentId, currentUser }) => {
   }, [contentId]);
 
   const handleComplimentingUserClick = ({ userId }) => {
-    return history.push(`/profile/${window.btoa(userId)}`);
+    return history.push(`/profile/${encode(userId)}`);
   };
   const handlePostComplimentSubmit = (compliment) => {
     let addedCompliment = {

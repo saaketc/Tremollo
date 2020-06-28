@@ -14,6 +14,7 @@ import UserFollowers from "./userFollowers";
 import UserFollowing from "./userFollowing";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Follow from "../socialInteraction/follow";
+import { decode, encode } from "../../utils/utilfunctions";
 
 const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
@@ -71,7 +72,7 @@ const Profile = (props) => {
   const history = useHistory();
   // const user = props.location.state;
   const { user: currentUser } = props;
-  const userId = window.atob(props.match.params.userId);
+  const userId = decode(props.match.params.userId);
 
   React.useEffect(() => {
     const userDetailsPromise = dataService.getData("user", {
@@ -111,7 +112,7 @@ const Profile = (props) => {
   };
 
   const handleAlbumClick = async (data) => {
-    return history.push(`/content/${window.btoa(data.contentId)}`);
+    return history.push(`/content/${encode(data.contentId)}`);
   };
 
   const handleFollows = follows => {
@@ -122,7 +123,7 @@ const Profile = (props) => {
   };
 
   const handlePlaylistClick = () => {
-    return props.history.push(`/playlist/${window.btoa(userId)}`);
+    return props.history.push(`/playlist/${encode(userId)}`);
   };
   return (
     <Container>

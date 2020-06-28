@@ -2,16 +2,17 @@ import React from "react";
 import Grid from '@material-ui/core/Grid';
 import CardComponent from "./common/cardComponent";
 import { Typography, Container } from "@material-ui/core";
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 import dataService from "../services/dataServices";
-import { randInt } from "../utils/utilfunctions";
+import { randInt, decode } from "../utils/utilfunctions";
 import playlistIllus from "../illustrations/playlistPage.svg";
 import t1 from '../illustrations/thumbnail.svg';
 import t2 from '../illustrations/thumbnail_2.svg';
 import t3 from '../illustrations/thumbnail_3.svg';
 import { createSlug } from '../utils/utilfunctions';
 import darkTheme from '../config/themes/dark';
+import { storageURL } from "../config/storage";
 
 const thumbnail = [t1, t2, t3];
 const styles = makeStyles(theme => ({
@@ -20,11 +21,10 @@ const styles = makeStyles(theme => ({
     color: darkTheme.textColor
   }
 }));
-const storageURL = 'https://eddy-bucket-0-1.s3.ap-south-1.amazonaws.com/';
 
 const UserPlaylist = (props) => {
   const [playlist, setPlaylist] = React.useState([]);
-  const  userId  = window.atob(props.match.params.userId);
+  const  userId  = decode(props.match.params.userId);
   const classes = styles();
 
   React.useEffect(() => {

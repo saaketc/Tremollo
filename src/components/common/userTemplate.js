@@ -3,12 +3,13 @@ import { Button, Avatar, Typography } from '@material-ui/core'
 import { storageURL } from '../../config/storage'
 import darkTheme from '../../config/themes/dark';
 import { useHistory } from "react-router-dom";
+import { encode } from '../../utils/utilfunctions';
 
 const UserTemplate = ({user }) => {
   const history = useHistory();
     
     const handleClick = (user) => {
-        return history.push(`/profile/${window.btoa(user.userId)}`);
+        return history.push(`/profile/${encode(user.userId)}`);
     };
     
     return (

@@ -4,7 +4,7 @@ import { Typography, Container, Grid } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 
-import { removeSlug } from '../utils/utilfunctions';
+import { removeSlug, encode } from '../utils/utilfunctions';
 import darkTheme from '../config/themes/dark';
 import { storageURL } from '../config/storage';
 
@@ -22,7 +22,7 @@ const PlaylistFeed = (props) => {
     const history = useHistory();
 
     const handleAlbumClick = (content) => {
-        return history.push(`/content/${window.btoa(content.contentId)}`);
+        return history.push(`/content/${encode(content.contentId)}`);
 
     }
   return (

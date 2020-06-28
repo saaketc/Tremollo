@@ -35,7 +35,7 @@ const UserFollowers = ({ userId, currentUserId, isFollows }) => {
       }
     };
     getFollowers();
-  }, [userId]);
+  }, [userId, currentUserId, isFollows]);
 
  
   return (

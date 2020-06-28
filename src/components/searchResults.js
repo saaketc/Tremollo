@@ -8,6 +8,7 @@ import { storageURL } from "../config/storage";
 import colors from "../config/colors";
 import CardComponent from "./common/cardComponent";
 import UserTemplate from "./common/userTemplate";
+import { encode } from "../utils/utilfunctions";
 
 const styles = makeStyles((theme) => ({
   heading: {
@@ -50,7 +51,7 @@ const SearchResults = (props) => {
 
   const handleAlbumClick = async (data) => {
     // alert('Clicked');
-    return history.push(`/content/${window.btoa(data.contentId)}`);
+    return history.push(`/content/${encode(data.contentId)}`);
   };
 
   return (

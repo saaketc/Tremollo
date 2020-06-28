@@ -64,11 +64,21 @@ export const removeSlug = (string) => {
 };
 
 export const filter = (array, property, filteringId) => {
-  return array.filter(a => a[property] !== filteringId);
-}
+  return array.filter((a) => a[property] !== filteringId);
+};
 
 export const fullDate = (date) => {
   return ` ${new Date(date).getDate()}, ${month(
     new Date(date).getMonth()
-  )} ${new Date(date).getFullYear()}`
-}
+  )} ${new Date(date).getFullYear()}`;
+};
+
+export const encode = (data) => {
+  let enc = window.btoa(data);
+  return encodeURIComponent(enc);
+};
+
+export const decode = (data) => {
+  let dec = decodeURIComponent(data);
+  return window.atob(dec);
+};

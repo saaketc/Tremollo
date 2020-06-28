@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import dataServices from "../../services/dataServices";
 import ReactLoading from "react-loading";
-import { useHistory } from "react-router-dom";
 import { Typography, Grid, Container } from "@material-ui/core";
 
 import darkTheme from "../../config/themes/dark";
@@ -11,7 +10,6 @@ const ContentLikes = ({ contentId }) => {
   const [likedUsers, setLikedUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const history = useHistory();
 
   useEffect(() => {
     const fetchlikedUsers = async () => {

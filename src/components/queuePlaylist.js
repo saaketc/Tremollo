@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
-import { filter } from "../utils/utilfunctions";
+import { filter, encode } from "../utils/utilfunctions";
 
 const QueuePlaylist = (props) => {
   const { user, removeContentId } = props;
@@ -30,7 +30,7 @@ const QueuePlaylist = (props) => {
 
   const handleAlbumClick = async (data) => {
     // alert('Clicked');
-    return (window.location.href = `/content/${window.btoa(data.contentId)}`);
+    return (window.location.href = `/content/${encode(data.contentId)}`);
   };
   return (
     <>

@@ -16,13 +16,14 @@ import ContentLikes from "./contentLikes";
 import { smallPicStyle } from "../../config/imageStyles";
 import CenteredTabs from "../common/centredTabs";
 import colors from "../../config/colors";
+import { encode, decode } from "../../utils/utilfunctions";
 
 const ContentPage = (props) => {
   const [content, setContent] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [tab, setTab] = React.useState(0);
 
-  const contentId = window.atob(props.match.params.contentId);
+  const contentId = decode(props.match.params.contentId);
   const { user: currentUser } = props;
   const history = useHistory();
 
@@ -44,7 +45,7 @@ const ContentPage = (props) => {
   }, [contentId, currentUser]);
 
   const handleUserClick = () => {
-    return history.push(`/profile/${window.btoa(content.userId)}`);
+    return history.push(`/profile/${encode(content.userId)}`);
   };
   const afterTabSet = (value) => {
     setTab(value);
