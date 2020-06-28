@@ -48,7 +48,7 @@ const UserFollowing = ({ userId }) => {
   }, [userId]);
 
   return (
-    <Container maxWidth='100%'>
+    <Container maxWidth='xl'>
       
           {following.length === 0 &&
               <Typography variant='h5'>

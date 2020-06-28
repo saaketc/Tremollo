@@ -54,7 +54,7 @@ const SearchResults = (props) => {
   };
 
   return (
-    <Container maxWidth='100%'>
+    <Container maxWidth='xl'>
       {content.length > 0 || users.length > 0 ? (
         <>
           <Typography variant="h4" className={classes.heading}>

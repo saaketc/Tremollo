@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Grid, Typography } from "@material-ui/core";
-import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Hidden from "@material-ui/core/Hidden";
 import colors from "../config/colors";
 import musicIllus from "../illustrations/compose.svg";
 import musicLoveIllus from "../illustrations/music_love.svg";
 import playlistIllus from "../illustrations/playlist.svg";
-import FavoriteIcon from '@material-ui/icons/Favorite';
+
 import Footer from "./footer";
 import { buttonStyleOpen, buttonStyleClose } from "../config/buttonStyle";
 import SignupButton from "./auth/signupButton";

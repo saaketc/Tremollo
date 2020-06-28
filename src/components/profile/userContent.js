@@ -6,7 +6,7 @@ import { storageURL } from '../../config/storage';
 
 const UserContent = ({content, onClick}) => {
    return (
-       <Container maxWidth='100%'>
+       <Container maxWidth='xl'>
             
            {content.length === 0 &&
               <Typography variant='h5'>

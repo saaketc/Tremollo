@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import dataServices from "../../services/dataServices";
 import ReactLoading from "react-loading";
 import { useHistory } from "react-router-dom";
-import { Typography, Grid, Container, Button, Avatar } from "@material-ui/core";
+import { Typography, Grid, Container } from "@material-ui/core";
 
-import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
 import UserTemplate from "../common/userTemplate";
 
@@ -30,9 +29,6 @@ const ContentLikes = ({ contentId }) => {
     fetchlikedUsers();
   }, [contentId]);
 
-  const handleLikedUserClick = ({ userId }) => {
-    return history.push(`/profile/${window.btoa(userId)}`);
-  };
 
   return (
     <Container>

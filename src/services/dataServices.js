@@ -2,14 +2,6 @@ import axios from 'axios';
 
 const URL = 'https://api.tremollo.co:8080';
 
-// const config = {
-//     headers: {
-//         'Content-Type': 'application/json'
-       
-//     },
-
-// }
-
 
  const getData = (resource, params=null) => {
      return axios.get(`${URL}/${resource}`, {

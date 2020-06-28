@@ -26,7 +26,7 @@ const PlaylistFeed = (props) => {
 
     }
   return (
-      <Container maxWidth='100%'>
+      <Container maxWidth='xl'>
          
                   <Typography variant='h3' className={classes.heading}>{removeSlug(playlistName)}</Typography>
                   <br/>

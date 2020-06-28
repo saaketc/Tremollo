@@ -53,7 +53,7 @@ const UserFollowers = ({ userId }) => {
 
  
   return (
-    <Container maxWidth='100%'>
+    <Container maxWidth='xl'>
      
                     {followers.length === 0 &&
               <Typography variant='h5'>
