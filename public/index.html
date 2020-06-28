@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171092384-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-171092384-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'UA-171092384-1');
-</script>
+      gtag("config", "UA-171092384-1");
+    </script>
 
     <!-- Mobile redirect script -->
-    <script type="text/javascript" src="js/redirection.js"></script><script type="text/javascript">// <![CDATA[
-    SA.redirection_mobile ({
-     mobile_url : "m.tremollo.co/",
-    tablet_redirection: "true",
-    tablet_host: "m.tremollo.co/",
-     });
-    
-    // ]]></script>
-   
+    <script type="text/javascript" src="js/redirection.js"></script>
+    <script type="text/javascript">
+      // <![CDATA[
+      SA.redirection_mobile({
+        mobile_url: "m.tremollo.co/",
+        tablet_redirection: "true",
+        tablet_host: "m.tremollo.co/",
+      });
+
+      // ]]>
+    </script>
 
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <meta name="theme-color" content="#000000" /> -->
     <meta
@@ -37,12 +47,11 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-   
+
     <title>A space for all music lovers and music creators | tremollo</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-   
   </body>
 </html>
