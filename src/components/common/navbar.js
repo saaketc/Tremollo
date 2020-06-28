@@ -207,7 +207,7 @@ function Navbar(props) {
             style={buttonStyleOpen}
             className={classes.right}
           >
-                Playlist
+                My playlist
           </Button>
              </IconButton>
           <div style={{ margin: "20px",display: 'inline'}}>
@@ -242,6 +242,7 @@ function Navbar(props) {
               onClose={handleClose}
             >
               <MenuItem onClick={handleProfile}>Profile</MenuItem>
+              <MenuItem onClick={()=> props.history.push('/feedback')}>Feedback</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
             </div>

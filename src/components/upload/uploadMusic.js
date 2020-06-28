@@ -135,7 +135,6 @@ const UploadMusic = ({ user }) => {
           label="Caption for the content"
           type="text"
           name="caption"
-          multiline={true}
           rows="2"
           required={true}
           fullWidth

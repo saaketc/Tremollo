@@ -25,6 +25,7 @@ import { GlobalStyles } from "./config/globalStyles";
 import { lightTheme, darkTheme } from "./config/Themes";
 import { getUser } from "./services/userServices";
 import ProtectedRoute from "./components/auth/protectedRoute";
+import Feedback from "./components/feedback";
 
 function App() {
   const [user, setUser] = useState({});
@@ -95,6 +96,10 @@ function App() {
         <ProtectedRoute
           path="/playlist/:userId"
          component={UserPlaylist}
+          />
+           <ProtectedRoute
+          path="/feedback"
+         component={Feedback}
           />
           
         <Route
