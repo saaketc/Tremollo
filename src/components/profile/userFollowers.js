@@ -1,48 +1,34 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Typography, Button, Container, Avatar } from "@material-ui/core";
+import { Grid, Typography, Container } from "@material-ui/core";
 
 import dataServices from "../../services/dataServices";
 import { toast } from "react-toastify";
-import colors from "../../config/colors";
-import { useHistory } from "react-router-dom";
 import UserTemplate from "../common/userTemplate";
 
-
-const styles = makeStyles((theme) => ({
-  heading: {
-    fontWeight: "500",
-  },
-  title: {
-    color: colors.white
-  },
-
-  pic: {
-    width: "15%",
-    height: "15%",
-      border: `1 px solid ${colors.primary}`,
-    padding: '3px',
-    borderRadius: "50%",
-    margin: 20,
-  },
-  btn: {
-    backgroundColor: colors.darkCard
-  }
-  
-}));
-const UserFollowers = ({ userId }) => {
+const UserFollowers = ({ userId, currentUserId, isFollows }) => {
   const [followers, setFollowers] = React.useState([]);
-  const classes = styles();
-  const history = useHistory();
 
   React.useEffect(() => {
     const getFollowers = async () => {
       try {
+        let follows = false;
+
         const { data } = await dataServices.getData("user/followers", {
           userId,
         });
         console.log(data.body);
         setFollowers(data.body);
+
+        // to test current user follows this user
+        for (let follower of data.body) {
+          if (currentUserId === follower.userId) {
+            follows = true;
+            break;
+          }
+          else continue;
+        }
+        isFollows(follows);
+        
       } catch (e) {
         console.log(e.message);
         toast.error("Something went wrong!");
