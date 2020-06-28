@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import { useHistory } from "react-router-dom";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
 import { filter } from "../utils/utilfunctions";
 
 const QueuePlaylist = (props) => {
-  const history = useHistory();
   const { user, removeContentId } = props;
   const [queue, setQueue] = useState([]);
 
@@ -16,7 +14,7 @@ const QueuePlaylist = (props) => {
       try {
         const params = {
           pageNumber: 1,
-          rowCount: 10,
+          rowCount: 20,
           userId: user.userId,
         };
         const { data } = await dataService.getData("feed", params);
