@@ -5,7 +5,6 @@ import { useFormik } from "formik";
 import TextForm from "../../common/textForm";
 
 import colors from "../../../config/colors";
-import logo from "../../../logo/logo_lite_crop.png";
 import { buttonStyleOpen } from "../../../config/buttonStyle";
 import { Link } from "react-router-dom";
 
@@ -42,8 +41,9 @@ const FirstPhase = ({ onSubmit }) => {
 
   return (
     <Container>
-      {/* <img src={logo} alt='tremollo music'/> */}
-      <Typography variant="h5" className={classes.title}>
+   
+          <div className='form-div'>
+        <Typography variant="h5" className={classes.title}>
         Join tremollo to explore musical creativity!
       </Typography>
       <br />
@@ -98,6 +98,9 @@ const FirstPhase = ({ onSubmit }) => {
                   </Link>
                 </Grid>
               </Grid>
+      </div>
+          
+        
     </Container>
   );
 };

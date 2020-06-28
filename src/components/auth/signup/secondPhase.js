@@ -10,8 +10,7 @@ import { buttonStyleOpen } from "../../../config/buttonStyle";
 
 const genderOptions = [
   { value: "F", label: "Female" },
-  { value: "M", label: "Male" }
-
+  { value: "M", label: "Male" },
 ];
 const typeOptions = [
   { value: "0", label: "Listener" },
@@ -20,24 +19,24 @@ const typeOptions = [
   { value: "3", label: "Drummer" },
   { value: "4", label: "Singer" },
   { value: "5", label: "Disco Jockie" },
-  { value: "6", label: "Others" }
+  { value: "6", label: "Others" },
 ];
 
 const useStyles = makeStyles((theme) => ({
-    title: {
-    fontWeight: '600'
+  title: {
+    fontWeight: "600",
+  },
+  btn: {
+    color: colors.white,
+    border: `1px solid ${colors.primary}`,
+    backgroundColor: colors.primary,
+    "&:hover": {
+      backgroundColor: colors.primary,
     },
-    btn: {
-        color: colors.white,
-        border: `1px solid ${colors.primary}`,
-        backgroundColor: colors.primary,
-        "&:hover": {
-          backgroundColor: colors.primary,
-        },
-    },
-    left: {
-        alignText: 'left'
-    }
+  },
+  left: {
+    alignText: "left",
+  },
 }));
 
 const FirstPhase = ({ onSubmit }) => {
@@ -59,81 +58,81 @@ const FirstPhase = ({ onSubmit }) => {
   });
 
   return (
-      <Container>
-          {/* <img src={logo} alt='tremollo music'/> */}
-            <Typography variant="h5" className={classes.title}>
-              Share your musical creativity !
-      </Typography>
-      <br />
-         
-      <br />
-          
-      <form onSubmit={formik.handleSubmit} autoComplete='off'>
-        <TextForm
-          label="First Name"
-          fullWidth={true}
-          type="text"
-          name="firstName"
-          required={true}
-          value={formik.values.firstName}
-          onChange={formik.handleChange}
-        />
-        <br />
-        <TextForm
-          label="Last Name"
-          fullWidth={true}
-          type="text"
-          name="lastName"
-          required={true}
-          value={formik.values.lastName}
-          onChange={formik.handleChange}
-        />
-              <br />
-              
-              <TextForm
-          label="Date of Birth"
-          fullWidth={true}
-          type="date"
-          name="dateOfBirth"
-          required={true}
-          value={formik.values.dateOfBirth}
-          onChange={formik.handleChange}
-        />
-              <br />
-              
-        <SelectForm
-          label="Gender"
-          name="gender"
-          value={formik.values.gender}
-          onChange={formik.handleChange}
-          options={genderOptions}
-        />
-              <br />
-
-              <TextForm
-          label="A line about you"
-          fullWidth={true}
-          type="text"
-          name="about"
-          required={true}
-          value={formik.values.about}
-          onChange={formik.handleChange}
-        />
-              <br />
-              <SelectForm
-          label="I am a..."
-          name="type"
-          value={formik.values.type}
-          onChange={formik.handleChange}
-          options={typeOptions}
-        />
+    <Container>
+      <div className="form-div">
+        <Typography variant="h5" className={classes.title}>
+          Share your musical creativity !
+        </Typography>
         <br />
 
-      
+        <br />
 
-                      <Button style={buttonStyleOpen} type="submit">Create account</Button>
-      </form>
-            
+        <form onSubmit={formik.handleSubmit} autoComplete="off">
+          <TextForm
+            label="First Name"
+            fullWidth={true}
+            type="text"
+            name="firstName"
+            required={true}
+            value={formik.values.firstName}
+            onChange={formik.handleChange}
+          />
+          <br />
+          <TextForm
+            label="Last Name"
+            fullWidth={true}
+            type="text"
+            name="lastName"
+            required={true}
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
+          />
+          <br />
+
+          <TextForm
+            label="Date of Birth"
+            fullWidth={true}
+            type="date"
+            name="dateOfBirth"
+            required={true}
+            value={formik.values.dateOfBirth}
+            onChange={formik.handleChange}
+          />
+          <br />
+
+          <SelectForm
+            label="Gender"
+            name="gender"
+            value={formik.values.gender}
+            onChange={formik.handleChange}
+            options={genderOptions}
+          />
+          <br />
+
+          <TextForm
+            label="A line about you"
+            fullWidth={true}
+            type="text"
+            name="about"
+            required={true}
+            value={formik.values.about}
+            onChange={formik.handleChange}
+          />
+          <br />
+          <SelectForm
+            label="I am a..."
+            name="type"
+            value={formik.values.type}
+            onChange={formik.handleChange}
+            options={typeOptions}
+          />
+          <br />
+
+          <Button style={buttonStyleOpen} type="submit">
+            Create account
+          </Button>
+        </form>
+      </div>
     </Container>
   );
 };

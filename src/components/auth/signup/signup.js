@@ -6,7 +6,8 @@ import FirstPhase from "./firstPhase";
 import SecondPhase from "./secondPhase";
 import dataService from "../../../services/dataServices";
 import { toast } from "materialize-css";
-
+import "../../../styles/signup.css";
+import background from "../../../illustrations/background.svg";
 
 const Signup = (props) => {
   const [formValues, setFormValues] = React.useState({});
@@ -40,6 +41,11 @@ const Signup = (props) => {
 
   return (
     <Container maxWidth="xs">
+
+    <div className='container-bg'>
+      <img src={background} className='bg' alt=''/>
+   </div>
+        
       {nextTab === 1 ? (
         <FirstPhase onSubmit={handleFirstPhaseSubmit} />
       ) : (
@@ -49,7 +55,7 @@ const Signup = (props) => {
       <br/>
       <br/>
         
-    </Container>
+      </Container>
   );
 };
 
