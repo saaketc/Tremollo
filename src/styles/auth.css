@@ -28,7 +28,7 @@ div.container-bg {
   top: 0;
   left: 0;
   z-index: -1;
-  background-color: "#1E1E1E";
+  background-color: "#121212";
 }
 
 div.form-div {
@@ -39,7 +39,8 @@ div.form-div {
 div.form-login {
   width: 400px;
   position: relative; /* has to be position relative for left to work, or you could just do margin-left: -50px; too */
-  right: -300px;
+  right: -100px;
+  top: -100px
 }
 @media screen and (max-width: 1024px) {
   /* Specific to this particular image */

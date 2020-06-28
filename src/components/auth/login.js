@@ -1,12 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-
 import dataService from "../../services/dataServices";
 import Form from "../common/form";
 import { toast } from "react-toastify";
 import { setUser } from "../../services/userServices";
 import "../../styles/auth.css";
-import background from "../../illustrations/background.svg";
+import background from "../../illustrations/guitar.jpg";
 
 const Login = (props) => {
   const { state } = props.location;

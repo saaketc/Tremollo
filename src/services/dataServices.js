@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://api.tremollo.co:8080';
+const URL = 'https://api.tremollo.co:8080';
 
 // const config = {
 //     headers: {
