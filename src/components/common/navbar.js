@@ -78,11 +78,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btn: {
-    color: colors.primary,
-    border: `1px solid ${colors.primary}`,
-    "&:hover": {
-      backgroundColor: colors.white,
-    },
+    margin: '20px',
+    paddingLeft: '20px',
+    paddingRight: '20px'
   },
   hover: {
     "&:hover": {
@@ -173,28 +171,16 @@ function Navbar(props) {
         }
         
      
-        {/* {!user && (
-          <>
-            
-              <Button
+        {!user && (
+          
+            <Button
                 style={buttonStyleOpen}
-                onClick={() => handleAuthClick("login")}
+                onClick={() => props.history.push('/about')}
               >
-                Login
+                About us
               </Button>
-            
-            
               
-                <Button
-                  onClick={() => handleAuthClick("signup")}
-                  style={buttonStyleClose}
-                >
-                  Signup
-                </Button>
-              
-           
-          </>
-        )} */}
+        )}
         {user && (
           <>
               <IconButton>
@@ -243,6 +229,7 @@ function Navbar(props) {
             >
               <MenuItem onClick={handleProfile}>Profile</MenuItem>
               <MenuItem onClick={()=> props.history.push('/feedback')}>Feedback</MenuItem>
+              <MenuItem onClick={()=> props.history.push('/about')}>About us</MenuItem>
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
             </div>

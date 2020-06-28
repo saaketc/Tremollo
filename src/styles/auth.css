@@ -42,6 +42,13 @@ div.form-login {
   right: -100px;
   top: -100px
 }
+div.div-about {
+  width: 500px;
+  position: relative; /* has to be position relative for left to work, or you could just do margin-left: -50px; too */
+  left: -100px;
+  top: -20px
+ 
+}
 @media screen and (max-width: 1024px) {
   /* Specific to this particular image */
   img.bg {

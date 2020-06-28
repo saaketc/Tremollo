@@ -26,6 +26,7 @@ import { lightTheme, darkTheme } from "./config/Themes";
 import { getUser } from "./services/userServices";
 import ProtectedRoute from "./components/auth/protectedRoute";
 import Feedback from "./components/feedback";
+import About from "./components/about";
 
 function App() {
   const [user, setUser] = useState({});
@@ -84,6 +85,7 @@ function App() {
          component={UploadMusic}
           />
           
+        <Route path="/about" component={About} />
         <Route path="/logout" component={Logout} />
         <Route path="/auth/signup" component={Signup} />
         <Route path="/auth/login" component={Login} />
