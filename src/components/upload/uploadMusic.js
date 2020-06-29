@@ -59,7 +59,7 @@ const UploadMusic = ({ user }) => {
       if (currentTarget.files[0].size > 100 * 1048576) {
       setUploading('');
 
-       return toast.error('Please upload a less than 100 MB file');
+       return toast.error('Please upload a less than 100 MB video');
       }
 
       let formData = new FormData();
@@ -107,6 +107,8 @@ const UploadMusic = ({ user }) => {
         thumbnail && 
         <img  width='300' height='300' src={storageURL + thumbnail} alt=''/>
       }
+      <br/>
+      <br/>
       <Grid container spacing={6}>
        
         <br/>
