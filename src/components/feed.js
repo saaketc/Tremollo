@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
-import { encode } from "../utils/utilfunctions";
+import { encode, fullDate } from "../utils/utilfunctions";
 import ReactLoading from "react-loading";
 import darkTheme from "../config/themes/dark";
 
@@ -60,7 +60,6 @@ const Feed = (props) => {
             feed.map((f) => (
               <Grid item xs={12} lg={3} md={3}>
                 <CardComponent
-                  loading={loading}
                   data={f}
                   primaryData={f.title}
                   secondaryData={`by ${f.username}`}
