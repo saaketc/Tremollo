@@ -55,6 +55,12 @@ const UploadMusic = ({ user }) => {
   const handleChange = async ({ currentTarget }) => {
     try {
       setUploading('pending');
+     
+      if (currentTarget.files[0].size > 100 * 1048576) {
+      setUploading('');
+
+       return toast.error('Please upload a less than 100 MB file');
+      }
 
       let formData = new FormData();
       formData.append("file", currentTarget.files[0]);
@@ -69,7 +75,7 @@ const UploadMusic = ({ user }) => {
       setUploadDisable(false);
 
     } catch (e) {
-      toast.error("Something went wrong while uploading...");
+      toast.error("Something went wrong while uploading! try again.");
       setUploading('');
 
       console.log(e.message);
