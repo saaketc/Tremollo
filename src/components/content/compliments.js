@@ -13,14 +13,12 @@ import colors from "../../config/colors";
 
 const useStyles = makeStyles({
   avatar: {
-
-  objectFit: 'contain',
+    objectFit: "contain",
     border: `solid 1px ${colors.primary}`,
-  
   },
   btn: {
-    textTransform: 'none'
-  }
+    textTransform: "none",
+  },
 });
 
 const Compliments = ({ contentId, currentUser }) => {
@@ -60,6 +58,17 @@ const Compliments = ({ contentId, currentUser }) => {
   };
   return (
     <Container>
+      {compliments.length === 0 && (
+        <Typography variant="h4">No compliments yet...</Typography>
+      )}
+      <br />
+      <AddCompliment
+        complimentingUser={currentUser}
+        contentId={contentId}
+        postSubmit={handlePostComplimentSubmit}
+      />
+      <br />
+      <br />
       {loading ? (
         <ReactLoading
           type="spin"
@@ -69,17 +78,6 @@ const Compliments = ({ contentId, currentUser }) => {
         />
       ) : (
         <>
-          {compliments.length === 0 && (
-            <Typography variant="h4">No compliments yet...</Typography>
-          )}
-          <br />
-          <AddCompliment
-            complimentingUser={currentUser}
-            contentId={contentId}
-            postSubmit={handlePostComplimentSubmit}
-          />
-          <br />
-          <br />
           {compliments.map((compliment, i) => (
             <Grid container spacing={6}>
               <Grid item xs={12} md={6} lg={6} key={i}>
@@ -89,7 +87,11 @@ const Compliments = ({ contentId, currentUser }) => {
                       onClick={() => handleComplimentingUserClick(compliment)}
                       style={{ color: darkTheme.textColor }}
                     >
-                      <Avatar className={classes.avatar} alt="" src={storageURL + compliment.avatarLink} />
+                      <Avatar
+                        className={classes.avatar}
+                        alt=""
+                        src={storageURL + compliment.avatarLink}
+                      />
                     </Button>
                   </Grid>
                   <Grid item md={10} lg={10}>
@@ -106,13 +108,13 @@ const Compliments = ({ contentId, currentUser }) => {
                             {compliment.username}
                           </Typography>
                         </Button>
-                        <small style={{color: '#6C757D', marginLeft:'10px' }}>
+                        <small style={{ color: "#6C757D", marginLeft: "10px" }}>
                           {fullDate(compliment.dateCreated)}
                         </small>
                       </div>
 
                       <br />
-                      <Typography  variant="h12">{compliment.text}</Typography>
+                      <Typography variant="h12">{compliment.text}</Typography>
                     </div>
                   </Grid>
                 </Grid>
@@ -129,4 +131,3 @@ const Compliments = ({ contentId, currentUser }) => {
 };
 
 export default Compliments;
-
