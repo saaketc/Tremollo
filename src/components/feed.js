@@ -29,7 +29,7 @@ const Feed = (props) => {
         setFeed(data.body);
         setLoading(false);
       } catch (e) {
-        console.log(e);
+        // console.log(e.message);
         // toast.error('Something went wrong');
       }
     }
