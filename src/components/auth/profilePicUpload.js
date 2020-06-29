@@ -3,11 +3,9 @@ import dataService from "../../services/dataServices";
 import colors from "../../config/colors";
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import ReactLoading from "react-loading";
 import { buttonStyleOpen } from "../../config/buttonStyle";
-import { encode } from "../../utils/utilfunctions";
 import { removeUser, setUser } from "../../services/userServices";
 import QueryString from "query-string";
 
@@ -28,7 +26,7 @@ const ProfilePicUpload = (props) => {
   // const history = useHistory();
   // const { redirectUrl } = props.location.state;
   const { redirect } = QueryString.parse(props.location.search);
-  const { user, location } = props;
+  const { user } = props;
   
   const [file, setFile] = React.useState(null);
   const [uploading, setUploading] = React.useState("");
@@ -86,13 +84,7 @@ const ProfilePicUpload = (props) => {
       <Grid container spacing={6}>
         <Grid item xs={12} md={6} lg={6}>
           <form onSubmit={handleSubmit} autoComplete="off">
-            {/* <TextForm
-          
-          type="file"
-          name="file"
-          required={true}
-          onChange={handleChange}
-              /> */}
+         
             <Button style={buttonStyleOpen}>
               <label for="file">Choose picture</label>
             </Button>
