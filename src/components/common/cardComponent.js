@@ -7,8 +7,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-
 import { Button } from '@material-ui/core';
+
+import colors from '../../config/colors';
 import darkTheme from '../../config/themes/dark';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
       flex: '1 0 auto',
-      color: darkTheme.textColor
+    color: darkTheme.textColor,
+      textTransform: 'none'
   },
   cover: {
       width: 200,
@@ -40,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
       width: 50,
     color: darkTheme.primary
   },
+  secondary: {
+    color: colors.secondary
+  }
 }));
 
 
@@ -52,10 +57,11 @@ export default function CardComponent({ data, primaryData, secondaryData, image,
     <Card   className={classes.root} onClick={()=> onClick ? onClick(data) : null}>
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component="h8" variant="h8">
+          <Typography component="h7" variant="h7">
                   {primaryData}   
-                  </Typography>
-          <Typography variant="subtitle1">
+            </Typography>
+            <br/>
+          <Typography variant="subtitle1" className={classes.secondary}>
            {secondaryData}
           </Typography>
         </CardContent>

@@ -17,8 +17,17 @@ import { smallPicStyle } from "../../config/imageStyles";
 import CenteredTabs from "../common/centredTabs";
 import colors from "../../config/colors";
 import { encode, decode } from "../../utils/utilfunctions";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  btn: {
+    textTransform: "none",
+  },
+}));
 
 const ContentPage = (props) => {
+  const classes = useStyles();
+
   const [content, setContent] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [tab, setTab] = React.useState(0);
@@ -80,7 +89,9 @@ const ContentPage = (props) => {
             <Grid container spacing={6}>
               <Grid item xs={12} md={3} lg={3}>
                 <div style={{ display: "block" }}>
-                  <Button onClick={handleUserClick}>
+                <Button
+                  className={classes.btn}
+                  onClick={handleUserClick}>
                     {loading ? (
                       <Skeleton
                         animation="wave"

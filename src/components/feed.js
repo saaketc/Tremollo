@@ -55,7 +55,7 @@ const Feed = (props) => {
           <CardComponent
             data={f}
             primaryData={f.title}
-            secondaryData={f.username}
+            secondaryData={`by ${f.username}`}
             onClick={handleAlbumClick}
             image={storageURL + f.thumbnailLink}
           />

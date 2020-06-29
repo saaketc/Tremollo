@@ -177,7 +177,7 @@ function Navbar(props) {
                 style={buttonStyleOpen}
                 onClick={() => props.history.push('/about')}
               >
-                About us
+                About
               </Button>
               
         )}

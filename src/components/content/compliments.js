@@ -13,11 +13,13 @@ import colors from "../../config/colors";
 
 const useStyles = makeStyles({
   avatar: {
-    width: '48px',
-  height: '48px',
+
   objectFit: 'contain',
     border: `solid 1px ${colors.primary}`,
   
+  },
+  btn: {
+    textTransform: 'none'
   }
 });
 
@@ -94,6 +96,7 @@ const Compliments = ({ contentId, currentUser }) => {
                     <div>
                       <div>
                         <Button
+                          className={classes.btn}
                           onClick={() =>
                             handleComplimentingUserClick(compliment)
                           }

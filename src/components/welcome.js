@@ -56,21 +56,25 @@ const Welcome = () => {
       
       <Hidden only={["xs", "s"]}>
         <Typography variant="h1" className={classes.title}>
-        Music sharing platform <br/> for music lovers
+        Music sharing platform <br/> for music lovers & creators
         </Typography>
       </Hidden>
       <Hidden only={["lg", "s", "md"]}>
         <Typography variant="h3" className={classes.title}>
-        Music sharing platform <br/> for music lovers
+        Music sharing platform <br/> for music lovers & creators
         </Typography>
       </Hidden>
       <br />
       <Typography variant="h6" className={classes.description}>
         Explore fresh and experimented music, create playlists,
         <br />
-        share your musical creativity with others, and lots more!
+        share your musical creativity with others, and much more!
       </Typography>
       <br />
+      <Typography variant="h6" className={classes.description}>
+        A platform where independent artists can shine!
+      </Typography>
+      <br/>
       <Grid style={{textAlign: 'center'}} container spacing={4}>
         <Grid item>
         <SignupButton

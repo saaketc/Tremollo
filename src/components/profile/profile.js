@@ -166,10 +166,10 @@ const Profile = (props) => {
             <>
               <Typography
                 variant="h4"
-                className={classes.heading}
+               
                 style={{ fontWeight: "400" }}
               >
-                {`${userDetails.username}`}
+                {userDetails.username}
               </Typography>
               <Typography
                 variant="h6"
