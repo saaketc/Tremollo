@@ -10,6 +10,8 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import ReactLoading from "react-loading";
 import { buttonStyleOpen } from "../../config/buttonStyle";
+import { encode } from "../../utils/utilfunctions";
+import { removeUser, setUser } from "../../services/userServices";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -60,10 +62,12 @@ const ProfilePicUpload = (props) => {
         formData,
         "multipart/form-data"
       );
-      // console.log(data.body);
+      console.log(data.body);
       if (location.state.from === 'Profile') {
-        return history.push(`/profile/${window.btoa(user.userId)}`);
+        return history.push(`/profile/${encode(user.userId)}`);
       }
+      removeUser();
+      setUser(data.body);
       return window.location = redirectUrl ? redirectUrl : '/';
 
     } catch (e) {
