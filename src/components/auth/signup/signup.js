@@ -8,6 +8,7 @@ import dataService from "../../../services/dataServices";
 import { toast } from "materialize-css";
 import "../../../styles/auth.css";
 import background from "../../../illustrations/background.svg";
+import { setUser } from "../../../services/userServices";
 
 const Signup = (props) => {
   const [formValues, setFormValues] = React.useState({});
@@ -28,7 +29,7 @@ const Signup = (props) => {
     try {
       const { data } = await dataService.postData('user/create', userData);
 
-      localStorage.setItem('user', JSON.stringify(data.body));
+      setUser(JSON.stringify(data.body));
       
       // history.push('/uploadProfilePic', {redirectUrl: state});
       window.location = `/uploadProfilePic?redirect=${state ? state : '/'}`;
