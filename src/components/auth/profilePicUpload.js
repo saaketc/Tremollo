@@ -62,10 +62,13 @@ const ProfilePicUpload = (props) => {
         formData,
         "multipart/form-data"
       );
-      console.log(data.body);
+      // console.log(data.body);
       if (location.state.from === 'Profile') {
-        return history.push(`/profile/${encode(user.userId)}`);
+        removeUser();
+        setUser(data.body);
+        return window.location = `/profile/${encode(user.userId)}`;
       }
+
       removeUser();
       setUser(data.body);
       return window.location = redirectUrl ? redirectUrl : '/';
