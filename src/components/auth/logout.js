@@ -1,9 +1,10 @@
 import React from 'react'
+import { removeUser } from '../../services/userServices';
 
 const Logout = () => {
    
     React.useEffect(() => {
-        localStorage.removeItem('user');    
+        removeUser();    
         return window.location.href = '/';
     }, []);
 

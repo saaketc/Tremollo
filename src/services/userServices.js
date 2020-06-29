@@ -12,3 +12,8 @@ export const setUser = (user) => {
    return localStorage.setItem(token, JSON.stringify(user));
 
 }
+
+export const removeUser = () => {
+    return localStorage.removeItem(token);
+ 
+ }
