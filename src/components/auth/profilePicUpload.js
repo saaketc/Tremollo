@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const ProfilePicUpload = (props) => {
-  // const history = useHistory();
-  // const { redirectUrl } = props.location.state;
+  
   const { redirect } = QueryString.parse(props.location.search);
   const { user } = props;
   
