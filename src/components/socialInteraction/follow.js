@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const Follow = (props) => {
   const { followerId, followedId, isFollowedByUser } = props;
-  const [follows, setFollows] = React.useState();
+  const [follows, setFollows] = React.useState(isFollowedByUser);
 
   React.useEffect(() => {
     setFollows(isFollowedByUser);
@@ -16,7 +16,7 @@ const Follow = (props) => {
     const oldFollow = follows;
       try {
         
-      setFollows(!follows);
+      // setFollows(!follows);
       const { data } = await dataServices.putData("user/follow", {
         followerId,
         followedId,
