@@ -4,9 +4,9 @@ import Container from '@material-ui/core/Container';
 import { useHistory } from 'react-router-dom';
 
 import dataService from '../services/dataServices';
-import { toast } from 'react-toastify';
 import { storageURL } from '../config/storage';
 import CardComponent from './common/cardComponent';
+import { encode } from '../utils/utilfunctions';
 
 const Feed = (props) => {
   const history = useHistory();
@@ -43,7 +43,7 @@ const Feed = (props) => {
 
   const handleAlbumClick = async data => {
     // alert('Clicked');
-    return history.push(`/content/${window.btoa(data.contentId)}`);
+    return history.push(`/content/${encode(data.contentId)}`);
   }
 
   return (
