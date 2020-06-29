@@ -36,8 +36,14 @@ const UploadMusic = ({ user }) => {
           "content/upload/data",
           toSend
         );
-        console.log(data.body);
+        // console.log(data.body);
+        if (data.body !== null) {
         toast.success("Yaayy! Successfully uploaded.");
+          
+        }
+        else {
+          toast.error("Something went wrong! try again.");
+        }
       } catch (e) {
         console.log(e.message);
         toast.error("Oops! Something went wrong.");
@@ -57,13 +63,15 @@ const UploadMusic = ({ user }) => {
         formData,
         "multipart/form-data"
       );
-      console.log(data.body);
+      // console.log(data.body);
       setFileData(data.body);
       setUploading('done');
       setUploadDisable(false);
 
     } catch (e) {
       toast.error("Something went wrong while uploading...");
+      setUploading('');
+
       console.log(e.message);
     }
   };
@@ -136,7 +144,6 @@ const UploadMusic = ({ user }) => {
           type="text"
           name="caption"
           rows="2"
-          required={true}
           fullWidth
           value={formik.values.caption}
           onChange={formik.handleChange}
@@ -148,7 +155,6 @@ const UploadMusic = ({ user }) => {
           type="text"
           name="tags"
           placeholder="Add comma separated tags for your content"
-          required={true}
           fullWidth
           value={formik.values.tags}
           onChange={formik.handleChange}
