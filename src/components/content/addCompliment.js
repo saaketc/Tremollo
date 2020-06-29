@@ -38,7 +38,7 @@ const AddCompliment = ({ complimentingUser, contentId, postSubmit  }) => {
        <Grid container spacing={2}>
           <Grid item xs={12} md={6} lg={6}>
           <TextForm
-          label={`Write a compliment as ${complimentingUser.username}`}
+          label={`Add a compliment as ${complimentingUser.username}`}
           type="text"
           name="compliment"
           fullWidth
