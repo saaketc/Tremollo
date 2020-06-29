@@ -58,15 +58,21 @@ const Compliments = ({ contentId, currentUser }) => {
   };
   return (
     <Container>
+
       {compliments.length === 0 && (
         <Typography variant="h4">No compliments yet...</Typography>
       )}
       <br />
+      
       <AddCompliment
         complimentingUser={currentUser}
         contentId={contentId}
         postSubmit={handlePostComplimentSubmit}
       />
+      <br/>
+      <br/>
+      <span>{compliments.length > 0 ? `${compliments.length} compliments` : ''}</span>
+
       <br />
       <br />
       {loading ? (
