@@ -15,6 +15,7 @@ import UserFollowing from "./userFollowing";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Follow from "../socialInteraction/follow";
 import { decode, encode } from "../../utils/utilfunctions";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
@@ -100,9 +101,9 @@ const Profile = (props) => {
   }, [userId]);
 
   const handleProfilePicClick = () => {
-    return history.push("/uploadProfilePic", { from: "Profile" });
+    return window.location = `/uploadProfilePic?redirect=${window.location.href}`;
     // alert(`userId is ${userId} & current: ${currentUser.userId}`);
-  };
+  }
 
   const handleEditClick = () => {
     return history.push("/edit", { followersCount: userStats.followers });
@@ -131,7 +132,7 @@ const Profile = (props) => {
       <br />
       <Grid container spacing={6}>
         <Grid item xs={12} md={3} lg={3}>
-          <Button
+          <Link
             onClick={() =>
               Number(currentUser.userId) === Number(userId)
                 ? handleProfilePicClick()
@@ -152,7 +153,7 @@ const Profile = (props) => {
                 className={classes.profilePic}
               />
             )}
-          </Button>
+          </Link>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
           {loading ? (
