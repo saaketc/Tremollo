@@ -199,19 +199,13 @@ function Navbar(props) {
           <div style={{ margin: "20px",display: 'inline'}}>
            
               
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="primary"
-              style={{ marginLeft: "20px" }}
-            >
-                <Avatar
+         
+              <Avatar
+                  onClick={handleMenu}
                   src={storageURL + user.avatarLink}
                   className={classes.pic}
               />
-            </IconButton>
+         
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
