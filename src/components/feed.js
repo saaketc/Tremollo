@@ -45,12 +45,12 @@ const Feed = (props) => {
     <Container maxWidth="100%">
       {
         loading ?
-        <div class="d-flex justify-content-center align-items-center">
+          <div class="d-flex justify-content-center align-items-center" style={{ marginTop: '10rem'}}>
           <ReactLoading
-        type="bars"
+        type="spin"
         color={darkTheme.primary}
-        height={200}
-            width={200}
+        height={100}
+            width={100}
           
             />
             </div>
