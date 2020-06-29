@@ -30,7 +30,8 @@ const Signup = (props) => {
 
       localStorage.setItem('user', JSON.stringify(data.body));
       
-      history.push('/uploadProfilePic', {redirectUrl: state});
+      // history.push('/uploadProfilePic', {redirectUrl: state});
+      window.location = `/uploadProfilePic?redirect=${state ? state : '/'}`;
   }
   catch (e) {
       toast.error('Something went wrong');

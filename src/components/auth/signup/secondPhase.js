@@ -5,7 +5,6 @@ import { useFormik } from "formik";
 import SelectForm from "../../common/selectForm";
 import TextForm from "../../common/textForm";
 import colors from "../../../config/colors";
-import logo from "../../../logo/logo_lite_crop.png";
 import { buttonStyleOpen } from "../../../config/buttonStyle";
 
 const genderOptions = [

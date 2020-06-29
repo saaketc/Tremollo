@@ -1,9 +1,6 @@
 import React from "react";
-import TextForm from "../common/textForm";
-import logo from "../../logo/logo_lite_crop.png";
 import dataService from "../../services/dataServices";
 import colors from "../../config/colors";
-
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
@@ -12,6 +9,7 @@ import ReactLoading from "react-loading";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { encode } from "../../utils/utilfunctions";
 import { removeUser, setUser } from "../../services/userServices";
+import QueryString from "query-string";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -27,15 +25,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const ProfilePicUpload = (props) => {
-  const history = useHistory();
-  const { redirectUrl } = props.location.state;
-
+  // const history = useHistory();
+  // const { redirectUrl } = props.location.state;
+  const { redirect } = QueryString.parse(props.location.search);
+  const { user, location } = props;
+  
   const [file, setFile] = React.useState(null);
   const [uploading, setUploading] = React.useState("");
   const [pic, setPic] = React.useState("");
 
   const classes = useStyles();
-  const { user, location } = props;
 
   const handleChange = ({ currentTarget }) => {
     const pic = currentTarget.files[0];
@@ -63,15 +62,15 @@ const ProfilePicUpload = (props) => {
         "multipart/form-data"
       );
       // console.log(data.body);
-      if (location.state.from === 'Profile') {
-        removeUser();
-        setUser(data.body);
-        return window.location = `/profile/${encode(user.userId)}`;
-      }
+      // if (location.state) {
+      //   removeUser();
+      //   setUser(data.body);
+      //   return window.location = `/profile/${encode(user.userId)}`;
+      // }
 
       removeUser();
       setUser(data.body);
-      return window.location = redirectUrl ? redirectUrl : '/';
+      return window.location = redirect ? redirect : '/';
 
     } catch (e) {
       console.log(e.message);
@@ -81,7 +80,7 @@ const ProfilePicUpload = (props) => {
   return (
     <Container>
       <Typography variant="h5" className={classes.title}>
-      {location.state.from === 'Profile' ? `${user.firstName} update your profile pic here!` :  `Congrats ${user.firstName}! you are now a tremoller....`}
+      { `Congrats ${user.firstName}! you are now a tremoller....`}
       </Typography>
       <br />
       <Grid container spacing={6}>
