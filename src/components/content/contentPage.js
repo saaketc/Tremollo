@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Button, Typography } from "@material-ui/core";
+import { Container, Grid, Button, Typography, Avatar } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import Skeleton from "@material-ui/lab/Skeleton";
 
@@ -13,11 +13,11 @@ import { toast } from "react-toastify";
 import Follow from "../socialInteraction/follow";
 import Compliments from "./compliments";
 import ContentLikes from "./contentLikes";
-import { smallPicStyle } from "../../config/imageStyles";
 import CenteredTabs from "../common/centredTabs";
 import { encode, decode } from "../../utils/utilfunctions";
 import { makeStyles } from "@material-ui/core/styles";
 import  darkTheme  from "../../config/themes/dark";
+import colors from "../../config/colors";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -26,6 +26,13 @@ const useStyles = makeStyles((theme) => ({
   skeleton: {
     backgroundColor: darkTheme.backgroundCard,
   },
+  pic: {
+    borderRadius: "50%",
+  border: `1px solid ${colors.primary}`,
+  width: 60,
+  height: 60,
+  verticalAlign: "middle",
+  }
 }));
 
 const ContentPage = (props) => {
@@ -107,8 +114,8 @@ const ContentPage = (props) => {
                       height={100}
                     />
                   ) : (
-                    <img
-                      style={smallPicStyle}
+                    <Avatar
+                      className={classes.pic}
                       src={storageURL + content.pageAvatar}
                       alt="profile"
                     />

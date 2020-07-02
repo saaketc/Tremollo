@@ -18,7 +18,7 @@ const UserContent = ({ content, onClick }) => {
               <CardComponent
                 data={c}
                 primaryData={c.title}
-                secondaryData={`${c.likesCount} likes`}
+                tag={`${c.likesCount} likes`}
                 onClick={onClick}
                 image={storageURL + c.thumbnailLink}
                 width={300}

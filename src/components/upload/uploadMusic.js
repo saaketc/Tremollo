@@ -40,7 +40,7 @@ const UploadMusic = ({ user }) => {
         // console.log(data.body);
         if (data.body !== null) {
           toast.success("Yaayy! Successfully uploaded.");
-          window.location = `/content/${encode(data.body.contentId)}`
+          window.location = `/content/${encode(data.body.contentId)}`;
         } else {
           toast.error("Something went wrong! try again.");
         }
@@ -117,15 +117,17 @@ const UploadMusic = ({ user }) => {
         <br />
         <br />
         {uploading === "pending" ? (
-         <div>
-          <ReactLoading
-            type="bars"
-            color={colors.primary}
-            height={150}
-            width={150}
+          <div>
+            <ReactLoading
+              type="bars"
+              color={colors.primary}
+              height={150}
+              width={150}
             />
-            <br/>
-            <p style={{color: colors.primary}}>Uploading your music... Sit back & relax!</p>
+            <br />
+            <p style={{ color: colors.primary }}>
+              Uploading your music... Sit back & relax!
+            </p>
           </div>
         ) : (
           <>
@@ -187,6 +189,10 @@ const UploadMusic = ({ user }) => {
             Upload
           </Button>
         )}
+        <br />
+        <br />
+        <br />
+        <br />
       </form>
     </Container>
   );
