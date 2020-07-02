@@ -171,10 +171,10 @@ const UploadMusic = ({ user }) => {
         <br />
 
         <TextForm
-          label="Add tags"
+          label="Add tags for the music uploaded"
           type="text"
           name="tags"
-          placeholder="Add comma separated tags for your content"
+          placeholder="You can add multiple tags using a comma"
           fullWidth
           value={formik.values.tags}
           onChange={formik.handleChange}
