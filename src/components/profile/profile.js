@@ -17,6 +17,7 @@ import Follow from "../socialInteraction/follow";
 import { decode, encode } from "../../utils/utilfunctions";
 import { Link } from "react-router-dom";
 import darkTheme from "../../config/themes/dark";
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
@@ -92,7 +93,7 @@ const Profile = (props) => {
     });
     Promise.all([userDetailsPromise, userPromise, contentPromise])
       .then(([userDetailsRes, userRes, contentRes]) => {
-        console.log("user", userRes.data.body);
+        // console.log("user", userRes.data.body);
         // console.log("content", contentRes.data.body);
 
         setUserDetails(userDetailsRes.data.body);
@@ -128,12 +129,18 @@ const Profile = (props) => {
   const handlePlaylistClick = () => {
     return props.history.push(`/playlist/${encode(userId)}`);
   };
+  const handleMouseEnter = () => {
+    if (Number(currentUser.userId) !== Number(userId))
+      return;
+    toast.error('Looking cool! click to edit profile pic.');
+  }
   return (
     <Container>
      
       <Grid container spacing={6}>
         <Grid item xs={12} md={3} lg={3}>
-          <Link
+          <div
+          
             onClick={() =>
               Number(currentUser.userId) === Number(userId)
                 ? handleProfilePicClick()
@@ -149,13 +156,14 @@ const Profile = (props) => {
                 height={200}
               />
             ) : (
-              <Avatar
+                <Avatar
+                onMouseEnter={handleMouseEnter}
                 src={storageURL + userDetails.avatarLink}
                 alt="profile"
                 className={classes.profilePic}
               />
             )}
-          </Link>
+          </div>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
           {loading ? (
@@ -193,15 +201,14 @@ const Profile = (props) => {
             <>
               <Typography
                 className={classes.title}
-                variant="h8"
+                variant="subtitle2"
                 style={{ fontWeight: "500", color: colors.secondary }}
               >
                 {getUserType(userDetails.type)}
               </Typography>
-              <br />
-              <br />
+           
               <Typography
-                variant="h7"
+                variant="subtitle1"
                 className={classes.heading}
                 style={{ fontWeight: "400", color: colors.secondary }}
               >
@@ -210,8 +217,6 @@ const Profile = (props) => {
             </>
           )}
 
-          <br />
-          <br />
           {loading ? (
             <Skeleton
               animation="wave"
