@@ -59,7 +59,7 @@ const Compliments = ({ contentId, currentUser }) => {
   return (
     <Container>
 
-      {compliments.length === 0 && (
+      {(!loading && compliments.length === 0) && (
         <Typography variant="h4">No compliments yet...</Typography>
       )}
       <br />
