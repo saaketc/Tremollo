@@ -134,7 +134,7 @@ const Profile = (props) => {
       <br />
       <br />
       <Grid container spacing={6}>
-        <Grid item xs={12} md={3} lg={3}>
+        <Grid item xs={12} md={2} lg={2}>
           <Link
             onClick={() =>
               Number(currentUser.userId) === Number(userId)
@@ -147,8 +147,8 @@ const Profile = (props) => {
                 animation="wave"
                 variant="circle"
                 className={classes.skeleton}
-                width={250}
-                height={250}
+                width={200}
+                height={200}
               />
             ) : (
               <img
