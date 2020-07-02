@@ -21,7 +21,7 @@ const Feed = (props) => {
       try {
         const params = {
           pageNumber: 1,
-          rowCount: 30,
+          rowCount: 40,
           userId: user.userId,
         };
         const { data } = await dataService.getData("feed", params);
@@ -47,7 +47,7 @@ const Feed = (props) => {
         loading ?
           <div class="d-flex justify-content-center align-items-center" style={{ marginTop: '10rem'}}>
           <ReactLoading
-        type="spin"
+        type="spokes"
         color={darkTheme.primary}
         height={100}
             width={100}
