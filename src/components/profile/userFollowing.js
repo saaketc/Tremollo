@@ -29,7 +29,9 @@ const styles = makeStyles((theme) => ({
 }));
 const UserFollowing = ({ userId }) => {
   const [following, setFollowing] = React.useState([]);
-  const classes = styles();
+  const [loading, setLoading] = React.useState(true);
+
+  // const classes = styles();
 
   React.useEffect(() => {
     const getFollowers = async () => {
@@ -37,10 +39,11 @@ const UserFollowing = ({ userId }) => {
         const { data } = await dataServices.getData("user/following", {
           userId,
         });
-        console.log(data.body);
+        // console.log(data.body);
         setFollowing(data.body);
+        setLoading(false)
       } catch (e) {
-        console.log(e.message);
+        // console.log(e.message);
         toast.error("Something went wrong!");
       }
     };
@@ -50,7 +53,7 @@ const UserFollowing = ({ userId }) => {
   return (
     <Container maxWidth='xl'>
       
-          {following.length === 0 &&
+          {(!loading && following.length === 0) &&
               <Typography variant='h5'>
               Ooops! Fan of no one.
               </Typography>

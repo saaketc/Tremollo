@@ -7,6 +7,7 @@ import UserTemplate from "../common/userTemplate";
 
 const UserFollowers = ({ userId, currentUserId, isFollows }) => {
   const [followers, setFollowers] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     const getFollowers = async () => {
@@ -18,6 +19,7 @@ const UserFollowers = ({ userId, currentUserId, isFollows }) => {
         });
         console.log(data.body);
         setFollowers(data.body);
+        setLoading(false)
 
         // to test current user follows this user
         for (let follower of data.body) {
@@ -41,7 +43,7 @@ const UserFollowers = ({ userId, currentUserId, isFollows }) => {
   return (
     <Container maxWidth='xl'>
      
-                    {followers.length === 0 &&
+                    {(!loading && followers.length === 0) &&
               <Typography variant='h5'>
               Currently no fans!.
               </Typography>
