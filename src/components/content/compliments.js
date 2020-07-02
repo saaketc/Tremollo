@@ -15,10 +15,11 @@ const useStyles = makeStyles({
   avatar: {
     objectFit: "contain",
     border: `solid 1px ${colors.primary}`,
+    
   },
   btn: {
     textTransform: "none",
-  },
+  }
 });
 
 const Compliments = ({ contentId, currentUser }) => {
@@ -58,20 +59,21 @@ const Compliments = ({ contentId, currentUser }) => {
   };
   return (
     <Container>
-
-      {(!loading && compliments.length === 0) && (
+      {!loading && compliments.length === 0 && (
         <Typography variant="h4">No compliments yet...</Typography>
       )}
       <br />
-      
+
       <AddCompliment
         complimentingUser={currentUser}
         contentId={contentId}
         postSubmit={handlePostComplimentSubmit}
       />
-      <br/>
-      <br/>
-      <span>{compliments.length > 0 ? `${compliments.length} compliments` : ''}</span>
+      <br />
+      <br />
+      <span>
+        {compliments.length > 0 ? `${compliments.length} compliments` : ""}
+      </span>
 
       <br />
       <br />
@@ -100,9 +102,9 @@ const Compliments = ({ contentId, currentUser }) => {
                       />
                     </Button>
                   </Grid>
-                  <Grid item md={10} lg={10}>
-                    <div>
-                      <div>
+                  <Grid item md={8} lg={8}>
+                    <div >
+                      <div >
                         <Button
                           className={classes.btn}
                           onClick={() =>
@@ -110,7 +112,7 @@ const Compliments = ({ contentId, currentUser }) => {
                           }
                           style={{ color: darkTheme.textColor }}
                         >
-                          <Typography variant="h8">
+                          <Typography style={{color: colors.secondary  }} variant="h8">
                             {compliment.username}
                           </Typography>
                         </Button>
@@ -118,15 +120,12 @@ const Compliments = ({ contentId, currentUser }) => {
                           {fullDate(compliment.dateCreated)}
                         </small>
                       </div>
-
-                      <br />
-                      <Typography variant="h12">{compliment.text}</Typography>
+                      <Typography style={{ textAlign: "left" }} variant="h12">
+                        {compliment.text}
+                      </Typography>
                     </div>
                   </Grid>
                 </Grid>
-                {/* <Typography variant="p">
-                  {fullDate(compliment.dateCreated)}
-                </Typography> */}
               </Grid>
             </Grid>
           ))}

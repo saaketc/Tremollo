@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
    
   },
+  avatar: {
+    objectFit: "contain",
+    border: `solid 1px ${colors.primary}`,
+    
+  },
 
 }));
 const UserTemplate = ({ user }) => {
@@ -28,9 +33,9 @@ const UserTemplate = ({ user }) => {
         onClick={() => handleClick(user)}
         style={{ color: darkTheme.textColor }}
       >
-        <Avatar alt="" src={storageURL + user.avatarLink} />
-        <div>
-        <Typography style={{ marginLeft: "22px" }} variant="h7">
+        <Avatar alt="" className={classes.avatar} src={storageURL + user.avatarLink} />
+        <div style={{textAlign: 'left'}}>
+        <Typography style={{ marginLeft: "22px", }} variant="h7">
           {`${user.username}`}
         </Typography>
         <br/>
