@@ -93,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
   },
   pic: {
     border: `1px solid ${colors.primary}`,
-    padding: '4px'
   }
 }));
 
