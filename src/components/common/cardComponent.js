@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     paddingLeft: theme.spacing(1),
       paddingBottom: theme.spacing(1),
-    color: darkTheme.textColor
+    color: darkTheme.textColor,
+    textTransform: 'none'
   },
   playIcon: {
     height: 50,
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CardComponent({ data, primaryData, secondaryData, image, onClick, width })
+export default function CardComponent({ data, primaryData, secondaryData, tag, image, onClick, width })
 {
   const classes = useStyles();
 
@@ -70,7 +71,12 @@ export default function CardComponent({ data, primaryData, secondaryData, image,
           <IconButton aria-label="play/pause" onClick={() => onClick ? onClick(data) : null}>
             <PlayArrowIcon className={classes.playIcon} />
           </IconButton>
-        
+            {
+              tag &&
+              <Typography variant="subtitle1" className={classes.secondary}>
+              {tag} 
+              </Typography>
+        }
         </div>
       </div>
       <CardMedia
