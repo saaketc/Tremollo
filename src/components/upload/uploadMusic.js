@@ -107,7 +107,7 @@ const UploadMusic = ({ user }) => {
       <br />
 
       {thumbnail && (
-        <img width="300" height="300" src={storageURL + thumbnail} alt="" />
+        <img width="330" height="300" src={storageURL + thumbnail} alt="" />
       )}
       <br />
       <br />
