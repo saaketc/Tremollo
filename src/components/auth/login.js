@@ -23,7 +23,7 @@ const Login = (props) => {
         submittedFormData
       );
       if (data.body === null) {
-        return toast.error('Invalid email or password. Please check credentials!');
+        return toast.error('Invalid email or password. Please check your credentials!');
       }
       setUser(data.body);
       window.location = state ? state : "/";
