@@ -60,17 +60,17 @@ const SearchResults = (props) => {
 
   return (
     <Container maxWidth='xl'>
+       <Typography variant="h7" className={classes.heading}>
+        Collections, billboards, charts & much more coming soon! Stay tuned.
+        </Typography>
+      <br/>
+      <br/>
       {content.length > 0 || users.length > 0 ? (
         <>
           <Typography variant="h4" className={classes.heading}>
-            {`Results for ${q}`}
+            {`Best results for ${q}`}
           </Typography>
           <br />
-          <Typography variant="h7" className={classes.heading}>
-            Collections, billboards, charts & much more coming soon! Stay tuned.
-        </Typography>
-          <br/>
-          <br/>
           <Grid container spacing={6}>
             {content.map((c) => (
               <Grid item xs={12} lg={3}  md={3}>
