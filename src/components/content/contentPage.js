@@ -47,7 +47,7 @@ const ContentPage = (props) => {
           contentId: contentId,
           userId: currentUser.userId,
         });
-        // console.log("content data", data.body);
+        console.log("content data", data.body);
         setContent(data.body);
         setLoading(false);
       } catch (e) {
