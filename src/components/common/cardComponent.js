@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
   },
   secondary: {
     color: colors.secondary
+  },
+  tag: {
+    color: colors.primary
   }
 }));
 
@@ -73,7 +76,7 @@ export default function CardComponent({ data, primaryData, secondaryData, tag, i
           </IconButton>
             {
               tag &&
-              <Typography variant="subtitle1" className={classes.secondary}>
+              <Typography variant="subtitle1" className={classes.tag}>
               {tag} 
               </Typography>
         }
