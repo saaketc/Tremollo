@@ -17,7 +17,7 @@ const ContentLikes = ({ contentId }) => {
         const { data } = await dataServices.getData("content/likes", {
           contentId,
         });
-        console.log(data.body);
+        // console.log(data.body);
         setLikedUsers(data.body);
         setLoading(false);
       } catch (e) {

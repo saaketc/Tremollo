@@ -17,7 +17,7 @@ const UserFollowers = ({ userId, currentUserId, isFollows }) => {
         const { data } = await dataServices.getData("user/followers", {
           userId,
         });
-        console.log(data.body);
+        // console.log(data.body);
         setFollowers(data.body);
         setLoading(false)
 
