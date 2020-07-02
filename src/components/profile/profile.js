@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Typography, Button } from "@material-ui/core";
+import { Container, Grid, Typography, Button, Avatar } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import dataService from "../../services/dataServices";
 import { makeStyles } from "@material-ui/core/styles";
@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       opacity: 0.3,
     },
-    padding: "5px",
   },
   middle: {
     transition: ".5s ease",
@@ -131,10 +130,9 @@ const Profile = (props) => {
   };
   return (
     <Container>
-      <br />
-      <br />
+     
       <Grid container spacing={6}>
-        <Grid item xs={12} md={2} lg={2}>
+        <Grid item xs={12} md={3} lg={3}>
           <Link
             onClick={() =>
               Number(currentUser.userId) === Number(userId)
@@ -151,7 +149,7 @@ const Profile = (props) => {
                 height={200}
               />
             ) : (
-              <img
+              <Avatar
                 src={storageURL + userDetails.avatarLink}
                 alt="profile"
                 className={classes.profilePic}
