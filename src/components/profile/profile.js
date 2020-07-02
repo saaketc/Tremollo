@@ -102,6 +102,7 @@ const Profile = (props) => {
 
   const handleProfilePicClick = () => {
     return window.location = `/uploadProfilePic?redirect=${window.location.href}`;
+
     // alert(`userId is ${userId} & current: ${currentUser.userId}`);
   }
 
@@ -251,7 +252,9 @@ const Profile = (props) => {
                 isFollowedByUser={isFollowedByUser}
               />
                 <Button onClick={handlePlaylistClick} style={buttonStyleClose} className={classes.space}>
-                {`${userDetails.username}'s playlist`}
+                  {loading ? 'Loading playlist...'
+                    :
+                    `${userDetails.username}'s playlist`}
               </Button>
             </div>
           )}
