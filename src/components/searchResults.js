@@ -77,7 +77,7 @@ const SearchResults = (props) => {
                 <CardComponent
                   data={c}
                   primaryData={c.title}
-                  secondaryData={c.username}
+                  secondaryData={`${c.likesCount} likes`}
                   onClick={handleAlbumClick}
                   image={storageURL + c.thumbnailLink}
                 />
