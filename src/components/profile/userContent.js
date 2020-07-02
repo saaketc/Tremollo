@@ -8,10 +8,11 @@ const UserContent = ({content, onClick}) => {
    return (
        <Container maxWidth='xl'>
             
-           {content.length === 0 &&
+           {content && content.length === 0 ?
               <Typography variant='h5'>
-              Ooops! No uploads yet.
+                   Ooops! No uploads yet.
               </Typography>
+               : ''
           }
                
           <Grid container spacing={6}>
@@ -19,7 +20,7 @@ const UserContent = ({content, onClick}) => {
              {content &&
             content.map((c) => (
                 
-                <Grid item xs={12} md={4} lg={4}>
+                <Grid item xs={12} md={4} lg={4} key={c.title}>
                
                     <CardComponent
                 data={c}
