@@ -112,7 +112,7 @@ const Compliments = ({ contentId, currentUser }) => {
                           }
                           style={{ color: darkTheme.textColor }}
                         >
-                          <Typography style={{color: colors.secondary  }} variant="subtitle1">
+                          <Typography style={{color: colors.secondary,  }} variant="subtitle1">
                             {compliment.username}
                           </Typography>
                         </Button>
@@ -120,7 +120,7 @@ const Compliments = ({ contentId, currentUser }) => {
                           {fullDate(compliment.dateCreated)}
                         </small>
                       </div>
-                      <Typography style={{ textAlign: "left" }} variant="subtitle2">
+                      <Typography style={{ marginLeft: '6px' }} variant="subtitle2">
                         {compliment.text}
                       </Typography>
                     </div>
