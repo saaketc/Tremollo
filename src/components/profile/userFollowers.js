@@ -50,7 +50,7 @@ const UserFollowers = ({ userId, currentUserId, isFollows }) => {
           }
       <Grid container spacing={4}>
         {followers.map((user) => (
-          <Grid item xs={12} lg={3}  md={3}>
+          <Grid item xs={12} lg={3}  md={3} key={user.userId}>
             <UserTemplate
               user={user}/>
           </Grid>

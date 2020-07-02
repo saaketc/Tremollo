@@ -46,13 +46,13 @@ const About = () => {
 
         <Typography variant="p">
           If you care for a better service
-          <br /> please do write to us at  <span style={{fontWeight:400}}>feedback@tremollo.co</span>
+          <br /> please do write to us at  <span style={{fontWeight:600}}>feedback@tremollo.co</span>
         </Typography>
         <br />
         <br />
         <Typography variant="p">
           For any queries reach us out at  <br />
-          <span style={{fontWeight:400}}>support@tremollo.co </span>
+          <span style={{fontWeight:600}}>support@tremollo.co </span>
         </Typography>
 
         <br />

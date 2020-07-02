@@ -36,7 +36,7 @@ const QueuePlaylist = (props) => {
     <>
       {filter(queue, "contentId", removeContentId).map((f) => (
         <Grid container spacing={6}>
-          <Grid item xs={12} lg={3} md={3}>
+          <Grid item xs={12} lg={3} md={3} key={f.title}>
             <CardComponent
               data={f}
               primaryData={f.title}

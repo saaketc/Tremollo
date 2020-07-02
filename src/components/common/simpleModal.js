@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import ShareIcon from '@material-ui/icons/Share';
 
-import { buttonStyleOpen } from '../../config/buttonStyle';
 // import { dark } from '@material-ui/core/styles/createPalette';
 import darkTheme from '../../config/themes/dark';
 

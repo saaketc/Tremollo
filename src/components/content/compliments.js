@@ -35,7 +35,7 @@ const Compliments = ({ contentId, currentUser }) => {
         const { data } = await dataServices.getData("content/comments", {
           contentId,
         });
-        console.log(data.body);
+        // console.log(data.body);
         setCompliments(data.body);
         setLoading(false);
       } catch (e) {
@@ -112,7 +112,7 @@ const Compliments = ({ contentId, currentUser }) => {
                           }
                           style={{ color: darkTheme.textColor }}
                         >
-                          <Typography style={{color: colors.secondary  }} variant="h8">
+                          <Typography style={{color: colors.secondary  }} variant="subtitle1">
                             {compliment.username}
                           </Typography>
                         </Button>
@@ -120,7 +120,7 @@ const Compliments = ({ contentId, currentUser }) => {
                           {fullDate(compliment.dateCreated)}
                         </small>
                       </div>
-                      <Typography style={{ textAlign: "left" }} variant="h12">
+                      <Typography style={{ textAlign: "left" }} variant="subtitle2">
                         {compliment.text}
                       </Typography>
                     </div>

@@ -35,11 +35,10 @@ const UserTemplate = ({ user }) => {
       >
         <Avatar alt="" className={classes.avatar} src={storageURL + user.avatarLink} />
         <div style={{textAlign: 'left'}}>
-        <Typography style={{ marginLeft: "22px", }} variant="h7">
+        <Typography style={{ marginLeft: "22px", }} variant="subtitle1">
           {`${user.username}`}
         </Typography>
-        <br/>
-        <Typography style={{ marginLeft: "22px", color: colors.secondary }} variant="p">
+        <Typography style={{ marginLeft: "22px", color: colors.secondary }} variant="subtitle2">
           {`${user.firstName} ${user.lastName}`}
         </Typography>
           </div>
