@@ -1,15 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 
@@ -126,14 +123,6 @@ function Navbar(props) {
   const handleLogout = () => {
     return props.history.push("/logout");
   };
-  // const handleAuthClick = (authType) => {
-  //   if (authType === "signup") {
-  //     return history.push("/auth/signup");
-  //   }
-  //   if (authType === "login") {
-  //     return history.push("/auth/login");
-  //   }
-  // };
 
   return (
     <div className={classes.root}>
