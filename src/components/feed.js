@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
-import { encode, fullDate } from "../utils/utilfunctions";
+import { encode } from "../utils/utilfunctions";
 import ReactLoading from "react-loading";
 import darkTheme from "../config/themes/dark";
 
@@ -58,7 +58,8 @@ const Feed = (props) => {
           <Grid container spacing={4}>
           {feed &&
             feed.map((f) => (
-              <Grid item xs={12} lg={3} md={3} key={f.userId}>
+              
+                 <Grid item xs={12} lg={3} md={3} key={f.userId}  >
                 <CardComponent
                   data={f}
                   primaryData={f.title}
@@ -68,6 +69,7 @@ const Feed = (props) => {
                 />
                 <br />
               </Grid>
+                
             ))}
         </Grid>
       }

@@ -25,10 +25,12 @@ const useStyles = makeStyles((theme) => ({
   content: {
       flex: '1 0 auto',
     color: darkTheme.textColor,
-      textTransform: 'none'
+    textTransform: 'none',
+      textAlign: 'left'
+      
   },
   cover: {
-      width: 200,
+      width: 'auto',
   },
   controls: {
     display: 'flex',
@@ -67,23 +69,24 @@ export default function CardComponent({ data, primaryData, secondaryData, tag, i
             <br/>
           <Typography variant="subtitle1" className={classes.secondary}>
            {secondaryData}
-          </Typography>
+            </Typography>
+            {
+              tag &&
+              <Typography variant="subtitle1"style={{textAlign: 'left'}} className={classes.tag}>
+              {tag} 
+              </Typography>
+        }
         </CardContent>
         <div className={classes.controls}>
          
           <IconButton aria-label="play/pause" onClick={() => onClick ? onClick(data) : null}>
             <PlayArrowIcon className={classes.playIcon} />
           </IconButton>
-            {
-              tag &&
-              <Typography variant="subtitle1" className={classes.tag}>
-              {tag} 
-              </Typography>
-        }
+          
         </div>
       </div>
       <CardMedia
-          className={classes.cover}
+          
         style={{width: width ? width : 200 }}
         image={image}
         title={primaryData}
