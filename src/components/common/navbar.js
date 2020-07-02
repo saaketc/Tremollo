@@ -17,6 +17,7 @@ import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { Avatar } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
+import { encode } from "../../utils/utilfunctions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -111,10 +112,10 @@ function Navbar(props) {
     setAnchorEl(null);
   };
   const handleProfile = () => {
-    return props.history.push(`/profile/${window.btoa(user.userId)}`);
+    return window.location = `/profile/${encode(user.userId)}`;
   };
   const handlePlaylistClick = () => {
-    return props.history.push(`/playlist/${window.btoa(user.userId)}`);
+    return props.history.push(`/playlist/${encode(user.userId)}`);
   };
   const handleUploadButton = () => {
     return props.history.push('/myMusic/upload');
@@ -142,7 +143,7 @@ function Navbar(props) {
           </Typography>
         </Hidden>
         <Hidden only={["lg", "md"]}>
-          <Typography className={classes.title} variant="h8" noWrap>
+          <Typography className={classes.title} variant="subtitle2" noWrap>
             <a
               href="/"
               style={{ textDecoration: "none", color: colors.primary }}
