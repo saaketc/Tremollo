@@ -11,6 +11,7 @@ import { buttonStyleOpen } from "../../config/buttonStyle";
 // import darkTheme from "../../config/themes/dark";
 import MediaCard from "../common/mediaCard";
 import ReactLoading from "react-loading";
+import { encode } from "../../utils/utilfunctions";
 
 const UploadMusic = ({ user }) => {
   const [fileData, setFileData] = React.useState({});
@@ -39,6 +40,7 @@ const UploadMusic = ({ user }) => {
         // console.log(data.body);
         if (data.body !== null) {
           toast.success("Yaayy! Successfully uploaded.");
+          window.location = `/content/${encode(data.body.contentId)}`
         } else {
           toast.error("Something went wrong! try again.");
         }
@@ -100,14 +102,14 @@ const UploadMusic = ({ user }) => {
       <br />
       {Object.keys(fileData).length > 0 && (
         <Typography variant="h4">
-          Pick a thumbnail for your music video
+          Choose a thumbnail for your music video
         </Typography>
       )}
       <br />
       <br />
 
       {thumbnail && (
-        <img width="350" height="300" src={storageURL + thumbnail} alt="" />
+        <img width="180" height="150" src={storageURL + thumbnail} alt="" />
       )}
       <br />
       <br />
