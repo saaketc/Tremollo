@@ -129,9 +129,9 @@ const ContentPage = (props) => {
                     </Typography>
                   )}
                 </Button>
-                <p
+                {/* <p
                   style={{ color: colors.secondary, marginLeft: "10px" }}
-                >{ loading ? 'Loading fans...' : `${content.followers} fans`}</p>
+                ></p> */}
               </div>
 
               {/* Follow component */}
