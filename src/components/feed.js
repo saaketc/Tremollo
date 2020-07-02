@@ -58,7 +58,7 @@ const Feed = (props) => {
           <Grid container spacing={4}>
           {feed &&
             feed.map((f) => (
-              <Grid item xs={12} lg={3} md={3}>
+              <Grid item xs={12} lg={3} md={3} key={f.userId}>
                 <CardComponent
                   data={f}
                   primaryData={f.title}
