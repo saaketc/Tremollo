@@ -40,7 +40,8 @@ const QueuePlaylist = (props) => {
             <CardComponent
               data={f}
               primaryData={f.title}
-              secondaryData={f.username}
+              secondaryData={`by ${f.username}`}
+              tag={`${f.likes} likes`}
               onClick={handleAlbumClick}
               image={storageURL + f.thumbnailLink}
               width={200}
