@@ -15,7 +15,7 @@ import ReactLoading from "react-loading";
 const UploadMusic = ({ user }) => {
   const [fileData, setFileData] = React.useState({});
   const [thumbnail, setThumbnail] = React.useState("");
-  const [uploading, setUploading] = React.useState('');
+  const [uploading, setUploading] = React.useState("");
   const [uploadDisable, setUploadDisable] = React.useState(true);
 
   const formik = useFormik({
@@ -38,10 +38,8 @@ const UploadMusic = ({ user }) => {
         );
         // console.log(data.body);
         if (data.body !== null) {
-        toast.success("Yaayy! Successfully uploaded.");
-          
-        }
-        else {
+          toast.success("Yaayy! Successfully uploaded.");
+        } else {
           toast.error("Something went wrong! try again.");
         }
       } catch (e) {
@@ -54,12 +52,12 @@ const UploadMusic = ({ user }) => {
 
   const handleChange = async ({ currentTarget }) => {
     try {
-      setUploading('pending');
-     
-      if (currentTarget.files[0].size > 100 * 1048576) {
-      setUploading('');
+      setUploading("pending");
 
-       return toast.error('Please upload a less than 100 MB video');
+      if (currentTarget.files[0].size > 100 * 1048576) {
+        setUploading("");
+
+        return toast.error("Please upload a less than 100 MB video");
       }
 
       let formData = new FormData();
@@ -71,69 +69,79 @@ const UploadMusic = ({ user }) => {
       );
       // console.log(data.body);
       setFileData(data.body);
-      setUploading('done');
+      setUploading("done");
       setUploadDisable(false);
-
     } catch (e) {
       toast.error("Something went wrong while uploading! try again.");
-      setUploading('');
+      setUploading("");
 
       console.log(e.message);
     }
   };
   const handlePickThumbnail = (thumbnail, index) => {
-    
     return setThumbnail(thumbnail);
   };
 
   return (
     <Container>
       <form>
-        <Button style={buttonStyleOpen}><label for='upload'>Choose Music</label></Button>
-        <input id='upload' type="file" name="file" onChange={handleChange} style={{display: 'none'}}/>
+        <Button style={buttonStyleOpen}>
+          <label for="upload">Choose Music</label>
+        </Button>
+        <input
+          id="upload"
+          type="file"
+          name="file"
+          onChange={handleChange}
+          style={{ display: "none" }}
+        />
       </form>
-      <br/>
       <br />
-      {
-          Object.keys(fileData).length > 0 && 
-          <Typography variant='h4'>
-          Pick a thumbnail for your music video  
-          </Typography>
-      }
-      <br/>
       <br />
-      
-       {
-        thumbnail && 
-        <img  width='300' height='300' src={storageURL + thumbnail} alt=''/>
-      }
-      <br/>
-      <br/>
+      {Object.keys(fileData).length > 0 && (
+        <Typography variant="h4">
+          Pick a thumbnail for your music video
+        </Typography>
+      )}
+      <br />
+      <br />
+
+      {thumbnail && (
+        <img width="300" height="300" src={storageURL + thumbnail} alt="" />
+      )}
+      <br />
+      <br />
       <Grid container spacing={6}>
-       
-        <br/>
-        <br/>
-        {
-          uploading === 'pending' ? <ReactLoading type='bars' color={colors.primary} height={150} width={150} /> :  (
+        <br />
+        <br />
+        {uploading === "pending" ? (
+          <ReactLoading
+            type="bars"
+            color={colors.primary}
+            height={150}
+            width={150}
+          />
+        ) : (
           <>
             {Object.keys(fileData).length > 0 &&
-         
-              fileData.fileThumbnails.split(",").map((t) => (
-                <Grid item xs={12} md={3} lg={3}>
-                  <MediaCard
-                    data={t}
-                    image={storageURL + t}
-                    onClick={handlePickThumbnail}
-                    imageTitle="Thumbnail"
-                  />
-                </Grid>
+              fileData.fileThumbnails.split(",").map((t, index) => (
+                <>
+                  {index < 4 && (
+                    <Grid item xs={12} md={3} lg={3} key={t}>
+                      <MediaCard
+                        data={t}
+                        image={storageURL + t}
+                        onClick={handlePickThumbnail}
+                        imageTitle="Thumbnail"
+                      />
+                    </Grid>
+                  )}
+                </>
               ))}
-              </>
-          )
-       }
+          </>
+        )}
       </Grid>
-      
-     
+
       <br />
       <br />
       <form onSubmit={formik.handleSubmit} autoComplete="off">
@@ -168,15 +176,11 @@ const UploadMusic = ({ user }) => {
           onChange={formik.handleChange}
         />
         <br />
-        {
-          !uploadDisable && 
-<Button style={buttonStyleOpen}
-          type="submit">
-
-          Upload
-        </Button>
-}
-        
+        {!uploadDisable && (
+          <Button style={buttonStyleOpen} type="submit">
+            Upload
+          </Button>
+        )}
       </form>
     </Container>
   );
