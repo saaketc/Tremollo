@@ -15,10 +15,9 @@ import Compliments from "./compliments";
 import ContentLikes from "./contentLikes";
 import { smallPicStyle } from "../../config/imageStyles";
 import CenteredTabs from "../common/centredTabs";
-import colors from "../../config/colors";
 import { encode, decode } from "../../utils/utilfunctions";
 import { makeStyles } from "@material-ui/core/styles";
-import { darkTheme } from "../../config/Themes";
+import  darkTheme  from "../../config/themes/dark";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
