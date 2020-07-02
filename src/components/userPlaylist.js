@@ -24,6 +24,8 @@ const styles = makeStyles(theme => ({
 
 const UserPlaylist = (props) => {
   const [playlist, setPlaylist] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+
   const  userId  = decode(props.match.params.userId);
   const classes = styles();
 
@@ -35,6 +37,7 @@ const UserPlaylist = (props) => {
       });
       console.log(data.body);
       setPlaylist(data.body.reverse());
+      setLoading(false);
     };
     fetchPlaylist();
   }, [userId]);
@@ -48,8 +51,12 @@ const UserPlaylist = (props) => {
       <Grid container spacing={4}>
         <Grid item xs={12} md={8} lg={8}>
           <Typography variant='h3' className={classes.heading}>
-            {playlist.length > 0 ? ` Enjoy the Playlist :)`
-              : `No playlists created yet :(`}
+            {
+              loading ?
+                'Loading playlist...'
+                :
+                playlist.length > 0 ? 'Enjoy the playlist :)' : 'No playlist created yet :('
+           }
             </Typography>
       <br/>
           <br />
