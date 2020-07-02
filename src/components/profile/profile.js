@@ -16,6 +16,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import Follow from "../socialInteraction/follow";
 import { decode, encode } from "../../utils/utilfunctions";
 import { Link } from "react-router-dom";
+import darkTheme from "../../config/themes/dark";
 
 const useStyles = makeStyles((theme) => ({
   btn: buttonStyleClose,
@@ -59,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
   space: {
     marginLeft: "10px",
   },
+  skeleton: {
+    backgroundColor: darkTheme.backgroundCard,
+  },
 }));
 
 const Profile = (props) => {
@@ -101,10 +105,8 @@ const Profile = (props) => {
   }, [userId]);
 
   const handleProfilePicClick = () => {
-    return window.location = `/uploadProfilePic?redirect=${window.location.href}`;
-
-    // alert(`userId is ${userId} & current: ${currentUser.userId}`);
-  }
+    return (window.location = `/uploadProfilePic?redirect=${window.location.href}`);
+  };
 
   const handleEditClick = () => {
     return history.push("/edit", { followersCount: userStats.followers });
@@ -117,9 +119,9 @@ const Profile = (props) => {
     return history.push(`/content/${encode(data.contentId)}`);
   };
 
-  const handleFollows = follows => {
+  const handleFollows = (follows) => {
     setIsFollowedByUser(follows);
-}
+  };
   const afterTabSet = (value) => {
     setTab(value);
   };
@@ -144,6 +146,7 @@ const Profile = (props) => {
               <Skeleton
                 animation="wave"
                 variant="circle"
+                className={classes.skeleton}
                 width={250}
                 height={250}
               />
@@ -160,17 +163,14 @@ const Profile = (props) => {
           {loading ? (
             <Skeleton
               animation="wave"
+              className={classes.skeleton}
               height={30}
               width="80%"
               style={{ marginBottom: 6 }}
             />
           ) : (
             <>
-              <Typography
-                variant="h4"
-               
-                style={{ fontWeight: "400" }}
-              >
+              <Typography variant="h4" style={{ fontWeight: "400" }}>
                 {userDetails.username}
               </Typography>
               <Typography
@@ -186,6 +186,7 @@ const Profile = (props) => {
           {loading ? (
             <Skeleton
               animation="wave"
+              className={classes.skeleton}
               height={30}
               width="40%"
               style={{ marginBottom: 6 }}
@@ -216,6 +217,7 @@ const Profile = (props) => {
           {loading ? (
             <Skeleton
               animation="wave"
+              className={classes.skeleton}
               height={30}
               width="40%"
               style={{ marginBottom: 6 }}
@@ -251,10 +253,14 @@ const Profile = (props) => {
                 followedId={userId}
                 isFollowedByUser={isFollowedByUser}
               />
-                <Button onClick={handlePlaylistClick} style={buttonStyleClose} className={classes.space}>
-                  {loading ? 'Loading playlist...'
-                    :
-                    `${userDetails.username}'s playlist`}
+              <Button
+                onClick={handlePlaylistClick}
+                style={buttonStyleClose}
+                className={classes.space}
+              >
+                {loading
+                  ? "Loading playlist..."
+                  : `${userDetails.username}'s playlist`}
               </Button>
             </div>
           )}
@@ -270,8 +276,14 @@ const Profile = (props) => {
       <br />
 
       <Grid container spacing={4}>
-        {tab === 0 && <UserFollowers userId={userId} currentUserId={currentUser.userId} isFollows={handleFollows}/>}
-       
+        {tab === 0 && (
+          <UserFollowers
+            userId={userId}
+            currentUserId={currentUser.userId}
+            isFollows={handleFollows}
+          />
+        )}
+
         {tab === 1 && (
           <UserContent onClick={handleAlbumClick} content={content.reverse()} />
         )}
