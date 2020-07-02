@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Avatar, Typography } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
 import darkTheme from "../../config/themes/dark";
-import { useHistory, Link } from "react-router-dom";
 import { encode } from "../../utils/utilfunctions";
 import { makeStyles } from "@material-ui/core/styles";
+import colors from "../../config/colors";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
@@ -29,9 +29,15 @@ const UserTemplate = ({ user }) => {
         style={{ color: darkTheme.textColor }}
       >
         <Avatar alt="" src={storageURL + user.avatarLink} />
-        <Typography style={{ marginLeft: "30px" }} variant="h8">
+        <div>
+        <Typography style={{ marginLeft: "22px" }} variant="h7">
           {`${user.username}`}
         </Typography>
+        <br/>
+        <Typography style={{ marginLeft: "22px", color: colors.secondary }} variant="p">
+          {`${user.firstName} ${user.lastName}`}
+        </Typography>
+          </div>
       </Button>
     </div>
   );
