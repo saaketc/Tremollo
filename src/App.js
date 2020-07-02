@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { Route, Switch as RouterSwitch } from "react-router-dom";
 import Feed from "./components/feed";
@@ -44,6 +44,10 @@ function App() {
   //   const lightTheme = createMuiTheme();
 
   useEffect(() => {
+    if (!navigator.onLine) {
+      toast.error('No internet connection.');
+    }
+   
     setUser(getUser());
   }, []);
 
