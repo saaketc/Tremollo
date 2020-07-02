@@ -1,7 +1,7 @@
 import React from "react";
 import queryString from "query-string";
 import dataService from "../services/dataServices";
-import { Typography, Container, Grid } from "@material-ui/core";
+import { Typography, Container, Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { storageURL } from "../config/storage";
@@ -9,6 +9,7 @@ import colors from "../config/colors";
 import CardComponent from "./common/cardComponent";
 import UserTemplate from "./common/userTemplate";
 import { encode } from "../utils/utilfunctions";
+import { buttonStyleOpen } from "../config/buttonStyle";
 
 const styles = makeStyles((theme) => ({
   heading: {
@@ -27,6 +28,8 @@ const SearchResults = (props) => {
   const { q } = queryString.parse(props.location.search);
   const [content, setContent] = React.useState([]);
   const [users, setUsers] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+
   const history = useHistory();
   const classes = styles();
 
@@ -45,6 +48,7 @@ const SearchResults = (props) => {
 
         setUsers(userRes.data.body);
         setContent(contentRes.data.body);
+        setLoading(false);
       })
       .catch((error) => console.log(error));
   }, [q]);
@@ -62,7 +66,11 @@ const SearchResults = (props) => {
             {`Results for ${q}`}
           </Typography>
           <br />
-          <br />
+          <Typography variant="h7" className={classes.heading}>
+            Collections, billboards, charts & much more coming soon! Stay tuned.
+        </Typography>
+          <br/>
+          <br/>
           <Grid container spacing={6}>
             {content.map((c) => (
               <Grid item xs={12} lg={3}  md={3}>
@@ -90,11 +98,17 @@ const SearchResults = (props) => {
         </>
       ) : (
         <Typography variant="h4" className={classes.heading}>
-          {`Sorry no results found for ${q} :( `}
+          {!loading ? `Sorry no results found for ${q} :( ` : 'Loading results...'}
           <br />
-          <a href="/">Explore Music</a>
-        </Typography>
-      )}
+          </Typography>
+         
+        )}
+          <br/>
+          <br/>
+            <Button style={buttonStyleOpen} onClick={()=>history.push('/')}>Explore Music</Button>
+      <br/>
+      <br/>
+     
     </Container>
   );
 };
