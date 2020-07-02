@@ -1,7 +1,7 @@
 import React from "react";
 import dataService from "../../services/dataServices";
 import colors from "../../config/colors";
-import { Container, Grid, Typography, Button } from "@material-ui/core";
+import { Container, Grid, Typography, Button, Avatar } from "@material-ui/core";
 import { toast } from "react-toastify";
 import { makeStyles } from "@material-ui/core/styles";
 import ReactLoading from "react-loading";
@@ -21,6 +21,16 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: colors.primary,
     },
   },
+  profile: {
+    borderRadius: "50%",
+    border: `2px solid ${colors.primary}`,
+    width: 200,
+    height: 200,
+    verticalAlign: "middle",
+    "&:hover": {
+      opacity: 0.3,
+    },
+  }
 }));
 const ProfilePicUpload = (props) => {
   
@@ -58,13 +68,7 @@ const ProfilePicUpload = (props) => {
         formData,
         "multipart/form-data"
       );
-      // console.log(data.body);
-      // if (location.state) {
-      //   removeUser();
-      //   setUser(data.body);
-      //   return window.location = `/profile/${encode(user.userId)}`;
-      // }
-
+    
       removeUser();
       setUser(data.body);
       return window.location = redirect ? redirect : '/';
@@ -81,7 +85,7 @@ const ProfilePicUpload = (props) => {
       </Typography>
       <br />
       <Grid container spacing={6}>
-        <Grid item xs={12} md={6} lg={6}>
+        <Grid item xs={12} md={4} lg={4}>
           <form onSubmit={handleSubmit} autoComplete="off">
          
             <Button style={buttonStyleOpen}>
@@ -115,8 +119,8 @@ const ProfilePicUpload = (props) => {
             />
           )}
         </Grid>
-        <Grid item xs={12} md={6} lg={6}>
-          {pic && <img width="500" height="500" id="target" src={pic} alt="" />}
+        <Grid item xs={12} md={4} lg={4}>
+          {pic && <Avatar id="target" src={pic} className={classes.profile} alt="profile" />}
         </Grid>
       </Grid>
     </Container>
