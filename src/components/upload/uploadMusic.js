@@ -107,7 +107,7 @@ const UploadMusic = ({ user }) => {
       <br />
 
       {thumbnail && (
-        <img width="330" height="300" src={storageURL + thumbnail} alt="" />
+        <img width="350" height="300" src={storageURL + thumbnail} alt="" />
       )}
       <br />
       <br />
@@ -115,12 +115,16 @@ const UploadMusic = ({ user }) => {
         <br />
         <br />
         {uploading === "pending" ? (
+         <div>
           <ReactLoading
             type="bars"
             color={colors.primary}
             height={150}
             width={150}
-          />
+            />
+            <br/>
+            <p style={{color: colors.primary}}>Uploading your music... Sit back & relax!</p>
+          </div>
         ) : (
           <>
             {Object.keys(fileData).length > 0 &&
