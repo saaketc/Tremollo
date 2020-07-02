@@ -110,8 +110,8 @@ const ContentPage = (props) => {
                       animation="wave"
                       variant="circle"
                       className={classes.skeleton}
-                      width={100}
-                      height={100}
+                      width={60}
+                      height={60}
                     />
                   ) : (
                     <Avatar
@@ -124,7 +124,7 @@ const ContentPage = (props) => {
                     <>
                       <Skeleton
                         animation="wave"
-                        height={50}
+                        height={30}
                         width={100}
                         className={classes.skeleton}
                         style={{ marginBottom: 6, marginLeft: 6 }}
