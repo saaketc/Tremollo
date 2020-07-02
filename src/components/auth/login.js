@@ -22,7 +22,9 @@ const Login = (props) => {
         "user/login",
         submittedFormData
       );
-      // console.log('from backend', data.body);
+      if (data.body === null) {
+        return toast.error('Invalid email or password. Please check credentials!');
+      }
       setUser(data.body);
       window.location = state ? state : "/";
     } catch (e) {
