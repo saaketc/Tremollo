@@ -72,7 +72,8 @@ const ContentPage = (props) => {
               animation="wave"
               variant="rect"
               className={classes.skeleton}
-              height={600}
+              height={500}
+              width={800}
             />
           ) : (
             <VideoPlayer
