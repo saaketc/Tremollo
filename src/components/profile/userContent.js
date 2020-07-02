@@ -8,11 +8,11 @@ const UserContent = ({content, onClick}) => {
    return (
        <Container maxWidth='xl'>
             
-           {content && content.length === 0 ?
+           {(content && content.length === 0) &&
               <Typography variant='h5'>
                    Ooops! No uploads yet.
               </Typography>
-               : ''
+               
           }
                
           <Grid container spacing={6}>
