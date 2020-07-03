@@ -56,6 +56,7 @@ const ProfilePicUpload = (props) => {
     }
   };
   const handleSubmit = async (e) => {
+   
     e.preventDefault();
     try {
       setUploading("pending");
@@ -74,7 +75,7 @@ const ProfilePicUpload = (props) => {
       return window.location = redirect ? redirect : '/';
 
     } catch (e) {
-      console.log(e.message);
+      // console.log(e.message);
       toast.error("Something went wrong.");
     }
   };
