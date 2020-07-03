@@ -1,11 +1,11 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import FirstPhase from "./firstPhase";
 import SecondPhase from "./secondPhase";
 import dataService from "../../../services/dataServices";
-import { toast } from "materialize-css";
+import { toast } from "react-toastify";
 import "../../../styles/auth.css";
 import background from "../../../illustrations/background.svg";
 import { setUser } from "../../../services/userServices";
@@ -13,7 +13,7 @@ import { setUser } from "../../../services/userServices";
 const Signup = (props) => {
   const [formValues, setFormValues] = React.useState({});
   const [nextTab, setNextTab] = React.useState(1);
-  const history = useHistory();
+  // const history = useHistory();
 
   const { state } = props.location;
 
@@ -29,7 +29,7 @@ const Signup = (props) => {
     try {
       const { data } = await dataService.postData('user/create', userData);
 
-      setUser(JSON.stringify(data.body));
+      setUser(data.body);
       
       // history.push('/uploadProfilePic', {redirectUrl: state});
       window.location = `/uploadProfilePic?redirect=${state ? state : '/'}`;
