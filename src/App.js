@@ -28,6 +28,7 @@ import ProtectedRoute from "./components/auth/protectedRoute";
 import Feedback from "./components/feedback";
 import About from "./components/about";
 import SideDrawer from "./components/common/drawer";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState({});
@@ -55,13 +56,14 @@ function App() {
   return (
     <ThemeProvider theme={dark ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <Container maxWidth='100%'>
+    
 
       <SideDrawer user={user} />
     
 
       <br />
       <br />
+      <div className='container'>
       <ToastContainer />
       <RouterSwitch>
         <ProtectedRoute
@@ -118,7 +120,7 @@ function App() {
         />
 
         </RouterSwitch>
-        </Container>
+        </div>
     </ThemeProvider>
   );
 }

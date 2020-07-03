@@ -23,6 +23,7 @@ import darkTheme from "../../config/themes/dark";
 import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { encode } from "../../utils/utilfunctions";
+import Playlist from "../playlist";
 
 const drawerWidth = 240;
 
@@ -102,7 +103,9 @@ export default function SideDrawer(props) {
                 </IconButton>
               )}
             </ListItemIcon>
-            <ListItemText secondary="Search" />
+            <ListItemText style={{ color: darkTheme.textColor }}>
+              Search
+            </ListItemText>
           </ListItem>
         </List>
 
@@ -120,6 +123,15 @@ export default function SideDrawer(props) {
               <ListItem>
                 <ListItemText>
                   <UploadButton onClick={handleUploadButton} />
+                </ListItemText>
+              </ListItem>
+
+              <ListItem>
+                <ListItemIcon>
+                  <Playlist currentUserId={user.userId} />
+                </ListItemIcon>
+                <ListItemText style={{ color: darkTheme.textColor }}>
+                  Create playlist
                 </ListItemText>
               </ListItem>
             </>
