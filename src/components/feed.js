@@ -42,7 +42,7 @@ const Feed = (props) => {
   };
 
   return (
-    <Container maxWidth="100%">
+    <Container maxWidth="md">
       {
         loading ?
           <div class="d-flex justify-content-center align-items-center" style={{ marginTop: '10rem'}}>

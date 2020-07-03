@@ -27,6 +27,7 @@ import { getUser } from "./services/userServices";
 import ProtectedRoute from "./components/auth/protectedRoute";
 import Feedback from "./components/feedback";
 import About from "./components/about";
+import SideDrawer from "./components/common/drawer";
 
 function App() {
   const [user, setUser] = useState({});
@@ -56,7 +57,7 @@ function App() {
       <GlobalStyles />
       <Container maxWidth='100%'>
 
-      <Navbar user={user} />
+      <SideDrawer user={user} />
     
 
       <br />

@@ -11,8 +11,7 @@ import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 
 import colors from "../../config/colors";
-import Search from "../search/search";
-import logo from "../../logo/logo.svg";
+// import Search from "../search/search";
 import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { Avatar } from "@material-ui/core";
@@ -114,12 +113,8 @@ function Navbar(props) {
   const handleProfile = () => {
     return window.location = `/profile/${encode(user.userId)}`;
   };
-  const handlePlaylistClick = () => {
-    return props.history.push(`/playlist/${encode(user.userId)}`);
-  };
-  const handleUploadButton = () => {
-    return props.history.push('/myMusic/upload');
-  };
+
+
   const handleLogout = () => {
     return props.history.push("/logout");
   };
@@ -127,7 +122,7 @@ function Navbar(props) {
   return (
     <div className={classes.root}>
       <Toolbar>
-        <Hidden only={["sm", "xs"]}>
+        {/* <Hidden only={["sm", "xs"]}>
           <Typography
             style={{ width: "100%" }}
             className={classes.title}
@@ -151,13 +146,9 @@ function Navbar(props) {
               <img src={logo} alt="tremollo music" />
             </a>
           </Typography>
-        </Hidden>
+        </Hidden> */}
         {/* Search component here */}
-        {user && 
-        <div style={{ marginRight: "300px", width: '100%' }}>
-        <Search />
-      </div>
-        }
+    
         
      
         {!user && (
@@ -172,19 +163,7 @@ function Navbar(props) {
         )}
         {user && (
           <>
-              <IconButton>
-            <UploadButton onClick={handleUploadButton} />
-             </IconButton>
-             <IconButton>
-            
-            <Button
-            onClick={handlePlaylistClick}
-            style={buttonStyleOpen}
-            className={classes.right}
-          >
-                My playlist
-          </Button>
-             </IconButton>
+             
           <div style={{ margin: "20px",display: 'inline'}}>
            
               
