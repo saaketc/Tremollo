@@ -6,7 +6,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 
 import colors from "../../config/colors";
 import darkTheme from "../../config/themes/dark";
@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   playIcon: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     color: darkTheme.primary,
   },
   secondary: {
@@ -51,30 +51,51 @@ export default function CardComponent({
   tag,
   image,
   onClick,
-  tooltip
+  tooltip,
+  hover,
 }) {
   const classes = useStyles();
+  const [playIcon, setPlayIcon] = React.useState(false);
 
+  const handleMouseEnter = () => {
+    if (!hover) return;
+    setPlayIcon(true);
+  };
+  const handleMouseLeave = () => {
+    if (!hover) return;
+    setPlayIcon(false);
+  };
   return (
     <Button>
       <Card
         className={classes.root}
         onClick={() => (onClick ? onClick(data) : null)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div>
-          <CardMedia
-            className={classes.cover}
-            image={image}
-            title={tooltip}
-          />
+          <CardMedia className={classes.cover} image={image} title={tooltip} />
           <CardContent className={classes.content}>
             <Typography component="h7" variant="h7">
               {primaryData}
             </Typography>
             <br />
-            <Typography variant="subtitle2" className={classes.secondary}>
-              {secondaryData}
-            </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={8} lg={8}>
+                <Typography variant="subtitle2" className={classes.secondary}>
+                  {secondaryData}
+                </Typography>
+              </Grid>
+              <Grid item xs={12} md={4} lg={4}>
+                {playIcon && (
+                  <div className={classes.controls}>
+                    <IconButton aria-label="play/pause">
+                      <PlayArrowIcon className={classes.playIcon} />
+                    </IconButton>
+                  </div>
+                )}
+              </Grid>
+            </Grid>
             {tag && (
               <Typography
                 variant="subtitle1"
@@ -85,11 +106,6 @@ export default function CardComponent({
               </Typography>
             )}
           </CardContent>
-          <div className={classes.controls}>
-            <IconButton aria-label="play/pause">
-              <PlayArrowIcon className={classes.playIcon} />
-            </IconButton>
-          </div>
         </div>
       </Card>
     </Button>
