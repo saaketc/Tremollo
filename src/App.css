@@ -16,8 +16,9 @@
   }
   
   .container {
-    max-width: 1000px;
-    margin: auto;
+    /* max-width: 1000px; */
+
+    margin-left: 300px;
     padding: 0 20px;
   }
   
@@ -42,22 +43,22 @@
   .card {
     cursor: pointer;
     background-color: transparent;
-    height:300px;
+    height:200px;
     perspective: 1000px;
   }
   
 
   
   .card img {
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 200px;
     object-fit: cover;
   }
   
   .card-inner {
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 200px;
     transition: transform 0.8s;
     transform-style: preserve-3d;
   }
@@ -69,8 +70,8 @@
   .card-front,
   .card-back {
     position: absolute;
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 200px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
