@@ -60,6 +60,7 @@ function App() {
 
       <div className={user ? 'container' : ''}>
         <ToastContainer />
+        <br/>
         <RouterSwitch>
           <ProtectedRoute path="/search" component={SearchResults} />
           <ProtectedRoute

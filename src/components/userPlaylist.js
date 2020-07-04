@@ -83,6 +83,10 @@ const UserPlaylist = (props) => {
      </Grid>
 
         <Grid item xs={12} md={4} lg={4}>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           <img src={playlistIllus} alt="playlist" />
         </Grid>
         
