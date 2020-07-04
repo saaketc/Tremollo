@@ -11,9 +11,6 @@ import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
 
 import colors from "../../config/colors";
-import Search from "../search/search";
-import logo from "../../logo/logo.svg";
-import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { Avatar } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
@@ -22,6 +19,7 @@ import { encode } from "../../utils/utilfunctions";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginTop: '10px'
   },
   menuButton: {
     marginRight: theme.spacing(2),
