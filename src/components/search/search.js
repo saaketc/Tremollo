@@ -12,14 +12,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexGrow: 1,
-    maxWidth: 900,
+    maxWidth: 500,
+    padding: 10,
     border: '1 px solid white',
     borderRadius: '50px',
     background: darkTheme.backgroundCard
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 2,
+    flex: 1,
     [theme.breakpoints.up("xs")]: {
       display: "block",
       width: 200,

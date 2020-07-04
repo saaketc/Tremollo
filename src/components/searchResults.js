@@ -10,11 +10,12 @@ import CardComponent from "./common/cardComponent";
 import UserTemplate from "./common/userTemplate";
 import { encode } from "../utils/utilfunctions";
 import { buttonStyleOpen } from "../config/buttonStyle";
+import Search from "./search/search";
 
 const styles = makeStyles((theme) => ({
   heading: {
     fontWeight: "500",
-    color: colors.white
+    color: colors.white,
   },
   pic: {
     width: "15%",
@@ -59,21 +60,28 @@ const SearchResults = (props) => {
   };
 
   return (
-    <Container maxWidth='xl'>
-       <Typography variant="h7" className={classes.heading}>
+    <Container maxWidth="lg">
+      <br />
+      <br />
+      <div maxWidth='100px'>
+        <Search />
+        </div>
+      <br />
+      <br />
+      <Typography variant="h7" className={classes.heading}>
         Collections, billboards, charts & much more coming soon! Stay tuned.
-        </Typography>
-      <br/>
-      <br/>
+      </Typography>
+      <br />
+      <br />
       {content.length > 0 || users.length > 0 ? (
         <>
           <Typography variant="h4" className={classes.heading}>
-            {`Best results for ${q}`}
+            {!loading ? `Best results for ${q}` : ''}
           </Typography>
           <br />
           <Grid container spacing={6}>
             {content.map((c) => (
-              <Grid item xs={12} lg={3}  md={3}>
+              <Grid item xs={12} lg={3} md={3}>
                 <CardComponent
                   data={c}
                   primaryData={c.title}
@@ -90,25 +98,29 @@ const SearchResults = (props) => {
           <Grid container spacing={6}>
             {users.map((user) => (
               <Grid item xs={12} lg={3} md={3}>
-                <UserTemplate
-                  user={user}/>
+                <UserTemplate user={user} />
               </Grid>
             ))}
           </Grid>
         </>
       ) : (
+          
+       (  q &&  
         <Typography variant="h4" className={classes.heading}>
-          {!loading ? `Sorry no results found for ${q} :( ` : 'Loading results...'}
+          {!loading
+            ? `Sorry no results found for ${q} :( `
+            : `Loading results for ${q}...`}
           <br />
-          </Typography>
-         
-        )}
-          <br/>
-          <br/>
-            <Button style={buttonStyleOpen} onClick={()=>history.push('/')}>Explore Music</Button>
-      <br/>
-      <br/>
-     
+            </Typography>
+       )
+      )}
+      <br />
+      <br />
+      <Button style={buttonStyleOpen} onClick={() => history.push("/")}>
+        Explore Music
+      </Button>
+      <br />
+      <br />
     </Container>
   );
 };
