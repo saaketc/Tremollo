@@ -15,7 +15,7 @@ import SearchResults from "./components/searchResults";
 import ProfilePicUpload from "./components/auth/profilePicUpload";
 import Profile from "./components/profile/profile";
 import EditProfile from "./components/editProfile";
-import { Container} from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import ContentPage from "./components/content/contentPage";
 
 // import darkTheme from './config/themes/dark';
@@ -47,80 +47,56 @@ function App() {
 
   useEffect(() => {
     if (!navigator.onLine) {
-      toast.error('No internet connection.');
+      toast.error("No internet connection.");
     }
-   
+
     setUser(getUser());
   }, []);
 
   return (
     <ThemeProvider theme={dark ? darkTheme : lightTheme}>
       <GlobalStyles />
-    
 
-      <SideDrawer user={user} />
-    
+      {user && <SideDrawer user={user} />}
 
       <br />
       <br />
-      <div className='container'>
-      <ToastContainer />
-      <RouterSwitch>
-        <ProtectedRoute
-          path="/search"
-         component={SearchResults}
-        />
-        <ProtectedRoute
-          path="/uploadProfilePic"
-         component={ProfilePicUpload}
-        />
-        <ProtectedRoute
-          path="/profile/:userId"
-         component={Profile}
-        />
-        <ProtectedRoute
-          path="/content/:contentId"
-         component={ContentPage}
-        />
-        <ProtectedRoute
-          path="/edit"
-        component={EditProfile}
-          />
-          
-        <ProtectedRoute
-          path="/myMusic/upload"
-         component={UploadMusic}
-          />
-          
-        <Route path="/about" component={About} />
-        <Route path="/logout" component={Logout} />
-        <Route path="/auth/signup" component={Signup} />
-        <Route path="/auth/login" component={Login} />
-       
+      <div className={user ? 'container' : ''}>
+        <ToastContainer />
+        <RouterSwitch>
+          <ProtectedRoute path="/search" component={SearchResults} />
           <ProtectedRoute
-          path="/myPlaylist/:userId/:playlistName"
-       component={PlaylistFeed}
+            path="/uploadProfilePic"
+            component={ProfilePicUpload}
           />
-          
-        <ProtectedRoute
-          path="/playlist/:userId"
-         component={UserPlaylist}
-          />
-           <ProtectedRoute
-          path="/feedback"
-         component={Feedback}
-          />
-          
-        <Route
-          exact
-          path="/"
-          render={(props) =>
-            user ? <Feed {...props} user={user} /> : <Welcome {...props} />
-          }
-        />
+          <ProtectedRoute path="/profile/:userId" component={Profile} />
+          <ProtectedRoute path="/content/:contentId" component={ContentPage} />
+          <ProtectedRoute path="/edit" component={EditProfile} />
 
+          <ProtectedRoute path="/myMusic/upload" component={UploadMusic} />
+
+          <Route path="/about" component={About} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/auth/signup" component={Signup} />
+          <Route path="/auth/login" component={Login} />
+
+          <ProtectedRoute
+            path="/myPlaylist/:userId/:playlistName"
+            component={PlaylistFeed}
+          />
+
+          <ProtectedRoute path="/playlist/:userId" component={UserPlaylist} />
+          <ProtectedRoute path="/feedback" component={Feedback} />
+
+          <Route
+            exact
+            path="/"
+            render={(props) =>
+              user ? <Feed {...props} user={user} /> : <Welcome {...props} />
+            }
+          />
         </RouterSwitch>
-        </div>
+      </div>
     </ThemeProvider>
   );
 }

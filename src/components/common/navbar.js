@@ -1,18 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
-
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
-import Hidden from "@material-ui/core/Hidden";
-
 import colors from "../../config/colors";
 // import Search from "../search/search";
-import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { Avatar } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
@@ -75,9 +69,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btn: {
-    margin: '20px',
-    paddingLeft: '20px',
-    paddingRight: '20px'
+    margin: "20px",
+    paddingLeft: "20px",
+    paddingRight: "20px",
   },
   hover: {
     "&:hover": {
@@ -93,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pic: {
     border: `1px solid ${colors.primary}`,
-  }
+  },
 }));
 
 function Navbar(props) {
@@ -111,9 +105,8 @@ function Navbar(props) {
     setAnchorEl(null);
   };
   const handleProfile = () => {
-    return window.location = `/profile/${encode(user.userId)}`;
+    return (window.location = `/profile/${encode(user.userId)}`);
   };
-
 
   const handleLogout = () => {
     return props.history.push("/logout");
@@ -122,81 +115,40 @@ function Navbar(props) {
   return (
     <div className={classes.root}>
       <Toolbar>
-        {/* <Hidden only={["sm", "xs"]}>
-          <Typography
-            style={{ width: "100%" }}
-            className={classes.title}
-            variant="h5"
-            noWrap
-          >
-            <a
-              href="/"
-              style={{ textDecoration: "none", color: colors.primary }}
-            >
-              <img src={logo} alt="tremollo music" />
-            </a>
-          </Typography>
-        </Hidden>
-        <Hidden only={["lg", "md"]}>
-          <Typography className={classes.title} variant="subtitle2" noWrap>
-            <a
-              href="/"
-              style={{ textDecoration: "none", color: colors.primary }}
-            >
-              <img src={logo} alt="tremollo music" />
-            </a>
-          </Typography>
-        </Hidden> */}
-        {/* Search component here */}
-    
-        
-     
         {!user && (
-          
-            <Button
-                style={buttonStyleOpen}
-                onClick={() => props.history.push('/about')}
-              >
-                About
-              </Button>
-              
+          <Button
+            style={buttonStyleOpen}
+            onClick={() => props.history.push("/about")}
+          >
+            About
+          </Button>
         )}
-        {user && (
-          <>
-             
-          <div style={{ margin: "20px",display: 'inline'}}>
-           
-              
-         
-              <Avatar
-                  onClick={handleMenu}
-                  src={storageURL + user.avatarLink}
-                  className={classes.pic}
-              />
-         
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleProfile}>Profile</MenuItem>
-              <MenuItem onClick={()=> props.history.push('/feedback')}>Feedback</MenuItem>
-              <MenuItem onClick={()=> props.history.push('/about')}>About us</MenuItem>
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
-            </div>
-            </>
-        )}
+
+        <Avatar
+          onClick={handleMenu}
+          src={storageURL + user.avatarLink}
+          className={classes.pic}
+        />
+
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={open}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleProfile}>Profile</MenuItem>
+
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        </Menu>
       </Toolbar>
     </div>
   );

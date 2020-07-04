@@ -2,17 +2,16 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
+
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import InfoIcon from "@material-ui/icons/Info";
+import FeedbackIcon from "@material-ui/icons/Feedback";
+import HomeIcon from "@material-ui/icons/Home";
 import Navbar from "./navbar";
 import logo from "../../logo/logo.svg";
 import colors from "../../config/colors";
@@ -47,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
+  text: {
+    color: darkTheme.textColor,
+  },
 }));
 
 export default function SideDrawer(props) {
@@ -63,9 +65,9 @@ export default function SideDrawer(props) {
 
   return (
     <div className={classes.root}>
-      <div style={{ alignItems: "right" }}>
+    
         <Navbar user={user} />
-      </div>
+   
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -91,19 +93,18 @@ export default function SideDrawer(props) {
         </List>
 
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              {user && (
-                <IconButton
-                  type="submit"
-                  className={classes.iconButton}
-                  aria-label="search"
-                >
-                  <SearchIcon style={{ color: darkTheme.textColor }} />
-                </IconButton>
-              )}
+          <ListItem button onClick={() => history.push("/")}>
+            <ListItemIcon className={classes.text}>
+              <HomeIcon />
             </ListItemIcon>
-            <ListItemText style={{ color: darkTheme.textColor }}>
+            <ListItemText className={classes.text}>Home</ListItemText>
+          </ListItem>
+
+          <ListItem button onClick={() => history.push("/search")}>
+            <ListItemIcon className={classes.text}>
+             <SearchIcon />
+            </ListItemIcon>
+            <ListItemText className={classes.text}>
               Search
             </ListItemText>
           </ListItem>
@@ -130,22 +131,30 @@ export default function SideDrawer(props) {
                 <ListItemIcon>
                   <Playlist currentUserId={user.userId} />
                 </ListItemIcon>
-                <ListItemText style={{ color: darkTheme.textColor }}>
+                <ListItemText className={classes.text}>
                   Create playlist
                 </ListItemText>
               </ListItem>
             </>
           )}
         </List>
+
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <br />
+          <br />
+          <ListItem button onClick={() => history.push("/about")}>
+            <ListItemIcon className={classes.text}>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText className={classes.text}>About us</ListItemText>
+          </ListItem>
+
+          <ListItem button onClick={() => history.push("/feedback")}>
+            <ListItemIcon className={classes.text}>
+              <FeedbackIcon />
+            </ListItemIcon>
+            <ListItemText className={classes.text}>Feedback</ListItemText>
+          </ListItem>
         </List>
       </Drawer>
     </div>
