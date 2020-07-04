@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
-
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import Tooltip from "@material-ui/core/Tooltip";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
@@ -10,6 +11,7 @@ import { encode, stringSlice } from "../utils/utilfunctions";
 import ReactLoading from "react-loading";
 import darkTheme from "../config/themes/dark";
 import { Typography } from "@material-ui/core";
+// import colors from "../config/colors";
 
 const Feed = (props) => {
   const history = useHistory();
@@ -59,7 +61,10 @@ const Feed = (props) => {
       ) : (
         <>
           <Typography variant="h3" style={{ fontWeight: 600 }}>
-            Curated for you
+            Curated for you with{" "}
+            <FavoriteIcon
+              style={{ color: "red", fontSize: "50px", marginBottom: "10px" }}
+            />
           </Typography>
           <br />
           <br />
@@ -67,14 +72,17 @@ const Feed = (props) => {
             {feed &&
               feed.map((f) => (
                 <Grid item xs={12} lg={3} md={3} key={f.userId}>
-                  <CardComponent
-                    data={f}
-                    primaryData={stringSlice(f.title)}
-                    secondaryData={`by ${f.username}`}
-                    tag={`${f.likes} likes`}
-                    onClick={handleAlbumClick}
-                    image={storageURL + f.thumbnailLink}
-                  />
+                  <Tooltip title={f.title}>
+                    <CardComponent
+                      data={f}
+                      primaryData={stringSlice(f.title)}
+                      secondaryData={`by ${f.username}`}
+                      tooltip={f.title}
+                      tag={`${f.likes} likes`}
+                      onClick={handleAlbumClick}
+                      image={storageURL + f.thumbnailLink}
+                    />
+                  </Tooltip>
                   <br />
                 </Grid>
               ))}

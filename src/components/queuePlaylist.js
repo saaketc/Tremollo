@@ -3,7 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
-import { filter, encode } from "../utils/utilfunctions";
+import { filter, encode, stringSlice } from "../utils/utilfunctions";
+import { Typography } from "@material-ui/core";
 
 const QueuePlaylist = (props) => {
   const { user, removeContentId } = props;
@@ -34,13 +35,18 @@ const QueuePlaylist = (props) => {
   };
   return (
     <>
+      <Typography variant="h4" style={{ fontWeight: 600, marginLeft: "10px" }}>
+        Explore more
+      </Typography>
+      <br />
       {filter(queue, "contentId", removeContentId).map((f) => (
         <Grid container spacing={6}>
           <Grid item xs={12} lg={3} md={3} key={f.title}>
             <CardComponent
               data={f}
-              primaryData={f.title}
+              primaryData={stringSlice(f.title)}
               secondaryData={`by ${f.username}`}
+              tooltip={f.title}
               tag={`${f.likes} likes`}
               onClick={handleAlbumClick}
               image={storageURL + f.thumbnailLink}

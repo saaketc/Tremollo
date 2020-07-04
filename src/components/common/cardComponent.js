@@ -51,7 +51,7 @@ export default function CardComponent({
   tag,
   image,
   onClick,
-  width,
+  tooltip
 }) {
   const classes = useStyles();
 
@@ -65,7 +65,7 @@ export default function CardComponent({
           <CardMedia
             className={classes.cover}
             image={image}
-            title={primaryData}
+            title={tooltip}
           />
           <CardContent className={classes.content}>
             <Typography component="h7" variant="h7">
