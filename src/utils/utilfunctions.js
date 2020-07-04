@@ -82,3 +82,8 @@ export const decode = (data) => {
   let dec = decodeURIComponent(data);
   return window.atob(dec);
 };
+
+export const stringSlice = string => {
+  
+  return string.length === string.slice(0, 30).length ? string : string.slice(0, 30) + '...';
+}
