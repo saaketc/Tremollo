@@ -5,6 +5,8 @@ import feedback from "../illustrations/feedback.svg";
 const Feedback = () => {
   return (
     <div>
+      <br/>
+      <br/>
       <Grid container spacing={4}>
         <Grid item xs={12} md={4} lg={4}>
           <img src={feedback} alt="feedback" width="100%" height="100%" />

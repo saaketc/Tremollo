@@ -15,20 +15,20 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     backgroundColor: darkTheme.backgroundCard,
-    width: 250,
-    height: 300,
+    width: 200,
+    height: 230,
   },
 
   content: {
     color: darkTheme.textColor,
     textTransform: "none",
     textAlign: "left",
-    width: 250,
-    height: 250,
+    width: 200,
+    height: 230,
   },
   cover: {
-    width: 250,
-    height: 200,
+    width: 200,
+    height: 100,
   },
 
   playIcon: {
@@ -72,7 +72,7 @@ export default function CardComponent({
               {primaryData}
             </Typography>
             <br />
-            <Typography variant="subtitle1" className={classes.secondary}>
+            <Typography variant="subtitle2" className={classes.secondary}>
               {secondaryData}
             </Typography>
             {tag && (
@@ -85,6 +85,11 @@ export default function CardComponent({
               </Typography>
             )}
           </CardContent>
+          <div className={classes.controls}>
+            <IconButton aria-label="play/pause">
+              <PlayArrowIcon className={classes.playIcon} />
+            </IconButton>
+          </div>
         </div>
       </Card>
     </Button>

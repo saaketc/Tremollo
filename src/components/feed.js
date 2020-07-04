@@ -6,16 +6,17 @@ import { useHistory } from "react-router-dom";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
-import { encode } from "../utils/utilfunctions";
+import { encode, stringSlice } from "../utils/utilfunctions";
 import ReactLoading from "react-loading";
 import darkTheme from "../config/themes/dark";
+import { Typography } from "@material-ui/core";
 
 const Feed = (props) => {
   const history = useHistory();
   const { user } = props;
   const [feed, setFeed] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     async function fetchFeedData() {
       try {
@@ -42,38 +43,46 @@ const Feed = (props) => {
   };
 
   return (
-    <Container className='center'>
-      {
-        loading ?
-          <div className="d-flex justify-content-center align-items-center" style={{ marginTop: '10rem'}}>
+    <Container>
+      {loading ? (
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ marginTop: "10rem" }}
+        >
           <ReactLoading
-        type="spokes"
-        color={darkTheme.primary}
-        height={100}
+            type="spokes"
+            color={darkTheme.primary}
+            height={100}
             width={100}
-          
-            />
-            </div>
-          :
+          />
+        </div>
+      ) : (
+        <>
+          <Typography variant="h3" style={{ fontWeight: 600 }}>
+            Curated for you
+          </Typography>
+          <br />
           <Grid container spacing={4}>
-          {feed &&
-            feed.map((f) => (
-              
-                 <Grid item xs={12} lg={4} md={4} key={f.userId}  >
-                <CardComponent
-                  data={f}
-                  primaryData={f.title}
-                  secondaryData={`by ${f.username}`}
-                  onClick={handleAlbumClick}
-                  image={storageURL + f.thumbnailLink}
-                />
-                <br />
-              </Grid>
-                
-            ))}
-        </Grid>
-      }
-    
+            {feed &&
+              feed.map((f) => (
+                <Grid item xs={12} lg={3} md={3} key={f.userId}>
+                  <CardComponent
+                    data={f}
+                    primaryData={stringSlice(f.title)}
+                    secondaryData={`by ${f.username}`}
+                    tag={`${f.likes} likes`}
+                    onClick={handleAlbumClick}
+                    image={storageURL + f.thumbnailLink}
+                  />
+                  <br />
+                </Grid>
+              ))}
+          </Grid>
+          <br />
+          <br />
+          <br />
+        </>
+      )}
     </Container>
   );
 };

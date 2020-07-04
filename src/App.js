@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.min.css";
 import { Route, Switch as RouterSwitch } from "react-router-dom";
 import Feed from "./components/feed";
 import Welcome from "./components/welcome";
-import Navbar from "./components/common/navbar";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup/signup";
 import Logout from "./components/auth/logout";
@@ -15,7 +14,7 @@ import SearchResults from "./components/searchResults";
 import ProfilePicUpload from "./components/auth/profilePicUpload";
 import Profile from "./components/profile/profile";
 import EditProfile from "./components/editProfile";
-import { Container } from "@material-ui/core";
+// import { Container } from "@material-ui/core";
 import ContentPage from "./components/content/contentPage";
 
 // import darkTheme from './config/themes/dark';
@@ -59,8 +58,6 @@ function App() {
 
       {user && <SideDrawer user={user} />}
 
-      <br />
-      <br />
       <div className={user ? 'container' : ''}>
         <ToastContainer />
         <RouterSwitch>
