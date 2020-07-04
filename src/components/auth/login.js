@@ -39,6 +39,9 @@ const Login = (props) => {
         <img src={background} className="bg" alt="" />
       </div>
       <div className="form-login">
+        <br/>
+        <br/>
+        <br/>
         <Form
           postSubmitLogic={postSubmitLogic}
           heading={

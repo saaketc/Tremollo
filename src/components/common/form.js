@@ -13,8 +13,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import HeadsetIcon from "@material-ui/icons/Headset";
-import IconButton from "@material-ui/core/IconButton";
+// import HeadsetIcon from "@material-ui/icons/Headset";
+// import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
 import colors from "../../config/colors";
 import { buttonStyleOpen } from "../../config/buttonStyle";
@@ -23,8 +23,7 @@ import darkTheme from "../../config/themes/dark";
 const useStyles = makeStyles((theme) => ({
   input: {
     color: "white",
-    background: darkTheme.backgroundCard
-
+    background: darkTheme.backgroundCard,
   },
   label: {
     color: "white",
@@ -67,12 +66,10 @@ export default function Form(props) {
   const [formFields, setFormFields] = React.useState({});
   const [disableSubmit, setDisableSubmit] = React.useState(true);
 
-
   const handleChange = ({ currentTarget }) => {
-    if (currentTarget.value.trim() === '') {
+    if (currentTarget.value.trim() === "") {
       setDisableSubmit(true);
-    }
-    else setDisableSubmit(false);
+    } else setDisableSubmit(false);
 
     let form = { ...formFields };
     form[currentTarget.name] = currentTarget.value;
@@ -89,12 +86,15 @@ export default function Form(props) {
     <Container component="main" maxWidth="xs">
       {/* <CssBaseline /> */}
       <div className={classes.paper}>
-        {!noIcon && (
-          <IconButton>
-            <HeadsetIcon style={{ fontSize: "50px", color: colors.primary }} />
-          </IconButton>
-        )}
+        <br />
+        <br />
+        {/* {!noIcon && (
+          // <IconButton>
+          //   <HeadsetIcon style={{ fontSize: "50px", color: colors.primary }} />
+          // </IconButton>
 
+        )} */}
+        
         <Typography component="h1" variant="h5" className={classes.heading}>
           {heading}
         </Typography>
@@ -149,7 +149,7 @@ export default function Form(props) {
               </Grid>
             )}
           </Grid>
-          <br/>
+          <br />
           <Button
             type={button.type}
             fullWidth
@@ -158,23 +158,26 @@ export default function Form(props) {
           >
             {button.label}
           </Button>
-          <br/>
-          <br/>
+          <br />
+          <br />
           {login && (
             <>
               <Grid container justify="flex-end">
                 <Grid item>
-                  <Link to={{
-                    pathname: "/auth/signup",
-                    state: redirectUrl
-                  }} variant="body2" style={{color: colors.primary}}>
+                  <Link
+                    to={{
+                      pathname: "/auth/signup",
+                      state: redirectUrl,
+                    }}
+                    variant="body2"
+                    style={{ color: colors.primary }}
+                  >
                     New to tremollo? Create account
                   </Link>
                 </Grid>
               </Grid>
             </>
           )}
-           
         </form>
       </div>
     </Container>

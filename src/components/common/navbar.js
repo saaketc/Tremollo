@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 
@@ -15,11 +14,12 @@ import { buttonStyleOpen } from "../../config/buttonStyle";
 import { Avatar } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
 import { encode } from "../../utils/utilfunctions";
+import UserAvatar from "./userAvatar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginTop: '10px'
+    marginTop: "10px",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -91,9 +91,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "30px",
   },
 
-  pic: {
-    border: `1px solid ${colors.primary}`,
-  },
 }));
 
 function Navbar(props) {
@@ -129,26 +126,10 @@ function Navbar(props) {
           ></Typography>
         </Hidden>
 
-        {!user && (
-          <Button
-            style={buttonStyleOpen}
-            onClick={() => props.history.push("/about")}
-          >
-            About
-          </Button>
-        )}
         {user && (
           <>
+            <UserAvatar user={user} onClick={handleMenu} />
 
-            <Button style={buttonStyleOpen }  onClick={handleMenu}>
-            <Avatar
-              
-              style={{marginRight: '4px'}}
-              src={storageURL + user.avatarLink}
-              className={classes.pic}
-              />
-              {user.username}
-             </Button>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}

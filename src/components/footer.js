@@ -5,6 +5,8 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { Button } from '@material-ui/core';
+import { buttonStyleOpen } from '../config/buttonStyle';
 
 
 const useStyles = makeStyles(theme => ({
@@ -42,12 +44,14 @@ export default function Footer(props) {
                 <Typography variant="h6" align="center" gutterBottom>
                     {title}
                 </Typography>
-                         
-                          
+                <Typography variant="subtitle1" align="center"  component="p">   
+                    <Button onClick={()=> window.location = '/about'} style={buttonStyleOpen}>About us</Button>  
+                </Typography>
+                <br/>
                 <Typography variant="subtitle1" align="center"  component="p">
                     Made with <FavoriteIcon style={{color:'red', fontSize:'20px'}}/> & pride in India.
                 </Typography>
-              
+               
                 <Copyright />
             </Container>
         </footer>

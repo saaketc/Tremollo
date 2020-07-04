@@ -28,6 +28,7 @@ import Feedback from "./components/feedback";
 import About from "./components/about";
 import SideDrawer from "./components/common/drawer";
 import "./App.css";
+import Logo from "./components/common/logo";
 
 function App() {
   const [user, setUser] = useState({});
@@ -55,12 +56,21 @@ function App() {
   return (
     <ThemeProvider theme={dark ? darkTheme : lightTheme}>
       <GlobalStyles />
-
       {user && <SideDrawer user={user} />}
-
-      <div className={user ? 'container' : ''}>
+      <br />
+      <br />
+      <div className={user ? "container" : ""}>
         <ToastContainer />
-        <br/>
+        {!user && (
+          <>
+            <br />
+            <br />
+            <div style={{ marginLeft: "150px" }}>
+              <Logo />
+            </div>
+          </>
+        )}
+
         <RouterSwitch>
           <ProtectedRoute path="/search" component={SearchResults} />
           <ProtectedRoute

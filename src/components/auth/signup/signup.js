@@ -10,6 +10,7 @@ import "../../../styles/auth.css";
 import background from "../../../illustrations/background.svg";
 import { setUser } from "../../../services/userServices";
 
+
 const Signup = (props) => {
   const [formValues, setFormValues] = React.useState({});
   const [nextTab, setNextTab] = React.useState(1);
@@ -47,7 +48,7 @@ const Signup = (props) => {
     <div className='container-bg'>
       <img src={background} className='bg' alt=''/>
    </div>
-        
+         
       {nextTab === 1 ? (
         <FirstPhase onSubmit={handleFirstPhaseSubmit} />
       ) : (

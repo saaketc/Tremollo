@@ -23,6 +23,7 @@ import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { encode } from "../../utils/utilfunctions";
 import Playlist from "../playlist";
+import Logo from "../common/logo";
 
 const drawerWidth = 240;
 
@@ -79,14 +80,7 @@ export default function SideDrawer(props) {
         <List>
           <ListItem>
             <ListItemText style={{ marginLeft: "10px" }}>
-              <Typography style={{ marginTop: 0 }} variant="subtitle2" noWrap>
-                <a
-                  href="/"
-                  style={{ textDecoration: "none", color: colors.primary }}
-                >
-                  <img src={logo} alt="tremollo music" />
-                </a>
-              </Typography>
+              <Logo />
             </ListItemText>
           </ListItem>
         </List>
