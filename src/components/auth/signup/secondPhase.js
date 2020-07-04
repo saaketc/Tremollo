@@ -60,7 +60,7 @@ const FirstPhase = ({ onSubmit }) => {
     <Container>
       <div className="form-div">
         <Typography variant="h5" className={classes.title}>
-          Share your musical creativity !
+          Share your musical creativity & make fans!
         </Typography>
         <br />
 
