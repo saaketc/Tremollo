@@ -8,7 +8,7 @@ const fields = [{ name: "name", label: "New playlist name", type: "text" }];
 const button = { type: "submit", label: "Add", color: colors.primary };
 
 const Playlist = (props) => {
-  const { currentUserId, contentId } = props;
+  const { currentUserId, contentId, icon } = props;
   const [playlist, setPlaylist] = React.useState();
 
   React.useEffect(() => {
@@ -66,6 +66,7 @@ const Playlist = (props) => {
       postSubmitLogic={postSubmitLogic}
       fields={fields}
       button={button}
+      icon={icon}
     />
   );
 };

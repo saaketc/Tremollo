@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-
+import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 
@@ -17,7 +17,7 @@ import logo from "../../logo/logo.svg";
 import colors from "../../config/colors";
 // import Search from "../search/search";
 import SearchIcon from "@material-ui/icons/Search";
-import { IconButton, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import darkTheme from "../../config/themes/dark";
 import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
@@ -65,9 +65,8 @@ export default function SideDrawer(props) {
 
   return (
     <div className={classes.root}>
-    
-        <Navbar user={user} />
-   
+      <Navbar user={user} />
+
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -102,10 +101,16 @@ export default function SideDrawer(props) {
 
           <ListItem button onClick={() => history.push("/search")}>
             <ListItemIcon className={classes.text}>
-             <SearchIcon />
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText className={classes.text}>Search</ListItemText>
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon className={classes.text}>
+              <PlaylistAddIcon />
             </ListItemIcon>
             <ListItemText className={classes.text}>
-              Search
+              <Playlist currentUserId={user.userId} icon={false} />
             </ListItemText>
           </ListItem>
         </List>
@@ -124,15 +129,6 @@ export default function SideDrawer(props) {
               <ListItem>
                 <ListItemText>
                   <UploadButton onClick={handleUploadButton} />
-                </ListItemText>
-              </ListItem>
-
-              <ListItem>
-                <ListItemIcon>
-                  <Playlist currentUserId={user.userId} />
-                </ListItemIcon>
-                <ListItemText className={classes.text}>
-                  Create playlist
                 </ListItemText>
               </ListItem>
             </>

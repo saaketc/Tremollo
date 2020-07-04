@@ -15,6 +15,7 @@ import PlaylistAddIcon from "@material-ui/icons/PlaylistAdd";
 import { thumbnailCreator } from "../../utils/utilfunctions";
 import Form from "./form";
 import darkTheme from "../../config/themes/dark";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   avatar: {
@@ -93,6 +94,7 @@ export default function UImodalDemo({
   postSubmitLogic,
   fields,
   button,
+  icon
 }) {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState();
@@ -108,9 +110,16 @@ export default function UImodalDemo({
 
   return (
     <div>
-      <IconButton aria-label="add to playlist" onClick={handleClickOpen}>
+      {
+        icon ? 
+        <IconButton aria-label="add to playlist" onClick={handleClickOpen}>
         <PlaylistAddIcon style={{color: darkTheme.textColor}}/>
-      </IconButton>
+          </IconButton>
+          :
+          <Typography onClick={handleClickOpen} variant='subtitle1'>
+          Create playlist 
+          </Typography>
+     }
       <UImodal
         selectedValue={selectedValue}
         open={open}

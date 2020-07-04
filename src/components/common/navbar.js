@@ -1,12 +1,19 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
+
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
+
 import colors from "../../config/colors";
-// import Search from "../search/search";
+import Search from "../search/search";
+import logo from "../../logo/logo.svg";
+import UploadButton from "../upload/uploadButton";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import { Avatar } from "@material-ui/core";
 import { storageURL } from "../../config/storage";
@@ -85,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
   right: {
     marginRight: "30px",
   },
+
   pic: {
     border: `1px solid ${colors.primary}`,
   },
@@ -115,6 +123,14 @@ function Navbar(props) {
   return (
     <div className={classes.root}>
       <Toolbar>
+        <Hidden only={["sm", "xs"]}>
+          <Typography
+            className={classes.title}
+            variant="h5"
+            noWrap
+          ></Typography>
+        </Hidden>
+
         {!user && (
           <Button
             style={buttonStyleOpen}
@@ -123,32 +139,39 @@ function Navbar(props) {
             About
           </Button>
         )}
+        {user && (
+          <>
 
-        <Avatar
-          onClick={handleMenu}
-          src={storageURL + user.avatarLink}
-          className={classes.pic}
-        />
+            <Button style={buttonStyleOpen }  onClick={handleMenu}>
+            <Avatar
+              
+              style={{marginRight: '4px'}}
+              src={storageURL + user.avatarLink}
+              className={classes.pic}
+              />
+              {user.username}
+             </Button>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleProfile}>Profile</MenuItem>
 
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          open={open}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleProfile}>Profile</MenuItem>
-
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
-        </Menu>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </Menu>
+          </>
+        )}
       </Toolbar>
     </div>
   );

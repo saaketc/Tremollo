@@ -57,6 +57,7 @@ export default function BottomNav({ data }) {
           <Playlist
             currentUserId={data.followerId}
             contentId={data.contentId}
+            icon={true}
           />
         }
       />

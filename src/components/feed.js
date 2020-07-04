@@ -42,10 +42,10 @@ const Feed = (props) => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container className='center'>
       {
         loading ?
-          <div class="d-flex justify-content-center align-items-center" style={{ marginTop: '10rem'}}>
+          <div className="d-flex justify-content-center align-items-center" style={{ marginTop: '10rem'}}>
           <ReactLoading
         type="spokes"
         color={darkTheme.primary}
@@ -59,7 +59,7 @@ const Feed = (props) => {
           {feed &&
             feed.map((f) => (
               
-                 <Grid item xs={12} lg={3} md={3} key={f.userId}  >
+                 <Grid item xs={12} lg={4} md={4} key={f.userId}  >
                 <CardComponent
                   data={f}
                   primaryData={f.title}
