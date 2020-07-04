@@ -61,11 +61,9 @@ const SearchResults = (props) => {
 
   return (
     <Container maxWidth="lg">
-      <br />
-      <br />
-      <div maxWidth='100px'>
+      <div maxWidth="100px">
         <Search />
-        </div>
+      </div>
       <br />
       <br />
       <Typography variant="h7" className={classes.heading}>
@@ -76,7 +74,7 @@ const SearchResults = (props) => {
       {content.length > 0 || users.length > 0 ? (
         <>
           <Typography variant="h4" className={classes.heading}>
-            {!loading ? `Best results for ${q}` : ''}
+            {!loading ? `Best results for ${q}` : ""}
           </Typography>
           <br />
           <Grid container spacing={6}>
@@ -88,6 +86,7 @@ const SearchResults = (props) => {
                   tag={`${c.likesCount} likes`}
                   onClick={handleAlbumClick}
                   image={storageURL + c.thumbnailLink}
+                  hover={false}
                 />
                 <br />
               </Grid>
@@ -104,15 +103,14 @@ const SearchResults = (props) => {
           </Grid>
         </>
       ) : (
-          
-       (  q &&  
-        <Typography variant="h4" className={classes.heading}>
-          {!loading
-            ? `Sorry no results found for ${q} :( `
-            : `Loading results for ${q}...`}
-          <br />
-            </Typography>
-       )
+        q && (
+          <Typography variant="h4" className={classes.heading}>
+            {!loading
+              ? `Sorry no results found for ${q} :( `
+              : `Loading results for ${q}...`}
+            <br />
+          </Typography>
+        )
       )}
       <br />
       <br />

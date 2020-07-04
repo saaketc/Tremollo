@@ -68,7 +68,7 @@ const Feed = (props) => {
           </Typography>
           <br />
           <br />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {feed &&
               feed.map((f) => (
                 <Grid item xs={12} lg={3} md={3} key={f.userId}>
@@ -76,11 +76,12 @@ const Feed = (props) => {
                     <CardComponent
                       data={f}
                       primaryData={stringSlice(f.title)}
-                      secondaryData={`by ${f.username}`}
+                      secondaryData={f.username}
                       tooltip={f.title}
-                      tag={`${f.likes} likes`}
+                      // tag={`${f.likes} likes`}
                       onClick={handleAlbumClick}
                       image={storageURL + f.thumbnailLink}
+                      hover={true}
                     />
                   </Tooltip>
                   <br />
