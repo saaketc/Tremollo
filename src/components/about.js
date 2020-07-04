@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Container } from "@material-ui/core";
-import background from "../illustrations/guitar.jpg";
+import background from "../illustrations/mug.jpg";
 import "../styles/auth.css";
 
 const About = () => {

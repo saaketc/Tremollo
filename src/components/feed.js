@@ -62,6 +62,7 @@ const Feed = (props) => {
             Curated for you
           </Typography>
           <br />
+          <br />
           <Grid container spacing={4}>
             {feed &&
               feed.map((f) => (
