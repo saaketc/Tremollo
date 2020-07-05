@@ -36,7 +36,7 @@ const Playlist = (props) => {
       const { data } = await dataService.postData("playlist/create", list);
      
       // playlist.unshift(data.body);
-      //   setPlaylist([data.body, ...playlist]);
+        setPlaylist([data.body, ...playlist]);
     } catch (e) {
       toast.error("Ooops something went wrong!");
       setPlaylist(oldList);
