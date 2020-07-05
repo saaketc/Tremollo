@@ -70,6 +70,7 @@ const Profile = (props) => {
   const [userDetails, setUserDetails] = React.useState({});
   const [content, setContent] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [loadingContent, setLoadingContent] = React.useState(true);
   const [tab, setTab] = React.useState(0);
   const [isFollowedByUser, setIsFollowedByUser] = React.useState(0);
 
@@ -100,6 +101,7 @@ const Profile = (props) => {
         setLoading(false);
         setUserStats(userRes.data.body);
         setContent(contentRes.data.body);
+        setLoadingContent(false);
       })
       .catch((error) => console.log(error));
   }, [userId]);
@@ -288,7 +290,7 @@ const Profile = (props) => {
         )}
 
         {tab === 1 && (
-          <UserContent onClick={handleAlbumClick} content={content.reverse()} />
+          <UserContent loading={loadingContent} onClick={handleAlbumClick} content={content.reverse()} />
         )}
         {tab === 2 && <UserFollowing userId={userId} />}
       </Grid>
