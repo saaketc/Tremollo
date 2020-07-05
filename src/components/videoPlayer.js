@@ -26,6 +26,11 @@ const VideoPlayer = ({ url, thumbnailLink, width, height }) => {
         light={thumbnailLink}
         width={`${width}px`}
         height={`${height}px`}
+        config={{ file: { 
+          attributes: {
+            controlsList: 'nodownload'  
+          }
+      }}}
       />
     </div>
 
