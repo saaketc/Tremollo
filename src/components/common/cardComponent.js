@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     backgroundColor: darkTheme.backgroundCard,
     width: 180,
-    height: 230,
+    height: 280,
   },
 
   content: {
@@ -24,11 +24,11 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     textAlign: "left",
     width: 180,
-    height: 230,
+    height: 280,
   },
   cover: {
     width: 180,
-    height: 100,
+    height: 150,
   },
 
   playIcon: {
