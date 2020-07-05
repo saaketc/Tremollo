@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     backgroundColor: darkTheme.backgroundCard,
-    width: 200,
+    width: 180,
     height: 230,
   },
 
@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
     color: darkTheme.textColor,
     textTransform: "none",
     textAlign: "left",
-    width: 200,
+    width: 180,
     height: 230,
   },
   cover: {
-    width: 200,
+    width: 180,
     height: 100,
   },
 

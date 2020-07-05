@@ -24,7 +24,7 @@ const Feed = (props) => {
       try {
         const params = {
           pageNumber: 1,
-          rowCount: 40,
+          rowCount: 42,
           userId: user.userId,
         };
         const { data } = await dataService.getData("feed", params);
@@ -68,10 +68,10 @@ const Feed = (props) => {
           </Typography>
           <br />
           <br />
-          <Grid container spacing={1}>
+          <Grid container spacing={10}>
             {feed &&
               feed.map((f) => (
-                <Grid item xs={12} lg={3} md={3} key={f.userId}>
+                <Grid item xs={12} lg={2} md={2} key={f.userId}>
                   <Tooltip title={f.title}>
                     <CardComponent
                       data={f}

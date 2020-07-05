@@ -72,8 +72,10 @@ const ContentPage = (props) => {
 
   return (
     <Container>
+      <br/>
+      <br/>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={10} lg={10}>
+        <Grid item xs={12} md={9} lg={9}>
           {loading ? (
             <Skeleton
               animation="wave"
@@ -181,7 +183,7 @@ const ContentPage = (props) => {
           <ContentLikes />
         </Grid> */}
         </Grid>
-        <Grid item xs={12} md={2} lg={2}>
+        <Grid item xs={12} md={3} lg={3} style={{paddingLeft: '150px'}}>
           <QueuePlaylist removeContentId={contentId} user={currentUser} />
         </Grid>
       </Grid>

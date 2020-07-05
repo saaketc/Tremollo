@@ -46,7 +46,7 @@ div.form-login {
 div.div-about {
   width: 500px;
   position: relative; /* has to be position relative for left to work, or you could just do margin-left: -50px; too */
-  left: -70px;
+  left: -5px;
   top: -20px
  
 }

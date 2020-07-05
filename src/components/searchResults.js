@@ -30,6 +30,7 @@ const SearchResults = (props) => {
   const [content, setContent] = React.useState([]);
   const [users, setUsers] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [showSearchImg, setShowSearchImg] = React.useState(true);
 
   const history = useHistory();
   const classes = styles();
@@ -50,6 +51,7 @@ const SearchResults = (props) => {
         setUsers(userRes.data.body);
         setContent(contentRes.data.body);
         setLoading(false);
+        setShowSearchImg(false)
       })
       .catch((error) => console.log(error));
   }, [q]);
@@ -61,11 +63,12 @@ const SearchResults = (props) => {
 
   return (
     <Container maxWidth="lg">
-      <div maxWidth="100px">
-        <Search />
-      </div>
-      <br />
-      <br />
+     
+          <div maxWidth="100px">
+            <Search />
+          </div>
+      
+      <br/>
       <Typography variant="h7" className={classes.heading}>
         Collections, billboards, charts & much more coming soon! Stay tuned.
       </Typography>
@@ -74,7 +77,7 @@ const SearchResults = (props) => {
       {content.length > 0 || users.length > 0 ? (
         <>
           <Typography variant="h4" className={classes.heading}>
-            {!loading ? `Best results for ${q}` : ""}
+            {(!loading && q) ? `Best results for ${q}` : ""}
           </Typography>
           <br />
           <Grid container spacing={6}>
@@ -112,7 +115,6 @@ const SearchResults = (props) => {
           </Typography>
         )
       )}
-      <br />
       <br />
       <Button style={buttonStyleOpen} onClick={() => history.push("/")}>
         Explore Music

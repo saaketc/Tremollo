@@ -57,8 +57,7 @@ function App() {
     <ThemeProvider theme={dark ? darkTheme : lightTheme}>
       <GlobalStyles />
       {user && <SideDrawer user={user} />}
-      <br />
-      <br />
+     
       <div className={user ? "container" : ""}>
         <ToastContainer />
         {!user && (

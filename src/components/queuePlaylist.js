@@ -18,7 +18,7 @@ const QueuePlaylist = (props) => {
       try {
         const params = {
           pageNumber: 1,
-          rowCount: 40,
+          rowCount: 42,
           userId: user.userId,
         };
         const { data } = await dataService.getData("feed", params);

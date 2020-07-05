@@ -86,24 +86,24 @@ export default function SideDrawer(props) {
         </List>
 
         <List>
-          <ListItem button onClick={() => history.push("/")}>
+          <ListItem button onClick={() => history.push("/")} >
             <ListItemIcon className={classes.text}>
-              <HomeIcon />
+              <HomeIcon fontSize='large'/>
             </ListItemIcon>
-            <ListItemText className={classes.text}>Home</ListItemText>
+            <ListItemText className={classes.text} style={{marginLeft: '-10px'}}>Home</ListItemText>
           </ListItem>
 
           <ListItem button onClick={() => history.push("/search")}>
             <ListItemIcon className={classes.text}>
-              <SearchIcon />
+              <SearchIcon fontSize='large'/>
             </ListItemIcon>
-            <ListItemText className={classes.text}>Search</ListItemText>
+            <ListItemText className={classes.text} style={{marginLeft: '-10px'}}>Search</ListItemText>
           </ListItem>
           <ListItem button>
             <ListItemIcon className={classes.text}>
-              <PlaylistAddIcon />
+              <PlaylistAddIcon fontSize='large'/>
             </ListItemIcon>
-            <ListItemText className={classes.text}>
+            <ListItemText className={classes.text} style={{marginLeft: '-10px'}}>
               <Playlist currentUserId={user.userId} icon={false} />
             </ListItemText>
           </ListItem>
@@ -136,14 +136,14 @@ export default function SideDrawer(props) {
             <ListItemIcon className={classes.text}>
               <InfoIcon />
             </ListItemIcon>
-            <ListItemText className={classes.text}>About us</ListItemText>
+            <ListItemText className={classes.text} style={{marginLeft: '-20px'}}>About us</ListItemText>
           </ListItem>
 
           <ListItem button onClick={() => history.push("/feedback")}>
             <ListItemIcon className={classes.text}>
               <FeedbackIcon />
             </ListItemIcon>
-            <ListItemText className={classes.text}>Feedback</ListItemText>
+            <ListItemText className={classes.text} style={{marginLeft: '-20px'}}>Feedback</ListItemText>
           </ListItem>
         </List>
       </Drawer>

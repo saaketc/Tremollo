@@ -61,8 +61,8 @@ export default function SearchBar() {
     <Paper component="form" className={classes.root} onSubmit={handleSubmit}>
       <InputBase
         className={classes.input}
-        placeholder="Search for content or user..."
-        inputProps={{ "aria-label": "Search for content or user...", className: classes.inputText}}
+        placeholder="Search for Artists, Music, or Friends..."
+        inputProps={{ "aria-label": "Search for Artists, Music, or Friends...", className: classes.inputText}}
         value={searchTerm}
         onChange={handleChange}
       />

@@ -6,7 +6,7 @@ import colors from '../../config/colors'
 
 const UserAvatar = ({user, onClick}) => {
     return (
-        <div>
+        <div >
             <Button style={buttonStyleOpen}  onClick={onClick}>
             <Avatar
               
