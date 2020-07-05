@@ -10,11 +10,11 @@ const About = () => {
         <img src={background} className="bg" alt="" />
       </div>
 
-      <div className="div-about">
+      <div className="div-about" style={{color: 'black'}}>
         <Typography variant="h4" style={{fontWeight:600}}>Who are we?</Typography>
         <br />
 
-        <Typography variant="p">
+        <Typography variant="p" style={{fontWeight:500}}>
           We are a team of crazy, passionate and committed people who love to
           solve problems in fun and exciting ways. <br /><br/>
           We believe problem-solving is not just a business or a painful
@@ -25,7 +25,7 @@ const About = () => {
         <br />
         <Typography variant="h4" style={{fontWeight:600}}>Our mission statement</Typography>
         <br />
-        <Typography variant="p">
+        <Typography variant="p" style={{fontWeight:500}}>
           "We believe that music connects everyone with love and empathy.
           Everyone has the right to speak this language of love and happiness.{" "}
           <br />
