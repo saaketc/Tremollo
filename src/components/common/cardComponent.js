@@ -53,6 +53,7 @@ export default function CardComponent({
   onClick,
   tooltip,
   hover,
+  width
 }) {
   const classes = useStyles();
   const [playIcon, setPlayIcon] = React.useState(false);
@@ -69,13 +70,14 @@ export default function CardComponent({
     <Button>
       <Card
         className={classes.root}
+        style={{width: width}}
         onClick={() => (onClick ? onClick(data) : null)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div>
-          <CardMedia className={classes.cover} image={image} title={tooltip} />
-          <CardContent className={classes.content}>
+          <CardMedia className={classes.cover} image={image} title={tooltip}  style={{width:width}} />
+          <CardContent className={classes.content}  style={{width:width}}>
             <Typography component="h7" variant="h7">
               {primaryData}
             </Typography>

@@ -183,7 +183,7 @@ const ContentPage = (props) => {
           <ContentLikes />
         </Grid> */}
         </Grid>
-        <Grid item xs={12} md={3} lg={3} style={{paddingLeft: '150px'}}>
+        <Grid item xs={12} md={3} lg={3} style={{paddingLeft: '120px'}}>
           <QueuePlaylist removeContentId={contentId} user={currentUser} />
         </Grid>
       </Grid>

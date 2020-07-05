@@ -63,6 +63,7 @@ const QueuePlaylist = (props) => {
                 onClick={handleAlbumClick}
                 image={storageURL + f.thumbnailLink}
                 hover={false}
+                width={250}
               />
               <br />
             </Grid>
