@@ -10,7 +10,9 @@ const About = () => {
         <img src={background} className="bg" alt="" />
       </div>
 
-      <div className="div-about" style={{color: 'black'}}>
+      <div className="div-about" style={{ color: 'black' }}>
+        <br/>
+        <br/>
         <Typography variant="h4" style={{fontWeight:600}}>Who are we?</Typography>
         <br />
 
