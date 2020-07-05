@@ -11,7 +11,7 @@ import { storageURL } from '../config/storage';
 const styles = makeStyles(theme => ({
     heading: {
         fontWeight: '500',
-        textAlign: 'center',
+        textAlign: 'left',
         color: darkTheme.textColor
     }
 }));
@@ -33,14 +33,13 @@ const PlaylistFeed = (props) => {
                   <br/>
           <Grid container spacing={6}>
               {contents.map(c => (
-                  <Grid item xs={12} lg={3} md={3}>
+                  <Grid item xs={12} lg={2} md={2}>
                       <CardComponent
                           data={c}
                           primaryData={c.title}
                           secondaryData={c.username}
                           onClick={handleAlbumClick}
                           image={storageURL + c.thumbnailLink}
-                          width={100}
                       />
                       <br />
                     </Grid>
