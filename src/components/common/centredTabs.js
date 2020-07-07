@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 
 export default function CenteredTabs({labels, afterTabSet, maxWidth}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(2);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

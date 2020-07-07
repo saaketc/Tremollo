@@ -63,12 +63,12 @@ const Compliments = ({ contentId, currentUser }) => {
         <Typography variant="h4">No compliments yet...</Typography>
       )}
       <br />
-
       <AddCompliment
         complimentingUser={currentUser}
         contentId={contentId}
         postSubmit={handlePostComplimentSubmit}
       />
+    
       <br />
       <br />
       <span>

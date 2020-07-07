@@ -16,7 +16,7 @@ import ContentLikes from "./contentLikes";
 import CenteredTabs from "../common/centredTabs";
 import { encode, decode } from "../../utils/utilfunctions";
 import { makeStyles } from "@material-ui/core/styles";
-import  darkTheme  from "../../config/themes/dark";
+import darkTheme from "../../config/themes/dark";
 import colors from "../../config/colors";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
   },
   pic: {
     borderRadius: "50%",
-  border: `1px solid ${colors.primary}`,
-  width: 60,
-  height: 60,
-  verticalAlign: "middle",
-  }
+    border: `1px solid ${colors.primary}`,
+    width: 60,
+    height: 60,
+    verticalAlign: "middle",
+  },
 }));
 
 const ContentPage = (props) => {
@@ -40,7 +40,7 @@ const ContentPage = (props) => {
 
   const [content, setContent] = React.useState({});
   const [loading, setLoading] = React.useState(true);
-  const [tab, setTab] = React.useState(0);
+  const [tab, setTab] = React.useState(2);
 
   const contentId = decode(props.match.params.contentId);
   const { user: currentUser } = props;
@@ -72,8 +72,8 @@ const ContentPage = (props) => {
 
   return (
     <Container>
-      <br/>
-      <br/>
+      <br />
+      <br />
       <Grid container spacing={4}>
         <Grid item xs={12} md={9} lg={9}>
           {loading ? (
@@ -103,8 +103,27 @@ const ContentPage = (props) => {
             }}
           />
           <br />
-          <Grid container spacing={6}>
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={9} lg={9}>
+              <Typography variant="h4" style={styles.title}>
+                {content.title}
+              </Typography>
+              <Typography variant="h6" style={styles.title}>
+                {content.caption}
+              </Typography>
+            </Grid>
             <Grid item xs={12} md={3} lg={3}>
+              <div style={{ marginTop: "15px" }}>
+                <Follow
+                  followerId={currentUser.userId}
+                  followedId={content.userId}
+                  isFollowedByUser={content.isFollowedByUser}
+                />
+              </div>
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={12} lg={12}>
               <div style={{ display: "block" }}>
                 <Button className={classes.btn} onClick={handleUserClick}>
                   {loading ? (
@@ -145,27 +164,9 @@ const ContentPage = (props) => {
 
               {/* Follow component */}
             </Grid>
-
-            <Grid item xs={12} md={3} lg={3}>
-              <Follow
-                followerId={currentUser.userId}
-                followedId={content.userId}
-                isFollowedByUser={content.isFollowedByUser}
-              />
-              <br />
-              <br />
             </Grid>
-          </Grid>
-          <Typography variant="h4" style={styles.title}>
-            {content.title}
-          </Typography>
-
-          <Typography variant="h6" style={styles.title}>
-            {content.caption}
-          </Typography>
           <br />
-          <br />
-          <br />
+         
           {/* Compliments component */}
           <CenteredTabs
             labels={["Compliments", "Liked by"]}
@@ -178,12 +179,8 @@ const ContentPage = (props) => {
             <Compliments contentId={contentId} currentUser={currentUser} />
           )}
           {tab === 1 && <ContentLikes contentId={contentId} />}
-
-          {/* <Grid item xs={12} md={6} lg={6}>
-          <ContentLikes />
-        </Grid> */}
         </Grid>
-        <Grid item xs={12} md={3} lg={3} style={{paddingLeft: '120px'}}>
+        <Grid item xs={12} md={3} lg={3} style={{ paddingLeft: "120px" }}>
           <QueuePlaylist removeContentId={contentId} user={currentUser} />
         </Grid>
       </Grid>
