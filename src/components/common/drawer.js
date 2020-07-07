@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 import ListItemText from "@material-ui/core/ListItemText";
 import InfoIcon from "@material-ui/icons/Info";
 import FeedbackIcon from "@material-ui/icons/Feedback";
@@ -86,24 +88,37 @@ export default function SideDrawer(props) {
         </List>
 
         <List>
-          <ListItem button onClick={() => history.push("/")} >
+          <ListItem button onClick={() => history.push("/")}>
             <ListItemIcon className={classes.text}>
-              <HomeIcon fontSize='large'/>
+              <HomeIcon fontSize="large" />
             </ListItemIcon>
-            <ListItemText className={classes.text} style={{marginLeft: '-10px'}}>Home</ListItemText>
+            <ListItemText
+              className={classes.text}
+              style={{ marginLeft: "-10px" }}
+            >
+              Home
+            </ListItemText>
           </ListItem>
 
           <ListItem button onClick={() => history.push("/search")}>
             <ListItemIcon className={classes.text}>
-              <SearchIcon fontSize='large'/>
+              <SearchIcon fontSize="large" />
             </ListItemIcon>
-            <ListItemText className={classes.text} style={{marginLeft: '-10px'}}>Search</ListItemText>
+            <ListItemText
+              className={classes.text}
+              style={{ marginLeft: "-10px" }}
+            >
+              Search
+            </ListItemText>
           </ListItem>
           <ListItem button>
             <ListItemIcon className={classes.text}>
-              <PlaylistAddIcon fontSize='large'/>
+              <PlaylistAddIcon fontSize="large" />
             </ListItemIcon>
-            <ListItemText className={classes.text} style={{marginLeft: '-10px'}}>
+            <ListItemText
+              className={classes.text}
+              style={{ marginLeft: "-10px" }}
+            >
               <Playlist currentUserId={user.userId} icon={false} />
             </ListItemText>
           </ListItem>
@@ -136,14 +151,38 @@ export default function SideDrawer(props) {
             <ListItemIcon className={classes.text}>
               <InfoIcon />
             </ListItemIcon>
-            <ListItemText className={classes.text} style={{marginLeft: '-20px'}}>About us</ListItemText>
+            <ListItemText
+              className={classes.text}
+              style={{ marginLeft: "-20px" }}
+            >
+              About us
+            </ListItemText>
           </ListItem>
 
           <ListItem button onClick={() => history.push("/feedback")}>
             <ListItemIcon className={classes.text}>
               <FeedbackIcon />
             </ListItemIcon>
-            <ListItemText className={classes.text} style={{marginLeft: '-20px'}}>Feedback</ListItemText>
+            <ListItemText
+              className={classes.text}
+              style={{ marginLeft: "-20px" }}
+            >
+              Feedback
+            </ListItemText>
+          </ListItem>
+        </List>
+        <List>
+          <ListItem>
+            <ListItemText
+              className={classes.text}
+              
+            >
+              <Typography variant="subtitle1" component="p">
+                Made with 
+                 <FavoriteIcon style={{ color: "red", fontSize: "20px", marginLeft: '5px' }} /> &
+                pride <br/>in India.
+              </Typography>
+            </ListItemText>
           </ListItem>
         </List>
       </Drawer>
