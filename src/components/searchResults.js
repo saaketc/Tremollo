@@ -8,7 +8,7 @@ import { storageURL } from "../config/storage";
 import colors from "../config/colors";
 import CardComponent from "./common/cardComponent";
 import UserTemplate from "./common/userTemplate";
-import { encode } from "../utils/utilfunctions";
+import { encode, stringSlice } from "../utils/utilfunctions";
 import { buttonStyleOpen } from "../config/buttonStyle";
 import Search from "./search/search";
 
@@ -85,7 +85,7 @@ const SearchResults = (props) => {
               <Grid item xs={12} lg={3} md={3}>
                 <CardComponent
                   data={c}
-                  primaryData={c.title}
+                  primaryData={stringSlice(c.title)}
                   tag={`${c.likesCount} likes`}
                   onClick={handleAlbumClick}
                   image={storageURL + c.thumbnailLink}
