@@ -21,9 +21,8 @@ const VideoPlayer = ({ url, thumbnailLink, width, height }) => {
     <div className={['player - wrapper', classes.playerWrapper]}>
       <ReactPlayer url={url}
         className={['react-player', classes.reactPlayer]}
-        playing
+        playing={true}
         controls
-        light={thumbnailLink}
         width={`${width}px`}
         height={`${height}px`}
         config={{ file: { 
