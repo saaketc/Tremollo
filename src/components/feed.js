@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import Tooltip from "@material-ui/core/Tooltip";
 import dataService from "../services/dataServices";
 import { storageURL } from "../config/storage";
 import CardComponent from "./common/cardComponent";
@@ -72,7 +71,6 @@ const Feed = (props) => {
             {feed &&
               feed.map((f) => (
                 <Grid item xs={12} lg={2} md={2} key={f.userId}>
-                  <Tooltip title={f.title}>
                     <CardComponent
                       data={f}
                       primaryData={stringSlice(f.title)}
@@ -83,8 +81,6 @@ const Feed = (props) => {
                       image={storageURL + f.thumbnailLink}
                       hover={true}
                     />
-                  </Tooltip>
-                  <br />
                 </Grid>
               ))}
           </Grid>
