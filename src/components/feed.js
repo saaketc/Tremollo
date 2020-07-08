@@ -9,21 +9,25 @@ import CardComponent from "./common/cardComponent";
 import { encode, stringSlice } from "../utils/utilfunctions";
 import ReactLoading from "react-loading";
 import darkTheme from "../config/themes/dark";
-import { Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 // import colors from "../config/colors";
+import { buttonStyleOpen } from "../config/buttonStyle";
 
 const Feed = (props) => {
   const history = useHistory();
   const { user } = props;
   const [feed, setFeed] = useState([]);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(24);
   const [loading, setLoading] = useState(true);
+  const [loadMore, setLoadMore] = useState(false);
 
   useEffect(() => {
     async function fetchFeedData() {
       try {
         const params = {
           pageNumber: 1,
-          rowCount: 42,
+          rowCount: 24,
           userId: user.userId,
         };
         const { data } = await dataService.getData("feed", params);
@@ -42,6 +46,27 @@ const Feed = (props) => {
     // alert('Clicked');
     return history.push(`/content/${encode(data.contentId)}`);
   };
+
+  const fetchMore = async () => {
+    try {
+      setLoadMore(true);
+      setPage(page + 1);
+      const params = {
+        pageNumber: page + 1,
+        rowCount: count,
+        userId: user.userId,
+      };
+      const { data } = await dataService.getData("feed", params);
+      console.log("feed", data.body);
+      setFeed(() => {
+        return [...feed, ...data.body];
+      });
+      setLoadMore(false);
+    } catch (e) {
+      // console.log(e.message);
+      // toast.error('Something went wrong');
+    }
+  }
 
   return (
     <Container>
@@ -83,7 +108,9 @@ const Feed = (props) => {
                     />
                 </Grid>
               ))}
-          </Grid>
+            </Grid>
+            <br/>
+            <Button onClick={fetchMore} style={buttonStyleOpen}>Load more</Button>
           <br />
           <br />
           <br />
