@@ -92,19 +92,30 @@ const ContentPage = (props) => {
               height="500"
             />
           )}
-          <BottomNav
-            data={{
-              followerId: currentUser.userId,
-              followedId: content.userId,
-              isFollowedByUser: content.isFollowedByUser,
-              isLikedByUser: content.isLikedByUser,
-              contentId: contentId,
-              likes: content.likes,
-            }}
-          />
+          {loading ? (
+            <Skeleton
+              animation="wave"
+              variant="rect"
+              className={classes.skeleton}
+              height={50}
+              width={800}
+            />
+          ) : (
+            <BottomNav
+              data={{
+                followerId: currentUser.userId,
+                followedId: content.userId,
+                isFollowedByUser: content.isFollowedByUser,
+                isLikedByUser: content.isLikedByUser,
+                contentId: contentId,
+                likes: content.likes,
+              }}
+            />
+          )}
+
           <br />
           <Grid container spacing={4}>
-            <Grid item xs={12} md={9} lg={9}>
+            <Grid item xs={12} md={8} lg={8}>
               <Typography variant="h4" style={styles.title}>
                 {content.title}
               </Typography>
@@ -112,7 +123,7 @@ const ContentPage = (props) => {
                 {content.caption}
               </Typography>
             </Grid>
-            <Grid item xs={12} md={3} lg={3}>
+            <Grid item xs={12} md={4} lg={4}>
               <div style={{ marginTop: "15px" }}>
                 <Follow
                   followerId={currentUser.userId}
@@ -164,9 +175,9 @@ const ContentPage = (props) => {
 
               {/* Follow component */}
             </Grid>
-            </Grid>
+          </Grid>
           <br />
-         
+
           {/* Compliments component */}
           <CenteredTabs
             labels={["Compliments", "Liked by"]}
