@@ -12,6 +12,7 @@ import darkTheme from "../config/themes/dark";
 import { Typography, Button } from "@material-ui/core";
 // import colors from "../config/colors";
 import { buttonStyleOpen } from "../config/buttonStyle";
+import colors from "../config/colors";
 
 const Feed = (props) => {
   const history = useHistory();
@@ -21,6 +22,7 @@ const Feed = (props) => {
   const [count, setCount] = useState(24);
   const [loading, setLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(false);
+  const [newMusic, setNewMusic] = useState(true);
 
   useEffect(() => {
     async function fetchFeedData() {
@@ -58,6 +60,11 @@ const Feed = (props) => {
       };
       const { data } = await dataService.getData("feed", params);
       console.log("feed", data.body);
+
+      if (data.body.length === 0) {
+        return setNewMusic(false);
+      }
+
       setFeed(() => {
         return [...feed, ...data.body];
       });
@@ -66,7 +73,7 @@ const Feed = (props) => {
       // console.log(e.message);
       // toast.error('Something went wrong');
     }
-  }
+  };
 
   return (
     <Container>
@@ -96,21 +103,44 @@ const Feed = (props) => {
             {feed &&
               feed.map((f) => (
                 <Grid item xs={12} lg={2} md={2} key={f.userId}>
-                    <CardComponent
-                      data={f}
-                      primaryData={stringSlice(f.title)}
-                      secondaryData={f.username}
-                      tooltip={f.title}
-                      // tag={`${f.likes} likes`}
-                      onClick={handleAlbumClick}
-                      image={storageURL + f.thumbnailLink}
-                      hover={true}
-                    />
+                  <CardComponent
+                    data={f}
+                    primaryData={stringSlice(f.title)}
+                    secondaryData={f.username}
+                    tooltip={f.title}
+                    // tag={`${f.likes} likes`}
+                    onClick={handleAlbumClick}
+                    image={storageURL + f.thumbnailLink}
+                    hover={true}
+                  />
                 </Grid>
               ))}
-            </Grid>
-            <br/>
-            <Button onClick={fetchMore} style={buttonStyleOpen}>Load more</Button>
+          </Grid>
+          <br />
+          {loadMore && newMusic && (
+            <h6
+              className="d-flex justify-content-center align-items-center"
+              style={{ color: colors.primary }}
+            >
+              Loading more music...
+            </h6>
+            )}
+             {!newMusic && (
+            <h6
+              className="d-flex justify-content-center align-items-center"
+              style={{ color: colors.primary }}
+            >
+              You have seen it all!
+            </h6>
+          )}
+          {!loadMore && newMusic && (
+            <div className="d-flex justify-content-center align-items-center">
+              <Button onClick={fetchMore} style={buttonStyleOpen}>
+                Load more
+              </Button>
+            </div>
+          )}
+
           <br />
           <br />
           <br />
