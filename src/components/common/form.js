@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import colors from "../../config/colors";
 import { buttonStyleOpen } from "../../config/buttonStyle";
 import darkTheme from "../../config/themes/dark";
+import ReactLoading from "react-loading";
 
 const useStyles = makeStyles((theme) => ({
   input: {
@@ -60,7 +61,7 @@ export default function Form(props) {
     dropDown,
     postSubmitLogic,
     redirectUrl,
-    noIcon,
+    logging
   } = props;
 
   const [formFields, setFormFields] = React.useState({});
@@ -150,14 +151,30 @@ export default function Form(props) {
             )}
           </Grid>
           <br />
-          <Button
+          {
+            !logging ? 
+            <Button
             type={button.type}
             fullWidth
             style={buttonStyleOpen}
             disabled={disableSubmit}
           >
             {button.label}
-          </Button>
+              </Button>
+              :
+              <div
+              className="d-flex justify-content-center align-items-center"
+              
+            >
+              <ReactLoading
+              type="spin"
+              color={darkTheme.primary}
+              height={50}
+              width={50}
+                />
+                </div>
+          }
+        
           <br />
           <br />
           {login && (
