@@ -40,7 +40,7 @@ const ContentPage = (props) => {
 
   const [content, setContent] = React.useState({});
   const [loading, setLoading] = React.useState(true);
-  const [tab, setTab] = React.useState(2);
+  const [tab, setTab] = React.useState(0);
 
   const contentId = decode(props.match.params.contentId);
   const { user: currentUser } = props;
