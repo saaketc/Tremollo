@@ -116,21 +116,48 @@ const ContentPage = (props) => {
           <br />
           <Grid container spacing={4}>
             <Grid item xs={12} md={8} lg={8}>
-              <Typography variant="h4" style={styles.title}>
-                {content.title}
-              </Typography>
-              <Typography variant="h6" style={styles.title}>
-                {content.caption}
-              </Typography>
+              {
+                !loading ? 
+                <div>
+                <Typography variant="h4" style={styles.title}>
+                  {content.title}
+                </Typography>
+                <Typography variant="h6" style={styles.title}>
+                  {content.caption}
+                </Typography>
+                  </div> :
+                    <Skeleton
+                    animation="wave"
+                    variant="rect"
+                    className={classes.skeleton}
+                    height={30}
+                    width={400}
+                  /> 
+              }
+            
+              
             </Grid>
             <Grid item xs={12} md={4} lg={4}>
-              <div style={{ marginTop: "15px" }}>
+            <div style={{ marginTop: "15px" }}>
+
+              {
+                !loading ?
                 <Follow
                   followerId={currentUser.userId}
                   followedId={content.userId}
                   isFollowedByUser={content.isFollowedByUser}
-                />
+                    />
+                    :
+                    <Skeleton
+              animation="wave"
+              variant="rect"
+              className={classes.skeleton}
+              height={50}
+              width={130}
+            /> 
+              }
               </div>
+             
             </Grid>
           </Grid>
           <Grid container spacing={2}>
