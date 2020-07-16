@@ -60,7 +60,7 @@ const Compliments = ({ contentId, currentUser }) => {
   return (
     <Container>
       {!loading && compliments.length === 0 && (
-        <Typography variant="h4">No compliments yet...</Typography>
+        <Typography variant="h4" style={{marginLeft: "-20px"}}>No compliments yet...</Typography>
       )}
       <br />
       <AddCompliment
