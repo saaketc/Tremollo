@@ -32,7 +32,7 @@ const AddCompliment = ({ complimentingUser, contentId, postSubmit }) => {
     }
   };
   return (
-    <Container>
+    <Container style={{marginLeft:"-45px"}}>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={12} lg={12}>

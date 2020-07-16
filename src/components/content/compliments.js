@@ -71,7 +71,7 @@ const Compliments = ({ contentId, currentUser }) => {
     
       <br />
       <br />
-      <span>
+      <span style={{marginLeft: '-20px'}}>
         {compliments.length > 0 ? `${compliments.length} compliments` : ""}
       </span>
 
@@ -85,7 +85,7 @@ const Compliments = ({ contentId, currentUser }) => {
           width={100}
         />
       ) : (
-        <>
+        <div style={{marginLeft: "-35px"}}>
           {compliments.map((compliment, i) => (
             <Grid container spacing={6}>
               <Grid item xs={12} md={6} lg={6} key={i}>
@@ -129,7 +129,7 @@ const Compliments = ({ contentId, currentUser }) => {
               </Grid>
             </Grid>
           ))}
-        </>
+        </div>
       )}
     </Container>
   );
