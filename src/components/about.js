@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Container } from "@material-ui/core";
-import background from "../illustrations/mug.jpg";
+import background from "../illustrations/startupmug.jpg";
 import "../styles/auth.css";
 
 const About = () => {
@@ -10,7 +10,7 @@ const About = () => {
         <img src={background} className="bg" alt="" />
       </div>
 
-      <div className="div-about" style={{ color: 'black' }}>
+      <div className="div-about" style={{ color: 'white' }}>
         <br/>
         <br/>
         <Typography variant="h4" style={{fontWeight:600}}>Who are we?</Typography>
