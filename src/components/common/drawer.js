@@ -81,7 +81,7 @@ export default function SideDrawer(props) {
         <div className={classes.toolbar} />
         <List>
           <ListItem>
-            <ListItemText style={{ marginLeft: "10px" }}>
+            <ListItemText style={{ marginLeft: "10px", marginTop: "-80px"}}>
               <Logo />
             </ListItemText>
           </ListItem>
