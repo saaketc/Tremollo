@@ -48,11 +48,11 @@ const AddCompliment = ({ complimentingUser, contentId, postSubmit }) => {
             />
           </Grid>
           <Grid item xs={12} md={4} lg={4}>
-            <Button type="submit" style={buttonStyleOpen}>
+            <Button type="submit" style={buttonStyleClose}>
               Add
             </Button>
             <Button
-              style={{ marginLeft: "20px", ...buttonStyleClose }}
+              style={{ marginLeft: "20px", ...buttonStyleOpen }}
               onClick={() => setCompliment("")}
             >
               Cancel
