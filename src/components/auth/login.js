@@ -8,6 +8,7 @@ import background from "../../illustrations/guitar.jpg";
 
 const Login = (props) => {
   const { state } = props.location;
+  const [logging, setLogging] = React.useState(false);
 
   const fields = [
     { name: "email", label: "Email", type: "email" },
@@ -18,6 +19,7 @@ const Login = (props) => {
 
   const postSubmitLogic = async (submittedFormData) => {
     try {
+      setLogging(true);
       const { data } = await dataService.postData(
         "user/login",
         submittedFormData
@@ -29,6 +31,7 @@ const Login = (props) => {
       window.location = state ? state : "/";
     } catch (e) {
       console.log(e.message);
+      setLogging(false);
       toast.error("Something went wrong");
     }
   };
@@ -52,6 +55,7 @@ const Login = (props) => {
           fields={fields}
           login={true}
           redirectUrl={state}
+          logging={logging}
           button={button}
         />
       </div>
