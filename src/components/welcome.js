@@ -6,6 +6,7 @@ import colors from "../config/colors";
 import musicIllus from "../illustrations/compose.svg";
 import musicLoveIllus from "../illustrations/music_love.svg";
 import playlistIllus from "../illustrations/playlist.svg";
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import Footer from "./footer";
 import { buttonStyleOpen, buttonStyleClose } from "../config/buttonStyle";
@@ -107,6 +108,27 @@ const Welcome = () => {
           ))
      }
       </Grid>
+      <br/>
+      <br/>
+       
+      <Typography variant="h4" className={classes.title}>
+        A special note for you
+        </Typography>
+      <br/>
+          <Typography variant="p" className={classes.description}>
+          We want to create a musical ecosystem such that no artist has to ever
+          leave his passion and love for music <br/> while giving music lovers the
+          best experience they can ever have.<br />
+          <br /> We need you to make tremollo better and make our mission
+          possible
+          <br /> so that we can help many more such independent artists to make
+          their dream of living the music a reality.
+        </Typography>
+      <br/>
+      <br/>
+      <Typography variant="p" className={classes.description}>
+        We are evolving. So let's grow together <FavoriteIcon style={{color:'red', fontSize:'30px'}}/>
+      </Typography>
   <Footer/>
 
     </Container>

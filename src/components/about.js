@@ -1,7 +1,8 @@
 import React from "react";
 import { Typography, Container } from "@material-ui/core";
-import background from "../illustrations/startupmug.jpg";
+import background from "../illustrations/guitar-about.jpg";
 import "../styles/auth.css";
+import Footer from "./footer";
 
 const About = () => {
   return (
@@ -10,7 +11,7 @@ const About = () => {
         <img src={background} className="bg" alt="" />
       </div>
 
-      <div className="div-about" style={{ color: 'white' }}>
+      <div className="div-about" style={{ color: 'black' }}>
         <br/>
         <br/>
         <Typography variant="h4" style={{fontWeight:600}}>Who are we?</Typography>
@@ -64,6 +65,7 @@ const About = () => {
           "And yes we love you too :)"
         </Typography>
       </div>
+      <Footer/>
     </Container>
   );
 };
